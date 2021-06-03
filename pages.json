@@ -1,0 +1,6 @@
+[
+    ["Pages", "/pages/"],
+    ["Resources", "/pages/resources"],
+    ["Recommended", "/pages/recommended"],
+    ["Grade Calculator", "/pages/grade-calc/"]
+]

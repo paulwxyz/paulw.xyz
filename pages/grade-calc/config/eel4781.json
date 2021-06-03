@@ -1,0 +1,35 @@
+[
+	{
+		"name": "midterm",
+		"percentage": 25,
+		"info":"http://www.ece.ucf.edu/~yuksem/teaching/EEL-4781-Spring-2021.html"
+	},
+	{
+		"name": "final",
+		"percentage": 25
+	},
+	{
+		"name": "project",
+		"percentage": 15,
+		"info":"Webserver project"
+	},
+	{
+		"name": "homework",
+		"percentage": 20,
+		"points": [
+		  100,
+		  100,
+		  100,
+		  100,
+		  100
+		]
+	},
+	{
+		"name": "lab",
+		"percentage": 15,
+		"points": [
+		  100,
+		  100
+		]
+	}
+]
