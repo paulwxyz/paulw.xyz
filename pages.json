@@ -2,5 +2,6 @@
     ["Pages", "/pages/"],
     ["Resources", "/pages/resources"],
     ["Recommended", "/pages/recommended"],
-    ["Grade Calculator", "/pages/grade-calc/"]
+    ["Grade Calculator", "/pages/grade-calc/"],
+    ["GitHub", "https://github.com/lambdapaul"]
 ]

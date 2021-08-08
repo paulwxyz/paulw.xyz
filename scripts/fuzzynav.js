@@ -1,6 +1,6 @@
 (function () {
     var client = new XMLHttpRequest();
-    client.open("GET", "pages.json");
+    client.open("GET", "/pages.json");
     client.onreadystatechange = function () {
         initFuzzy(client.responseText);
     }

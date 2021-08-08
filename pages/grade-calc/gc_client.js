@@ -84,6 +84,7 @@ class GradeCalc {
 			label.innerHTML = `${conf.title} ${inputId + 1} Score: `;
 
 		let field = document.createElement("input");
+		field.classList.add(`input`);
 		field.classList.add(`${conf.name}-score`);
 		this.fields[sectId][inputId] = field;
 
