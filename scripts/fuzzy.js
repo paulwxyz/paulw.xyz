@@ -1,40 +1,53 @@
 (function () {
     var client = new XMLHttpRequest();
     client.open("GET", "/pages.json");
-    client.onreadystatechange = function () {
-        initFuzzy(client.responseText);
+    client.onreadystatechange = () => {
+        if (client.readyState === 4)
+            fuzzyInit(client.responseText);
     }
     client.send();
 })();
 
-function initFuzzy(text) {
-    if (text == "")
+function fuzzyInit(pagesFileName) {
+    if (pagesFileName == "")
         return;
         
     var pages;
     try {
-        pages = JSON.parse(text);
+        pages = JSON.parse(pagesFileName);
     } catch (e) {
+        console.error(e);
+        document.body.innerHTML = e.message;
         return;
     }
 
     pages.sort();
 
-    let output = "";
-    
-    for (const [name, rlink] of pages) {
-        output += `<a class="hyperlink" href="${rlink}"><div class="name">${name}</div><div class="link">${rlink}</div></a>`;
-    }
-
-    document.querySelector("#results").innerHTML = output;
-
     document.querySelector("#search")
         .addEventListener("keyup", (e) => {
+            switch (e.code) {
+            case "Enter":
+                if (document.querySelector("#results").childNodes[0].href === undefined)
+                    return;
+                window.location = document.querySelector("#results").childNodes[0].href;
+                break;
+            case "ArrowDown":
+                console.log("S");
+                break;
+            case "ArrowUp":
+                console.log("W");
+                break;
+            }
+
+            if (document.querySelector("#search").value === ""){
+                document.querySelector("#results").innerHTML = "";
+                return;
+            }
 
             let results = [];
             for (const [i, [title, page]] of pages.entries()) {
-                ret = hotFuzz(title, document.querySelector("#search").value);
-                if (ret == false)
+                ret = fuzzySearch(title, document.querySelector("#search").value);
+                if (ret === null)
                     continue;
                 results.push([ret, page]);
             }
@@ -54,7 +67,7 @@ function initFuzzy(text) {
     );
 }
 
-function hotFuzz(list, input) {
+function fuzzySearch(list, input) {
     let search = input.replace(/\s/g, "");
     search = search.toLowerCase();
     let tokens = list.split('');
@@ -67,11 +80,11 @@ function hotFuzz(list, input) {
             tokens[i] = `<span class="highlight">${ch}</span>`;
             pc++;
             if (search.length < pc)
-                return false;
+                return null;
         }
     }
     if (search.length != pc)
-        return false;
+        return null;
     
     return {first: tokens.join(''), second: (score / search.length)};
 }
