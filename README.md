@@ -4,9 +4,7 @@ This is a draft of the rationale behind writing pages the way I have. I do not l
 
 ## Page Categorization
 The home page or the index page solely acts as a gateway to all the other pages on the site.
-The accessible pages are categorized on a need-based system. Since I currently do not have multiple pages, I have them all under one single directory.
-
-As with other typical static webpages, the `stylesheet/` directory contains the CSS files and the `scripts/` directory contains the JS files.
+The accessible pages are categorized on a need-based system. Since I currently do not have multiple pages, I have them all under a single directory.
 
 ## Design Principles
 The goal of my home page's design is to keep this minimal. There is no need for unnecessary content to waste people's time. The rule is simple: only waste one's time if they willingly do so.
