@@ -1,3 +1,4 @@
+// good luck reading through this
 (function () {
     var client = new XMLHttpRequest();
     client.open("GET", "/pages.json");
@@ -6,6 +7,7 @@
             fuzzyInit(client.responseText);
     }
     client.send();
+    document.querySelector("#search").focus();
 })();
 
 function fuzzyInit(pagesFileName) {
@@ -39,10 +41,17 @@ function fuzzyInit(pagesFileName) {
                 break;
             }
 
-            if (document.querySelector("#search").value === ""){
-                document.querySelector("#results").innerHTML = "";
+            // help
+            if (document.querySelector("#search").value === "?" || document.querySelector("#search").value == "help") {
+                document.querySelector("#results").innerHTML = "Enter a page or directory name. If do not know any, clear the search field to list everything. Using the <code>Enter</code> key would take you to the first page in list, if it is not empty."
                 return;
             }
+
+
+            // if (document.querySelector("#search").value === ""){
+            //     document.querySelector("#results").innerHTML = "Try entering something into the input field...";
+            //     return;
+            // }
 
             let results = [];
             for (const [i, [title, page]] of pages.entries()) {
