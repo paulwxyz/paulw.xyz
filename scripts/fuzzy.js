@@ -77,7 +77,7 @@ function fuzzyInit(pagesFileName) {
         }
     );
 
-    document.body.addEventListener("keyup", (e) => {
+    document.body.addEventListener("keydown", (e) => {
         if (e.code === "ArrowDown" || e.code === "ArrowUp") {
             if (resultBlock.childNodes === null)
                 return;
@@ -90,6 +90,7 @@ function fuzzyInit(pagesFileName) {
             let currNode = document.activeElement;
             
             if (searchField === currNode) {
+                e.preventDefault();    
                 if (e.code === "ArrowDown")
                     resultNodes[0].focus();
                 else
@@ -100,6 +101,7 @@ function fuzzyInit(pagesFileName) {
             if (Array.from(resultNodes).indexOf(currNode) < 0)
                 return;
 
+            e.preventDefault();
             if (e.code === "ArrowDown")
                 if (currNode.nextElementSibling === null)
                     searchField.focus();
