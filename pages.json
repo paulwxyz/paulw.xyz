@@ -1,7 +1,10 @@
 [
-    ["Pages", "/pages/"],
-    ["Resources", "/pages/resources"],
-    ["Recommended", "/pages/recommended"],
-    ["Grade Calculator", "/pages/grade-calc/"],
-    ["GitHub", "https://github.com/lambdapaul"]
+    {"title":"Pages", "link": "/pages/"},
+    {"title":"Resources", "link": "/pages/resources"},
+    {"title":"Recommended", "link": "/pages/recommended"},
+    {"title":"Grade Calculator", "link": "/pages/grade-calc/"},
+    {"title":"GitHub", "link": "https://github.com/lambdapaul"},
+    {"title":"GitLab", "link": "https://gitlab.com/lambdapaul"},
+    {"title":"Mastodon", "link": "https://mastodon.social/@lambdapaul"},
+    {"title":"Keybase", "link": "https://keybase.io/lambdapaul"}
 ]

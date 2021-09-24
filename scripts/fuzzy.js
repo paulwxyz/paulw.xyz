@@ -1,19 +1,27 @@
-// good luck reading through this
-(function () {
-    var client = new XMLHttpRequest();
+setTimeout(() => {
+    let searchField = document.querySelector("#search");
+        if (searchField === null)
+            return;
+
+    let client = new XMLHttpRequest();
     client.open("GET", "/pages.json");
     client.onreadystatechange = () => {
         if (client.readyState === 4)
             fuzzyInit(client.responseText);
     }
     client.send();
-    document.querySelector("#search").focus();
-})();
+    searchField.focus();
+}, 50);
 
 function fuzzyInit(pagesFileName) {
     if (pagesFileName == "")
         return;
-        
+    
+    let searchField = document.querySelector("#search");
+    let resultBlock = document.querySelector("#results");
+    if (searchField === null || resultBlock === null)
+        return;
+
     var pages;
     try {
         pages = JSON.parse(pagesFileName);
@@ -25,66 +33,97 @@ function fuzzyInit(pagesFileName) {
 
     pages.sort();
 
-    document.querySelector("#search")
-        .addEventListener("keyup", (e) => {
-            switch (e.code) {
-            case "Enter":
-                if (document.querySelector("#results").childNodes[0].href === undefined)
-                    return;
-                window.location = document.querySelector("#results").childNodes[0].href;
-                break;
-            case "ArrowDown":
-                console.log("S");
-                break;
-            case "ArrowUp":
-                console.log("W");
-                break;
-            }
+    searchField.addEventListener("keyup", (e) => {
 
-            // help
-            if (document.querySelector("#search").value === "?" || document.querySelector("#search").value == "help") {
-                document.querySelector("#results").innerHTML = "Enter a page or directory name. If do not know any, clear the search field to list everything. Using the <code>Enter</code> key would take you to the first page in list, if it is not empty."
+            let searchValue = searchField.value ? searchField.value.toLowerCase() : "";
+
+            if (e.code === "Enter") {
+                if (resultBlock.childNodes === null 
+                    || resultBlock.childNodes[0] === null
+                    || resultBlock.childNodes[0].href === undefined)
+                    return;
+
+                window.location = resultBlock.childNodes[0].href;
                 return;
             }
 
-
-            // if (document.querySelector("#search").value === ""){
-            //     document.querySelector("#results").innerHTML = "Try entering something into the input field...";
-            //     return;
-            // }
+            // help
+            if (searchValue === "?" || searchValue === "help") {
+                resultBlock.innerHTML = "<h2>Help</h2>Enter a page or directory name.<br>If do not know any, clear the search field to list everything.<br> Using the <code>Enter</code> key would take you to the first page in list, if the list is not empty.<br>Alternatively, use the <code>Up</code> and <code>Down</code> arrow keys to select the page you want and use the <code>Enter</code> key."
+                return;
+            }
 
             let results = [];
-            for (const [i, [title, page]] of pages.entries()) {
-                ret = fuzzySearch(title, document.querySelector("#search").value);
+            for (const [i, page] of pages.entries()) {
+                ret = fuzzySearch(page.title, searchValue);
                 if (ret === null)
                     continue;
-                results.push([ret, page]);
+                results.push({formatted: ret.formatted, link: page.link, score: ret.score});
             }
 
-            results.sort((x, y) => {return x[0].second - y[0].second});
+            results.sort((x, y) => {return x.score - y.score});
 
-            let output = "";
-            for (const [hfRet, rlink] of results) {
-                output += `<a class="hyperlink" href="${rlink}"><div class="name">${hfRet.first}</div><div class="link">${rlink}</div></a>`;
+            resultBlock.innerHTML = "";
+            for (const res of results) {
+                linkBlock = document.createElement("a");
+                linkBlock.classList.add("hyperlink");
+                linkBlock.href = res.link;
+                linkBlock.innerHTML = `<div class="name">${res.formatted}</div><div class="link">${res.link}</div>`;
+                resultBlock.appendChild(linkBlock);
             }
 
-            if (output == "")
-                output = "No matches found."
-
-            document.querySelector("#results").innerHTML = output;
+            if (results.length <= 0)
+                resultBlock.innerHTML = "Unknown command or no matching pages found."
         }
     );
+
+    document.body.addEventListener("keyup", (e) => {
+        if (e.code === "ArrowDown" || e.code === "ArrowUp") {
+            if (resultBlock.childNodes === null)
+                return;
+
+            resultNodes = resultBlock.childNodes;
+            
+            if (resultNodes.length <= 1)
+                return;
+
+            let currNode = document.activeElement;
+            
+            if (searchField === currNode) {
+                if (e.code === "ArrowDown")
+                    resultNodes[0].focus();
+                else
+                    resultNodes[resultNodes.length - 1].focus();
+                return;
+            }
+
+            if (Array.from(resultNodes).indexOf(currNode) < 0)
+                return;
+
+            if (e.code === "ArrowDown")
+                if (currNode.nextElementSibling === null)
+                    searchField.focus();
+                else
+                    currNode.nextElementSibling.focus();
+            else if (e.code === "ArrowUp")
+                if (currNode.previousElementSibling === null)
+                    searchField.focus();
+                else
+                    currNode.previousElementSibling.focus();
+            return;
+        }
+    });
 }
 
-function fuzzySearch(list, input) {
-    let search = input.replace(/\s/g, "");
+function fuzzySearch(findIn, find) {
+    let search = find.replace(/\s/g, "");
     search = search.toLowerCase();
-    let tokens = list.split('');
+    let tokens = findIn.split('');
     let pc = 0;
     let score = 0;
 
     for (const [i, ch] of tokens.entries()) {
-        if (ch.toLowerCase() == search[pc]) {
+        if (ch.toLowerCase() === search[pc]) {
             score += i - pc;
             tokens[i] = `<span class="highlight">${ch}</span>`;
             pc++;
@@ -92,8 +131,9 @@ function fuzzySearch(list, input) {
                 return null;
         }
     }
-    if (search.length != pc)
-        return null;
+
+    if (search.length === pc)
+        return {formatted: tokens.join(''), score: (score / search.length)};
     
-    return {first: tokens.join(''), second: (score / search.length)};
+    return null;
 }
