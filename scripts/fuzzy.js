@@ -31,7 +31,7 @@ function fuzzyInit(pagesFileName) {
         return;
     }
 
-    pages.sort();
+    pages.sort((x, y) => {return ('' + x.title).localeCompare(y.title)});
 
     searchField.addEventListener("keyup", (e) => {
 
