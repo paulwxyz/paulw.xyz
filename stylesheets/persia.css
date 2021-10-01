@@ -244,15 +244,13 @@ span.clear {
 
 footer {
     color: #fff;
-    background: rgb(0,0,0);
-    padding: 0.25rem;
-    bottom: 0;
-    right: 0;
-    position: fixed;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+    float: right;
+    margin: 0.5rem;
 }
 
 .m-icon {
+    width: 256px;
+    height: 256px;
     position: fixed;
     bottom: 0;
     left: 0;
