@@ -1,4 +1,5 @@
 [
+    {"title":"About", "link": "/about"},
     {"title":"Pages", "link": "/pages/"},
     {"title":"Resources", "link": "/pages/resources"},
     {"title":"Recommended", "link": "/pages/recommended"},
