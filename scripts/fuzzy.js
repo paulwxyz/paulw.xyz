@@ -1,7 +1,7 @@
-setTimeout(() => {
+(() => {
     let searchField = document.querySelector("#search");
-        if (searchField === null)
-            return;
+    if (searchField === null)
+        return;
 
     let client = new XMLHttpRequest();
     client.open("GET", "/pages.json");
@@ -11,7 +11,7 @@ setTimeout(() => {
     }
     client.send();
     searchField.focus();
-}, 50);
+})();
 
 function fuzzyInit(pagesFileName) {
     if (pagesFileName == "")
@@ -35,49 +35,52 @@ function fuzzyInit(pagesFileName) {
 
     searchField.addEventListener("keyup", (e) => {
 
-            let searchValue = searchField.value ? searchField.value.toLowerCase() : "";
+        let searchValue = searchField.value ? searchField.value.toLowerCase() : "";
 
-            if (e.code === "Enter") {
-                if (resultBlock.childNodes === null 
-                    || resultBlock.childNodes[0] === null
-                    || resultBlock.childNodes[0].href === undefined)
-                    return;
-
-                window.location = resultBlock.childNodes[0].href;
+        if (e.code === "Enter") {
+            if (resultBlock.childNodes === null 
+                || resultBlock.childNodes[0] === null
+                || resultBlock.childNodes[0].href === undefined)
                 return;
-            }
 
-            // help
-            if (searchValue === "?" || searchValue === "help") {
-                resultBlock.innerHTML = "<h2>Help</h2>Enter a page or directory name.<br>If do not know any, clear the search field to list everything.<br> Using the <code>Enter</code> key would take you to the first page in list, if the list is not empty.<br>Alternatively, use the <code>Up</code> and <code>Down</code> arrow keys to select the page you want and use the <code>Enter</code> key."
-                return;
-            }
-
-            let results = [];
-            for (const [i, page] of pages.entries()) {
-                ret = fuzzySearch(page.title, searchValue);
-                if (ret === null)
-                    continue;
-                results.push({formatted: ret.formatted, link: page.link, score: ret.score});
-            }
-
-            results.sort((x, y) => {return x.score - y.score});
-
-            resultBlock.innerHTML = "";
-            for (const res of results) {
-                linkBlock = document.createElement("a");
-                linkBlock.classList.add("hyperlink");
-                linkBlock.href = res.link;
-                linkBlock.innerHTML = `<div class="name">${res.formatted}</div><div class="link">${res.link}</div>`;
-                resultBlock.appendChild(linkBlock);
-            }
-
-            if (results.length <= 0)
-                resultBlock.innerHTML = "Unknown command or no matching pages found."
+            window.location = resultBlock.childNodes[0].href;
+            return;
         }
-    );
+
+        // help
+        if (searchValue === "?" || searchValue === "help") {
+            resultBlock.innerHTML = "<h2>Help</h2>Enter a page or directory name.<br>If do not know any, clear the search field to list everything.<br> Using the <code>Enter</code> key would take you to the first page in list, if the list is not empty.<br>Alternatively, use the <code>Up</code> and <code>Down</code> arrow keys to select the page you want and use the <code>Enter</code> key.<br>Use <code>Backspace</code> to go back to the search."
+            return;
+        }
+
+        let results = [];
+        for (const [i, page] of pages.entries()) {
+            ret = fuzzySearch(page.title, searchValue);
+            if (ret === null)
+                continue;
+            results.push({formatted: ret.formatted, link: page.link, score: ret.score});
+        }
+
+        results.sort((x, y) => {return x.score - y.score});
+
+        resultBlock.innerHTML = "";
+        for (const res of results) {
+            linkBlock = document.createElement("a");
+            linkBlock.classList.add("hyperlink");
+            linkBlock.href = res.link;
+            linkBlock.innerHTML = `<div class="name">${res.formatted}</div><div class="link">${res.link}</div>`;
+            resultBlock.appendChild(linkBlock);
+        }
+
+        if (results.length <= 0)
+            resultBlock.innerHTML = "Unknown command or no matching pages found."
+    });
 
     document.body.addEventListener("keydown", (e) => {
+        if (e.code === "Backspace") {
+            searchField.focus();
+        }
+
         if (e.code === "ArrowDown" || e.code === "ArrowUp") {
             if (resultBlock.childNodes === null)
                 return;
