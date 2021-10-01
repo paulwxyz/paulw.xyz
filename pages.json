@@ -8,5 +8,6 @@
     {"title":"GitLab", "link": "https://gitlab.com/lambdapaul"},
     {"title":"Mastodon", "link": "https://mastodon.social/@lambdapaul"},
     {"title":"Matrix", "link": "https://matrix.to/#/@lambdapaul:matrix.org"},
-    {"title":"Keybase", "link": "https://keybase.io/lambdapaul"}
+    {"title":"Keybase", "link": "https://keybase.io/lambdapaul"},
+    {"title":"Playlists", "link": "/pages/playlists"}
 ]
