@@ -39,6 +39,6 @@ The types are the different kinds of members that the page can have. They are de
 
 ### `directory`
 
-### `html`
+### `route`
 
 ### `external`
