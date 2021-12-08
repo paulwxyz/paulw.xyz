@@ -44,15 +44,19 @@ function FuzzyBar(): JSX.Element {
     useEffect(() => {
         const event = (e: KeyboardEvent) => {
             if (e.code === 'KeyK' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
                 toggleSearch();
             }
 
             if (e.code === 'KeyP' && (e.ctrlKey || e.metaKey) && e.shiftKey) {
+                e.preventDefault();
                 alert('not really sure what to do here lol');
             }
 
             if (show)
                 searchField.current?.focus();
+            
+            return false;
         }
 
         window.addEventListener('keydown', event);
