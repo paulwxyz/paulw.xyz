@@ -1,0 +1,61 @@
+{
+	"type": "root",
+	"domain": "paulw.xyz",
+	"children": [
+		{
+			"name": "resources",
+			"type": "route"
+		},
+		{
+			"name": "recommended",
+			"type": "route"
+		},
+		{
+			"name": "playlists",
+			"type": "route"
+		},
+		{
+			"name": "grade-calc",
+			"type": "route",
+			"text": "Grade Calculator",
+			"children": [
+				{
+					"name": "readme",
+					"type": "route",
+					"text": "Grade Calculator Read Me"
+				}
+			]
+		},
+		{
+			"name": "about",
+			"type": "route"
+		},
+		{
+			"name": "github",
+			"type": "external",
+			"text": "GitHub",
+			"url": "https://github.com/LambdaPaul"
+		},
+		{
+			"name": "gitlab",
+			"type": "external",
+			"text": "GitLab",
+			"url": "https://gitlab.com/LambdaPaul"
+		},
+		{
+			"name": "mastodon",
+			"type": "external",
+			"url": "https://mastodon.social/@lambdapaul"
+		},
+		{
+			"name": "keybase",
+			"type": "external",
+			"url": "https://keybase.io/lambdapaul"
+		},
+		{
+			"name": "matrix",
+			"type": "external",
+			"url": "https://matrix.to/#/@lambdapaul:matrix.org"
+		}
+	]
+}
