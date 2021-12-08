@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import Layout from '../components/layout';
+import style from '../styles/lists.module.css';
 
 type listItem = {
     children?: listItem[] | string[];
@@ -87,17 +88,17 @@ function mapChild(obj: listItem | string, level: number) {
     if (typeof obj === 'string') {
         if (obj === '')
             return <></>
-        return <li>{obj}</li>
+        return <span className={style.listItem}>{obj}</span>
     }
 
     if (obj.title === '')
         return <></>
 
     if (obj.url)
-        return <li key=''><a href={obj.url}>{obj.title}</a></li>
+        return <span className={style.listItem}><a href={obj.url}>{obj.title}</a></span>
 
     if (!obj.children)
-        return <li>{obj.title}</li>
+        return <span className={style.listItem}>{obj.title}</span>
 
     let title: ReactElement;
 
@@ -110,9 +111,9 @@ function mapChild(obj: listItem | string, level: number) {
         <>
             {title}
             {obj.description ? <p>{obj.description}</p> : <></>}
-            <ul>
+            <div>
                 {obj.children.map(l => mapChild(l, level + 1))}
-            </ul>
+            </div>
         </>
     );
 }
@@ -121,7 +122,7 @@ function Resources() {
     return (
         <Layout name='Resources' title='Some Useful Resources'>
             <section className='block'>
-
+                {list.map(l => mapChild(l, 0))}
             </section>
         </Layout>);
 }

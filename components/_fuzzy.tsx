@@ -43,17 +43,11 @@ export default class Fuzzy {
     showSearchResults(): void {
         let searchValue: string = this.searchValue.toLowerCase();
         searchValue = searchValue.trimStart().trimEnd();
-        if (
-            (this.maxResults !== undefined && searchValue === '') ||
-            searchValue === '?' ||
-            searchValue === 'help') {
+        if (this.maxResults !== undefined && searchValue === ''){
             this.setResultsValue(
                 <>
-                    <h2>Help</h2>
-                    <div>Enter a page or directory name. If do not know any, clear the search field to list everything.</div>
-                    <div>Using the <code>Enter</code> key would take you to the first page in list, if the list is not empty.</div>
-                    <div>Alternatively, use the <code>Up</code> and <code>Down</code> arrow keys to select the page you want and use the <code>Enter</code> key.</div>
-                    <div>Use <code>Backspace</code> to go back to the search.</div>
+                    <h2>Search PaulW.XYZ</h2>
+                    <div>Enter a page or directory name in the search bar above.</div>
                 </>
             )
             return;
