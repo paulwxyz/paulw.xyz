@@ -27,19 +27,27 @@ const list: listItem[] = [
                                 title: 'Expert C Programming by Peter van der Linden'
                             },
                             {
-                                title: 'Practical C Programming by Steve Oualline (kind of outdated but still good)'
+                                title: 'Practical C Programming by Steve Oualline (outdated like all the books in this section but still good)'
+                            },
+                            {
+                                title: 'Mastering Algorithms with C by Kyle Loudon'
                             }
+                        ]
+                    },
+                    {
+                        title: 'Other Programming',
+                        children: [
+                            'Programming Perl by Larry Wall [Camel Book] (one of the first programming books I used. It probably is outdated but it is written well)',
+                            'Programming Rust: Fast, Safe Systems Development',
+                            'The Rust Programming Language',
+                            'Programming in Lua, Fourth Edition by Roberto Ierusalimschy'
                         ]
                     },
                     {
                         title: 'Operating Systems',
                         children: [
-                            {
-                                title: 'Advanced Programming in the Unix Environment by W. Richard Stevens'
-                            },
-                            {
-                                title: 'Operating Systems: Design and Implementation by Andrew S. Tanenbaum (I have not had a chance to read his other books on OS. I am not a fan of his networking book though.)'
-                            }
+                            'Advanced Programming in the Unix Environment by W. Richard Stevens',
+                            'Operating Systems: Design and Implementation by Andrew S. Tanenbaum (I have not had a chance to read his other books on OS. I am not a fan of his networking book though.)'
                         ]
                     },
                     // {
@@ -51,11 +59,9 @@ const list: listItem[] = [
                     {
                         title: 'Computer Engineering',
                         children: [
-                            {
-                                title: 'Making Embedded Systems: Design Patterns for Great Software by Elecia White'
-                            }
-                            // Computer Organization and Design: the Hardware/Software Interface [Patterson Hennessy]
-                            // Computer Architecture: A Quantitative Approach [Hennessy Patterson]
+                            'Making Embedded Systems: Design Patterns for Great Software by Elecia White',
+                            'Computer Organization and Design: the Hardware/Software Interface [Patterson Hennessy]',
+                            'Computer Architecture: A Quantitative Approach [Hennessy Patterson]'
                         ]
                     },
                     {
@@ -80,6 +86,7 @@ const list: listItem[] = [
                 title: 'Classics',
                 description: 'Only the English ones for now.',
                 children: [
+                    'Christmas Carol',
                     'A Tale of Two Cities',
                     'The Mayor of Casterbridge',
                     'The Citadel',
@@ -98,30 +105,48 @@ const list: listItem[] = [
     {
         title: 'Movies',
         children: [
+            'Pulp Fiction',
             'Blade Runner 2049',
+            'The Grand Budapest Hotel',
             'The Hateful Eight',
             'Goodfellas',
             'Inception',
             'Memento',
-            'The Grand Budapest Hotel'
+            'Dune (2021)',
+            'Hot Fuzz',
+            'Snatch'
         ]
     },
     {
         title: 'Music',
         children: [
+            'American Pie by Don McLean',
+            'L\'Ultima Diligenza by Ennio Morricone'
+        ]
+    },
+    {
+        title: 'Classical Music',
+        children: [
             'Große Fuge Op. 133',
             'KV 387',
             'KV 448',
+            'KV 626',
+            'Piano Sonata No. 2 Mvmt. 3 (Chopin)',
             'BWV 1048',
             'Prelude in G Minor (Op. 23 No. 5)',
-            'String Quartet, Op. 20 No. 2 (Haydn)'
+            'String Quartet, Op. 20 No. 2 (Haydn)',
+            'Arabesque No. 1 (Debussy)'
         ]
     },
     {
         title: 'Video Games',
         children: [
             'The Legend of Zelda: Breath of the Wild',
-            'Portal 2'
+            'Portal 2',
+            'Factorio',
+            'The Witcher 3: The Wild Hunt GOTY Edition (Especially the DLCs)',
+            'Baba is You',
+            'Red Dead Redemption'
         ]
     }
 ];
@@ -165,7 +190,7 @@ function Recommended() {
         <Layout name='Recommended' title='My Recommendations'>
             <section className='block'>
                 <p>This page is really for me to not forget/revisit the good things I have read, seen, heard, and/or experienced. This list may change, just as my opinions.</p>
-                <p>If the one you are looking for is not on this list, it is most likely I have not had the chance to read it yet or I may have put it on the Resources page, if it is freely available.</p>
+                <p>If the one you are looking for is not on this list, it is most likely I have not had the chance to read/listen to/watch it yet.</p>
                 {list.map(l => mapChild(l, 0))}
             </section>
         </Layout>
