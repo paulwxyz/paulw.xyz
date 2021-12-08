@@ -1,0 +1,9 @@
+.listItem {
+    padding: 0.25rem;
+    display: block;
+}
+
+.listItem::before {
+    content: '■';
+    padding: 0 0.5rem;
+}
