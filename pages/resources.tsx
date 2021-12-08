@@ -22,7 +22,7 @@ const list = [{
         },
         {
             url: 'https://www.atlassian.com/git/',
-            title: 'Atlassian&apos;s Git Guide'
+            title: 'Atlassian\'s Git Guide'
         },
         {
             url: 'https://learnopengl.com/',
@@ -49,7 +49,7 @@ const list = [{
                     url: 'https://mtlynch.io/code-review-love/'
                 },
                 {
-                    title: 'What&apos;s in the box? by @fasterthanlime',
+                    title: 'What\'s in the box? by @fasterthanlime',
                     url: 'https://fasterthanli.me/articles/whats-in-the-box'
                 }
             ]
