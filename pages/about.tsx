@@ -14,6 +14,8 @@ function AboutPage() {
                 <br />
                 <br />
                 It seems wise to have things up here even though they may embarrass me at some point in the future, as many of the things I have done in the past have. Especially the web sites I made in high school. I will never forget those.
+                <hr />
+                Got any questions, concerns, or issues? Feel free to contact me via my email: <code>lambdapaul [at] pm [dot] me</code>.
             </section>
             <section className='block'>
                 <ReactMarkdown>{ReadmeMd}</ReactMarkdown>
