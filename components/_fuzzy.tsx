@@ -32,8 +32,6 @@ export default class Fuzzy {
 
         this.pages = obj.pages
         this.maxResults = obj.maxResults || this.pages.length;
-
-        this.pages.sort((x, y) => { return ('' + x.title).localeCompare(y.title) });
     }
 
     searchKeyUpListener(e: ReactKeyboardEvent) {
