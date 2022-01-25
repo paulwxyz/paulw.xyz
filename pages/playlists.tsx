@@ -11,19 +11,19 @@ const list: listItem[] = [{
     title: 'Classical by Composer',
     children: [
         {
-            title: '[Youtube] Baroque Red Metal Priest / Antonio Lucio Vivaldi',
+            title: '[Youtube] Antonio Lucio Vivaldi',
             url: 'https://youtube.com/playlist?list=PLSU6wJEYct5HslkoJWHQFCttB-lhSwVr2'
         },
         {
-            title: '[Youtube] Papa Bach / Johann Sebastian Bach',
+            title: '[Youtube] Johann Sebastian Bach',
             url: 'https://youtube.com/playlist?list=PLSU6wJEYct5HftuY6UunC6zE_QMXOGmhm'
         },
         {
-            title: '[Youtube] Luigi Bee the Oven / Ludwig van Beethoven',
+            title: '[Youtube] Ludwig van Beethoven',
             url: 'https://youtube.com/playlist?list=PLSU6wJEYct5Etx0WAXUQ7YXe84Fp5E142'
         },
         {
-            title: '[Youtube] Leck Mozart im Arsch / Wolfgang Amadeus Mozart',
+            title: '[Youtube] Wolfgang Amadeus Mozart',
             url: 'https://youtube.com/playlist?list=PLSU6wJEYct5EJsE-9Zh-jWckBuZAmIt8Q'
         }
     ]
