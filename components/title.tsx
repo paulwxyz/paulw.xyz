@@ -1,6 +1,5 @@
 import style from '../styles/title.module.css';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 type propsObj = {
     name: string,

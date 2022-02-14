@@ -1,5 +1,4 @@
 import FuzzyBar from './fuzzy-bar';
-import Logo from '../public/logo.svg';
 import Meta from './meta';
 import Title from './title';
 

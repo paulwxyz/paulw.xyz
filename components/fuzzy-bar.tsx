@@ -1,6 +1,7 @@
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import Fuzzy from './_fuzzy';
 import pages from '../public/pages.json';
+import posts from '../public/posts.json';
 import style from '../styles/fuzzy.module.css';
 
 function FuzzyBar(): JSX.Element {
@@ -13,9 +14,15 @@ function FuzzyBar(): JSX.Element {
 
     let fuzz: Fuzzy | null = null;
 
+    let entries = [...pages];
+
+    for (const [k,v] of posts.entries()) {
+        entries.push({title: v.title, link: `posts/${v.slug}`});
+    }
+
     try {
         fuzz = new Fuzzy({
-            pages: pages,
+            pages: entries,
             searchField: searchField,
             searchValue: searchValue,
             resultsValue: resultsValue,

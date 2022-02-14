@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import Layout from '../../components/layout';
 import Link from 'next/link';
 import GradeCalc from '../../components/_gc';
@@ -77,9 +77,22 @@ function GradeCalcPage() {
 // export default GradeCalcPage;
 
 export default function WIP() {
+    useEffect(() => {
+        const script = document.createElement('script');
+      
+        script.src = '/grade-calc/vanilla.js';
+        script.async = true;
+      
+        document.body.appendChild(script);
+      
+        return () => {
+          document.body.removeChild(script);
+        }
+      }, []);
+
     return (
     <Layout name='Grade Calc' title='[WIP] Grade Calculator'>
-        <section className='block' style={{textAlign: 'center'}}>
+        <section className='grade-calc'>
             Check back later as the port of this page is a Work in Progress.
         </section>
     </Layout>);
