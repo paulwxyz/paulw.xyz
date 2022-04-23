@@ -1,6 +1,6 @@
 import Layout from '../../components/layout';
 import { useRouter } from 'next/router';
-import { getAllPosts, getPost } from '../../lib/slug';
+import { getAllPosts, getPost } from '../../util/slug';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 

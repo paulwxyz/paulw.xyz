@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { getAllPosts } from '../lib/slug';
+import { getAllPosts } from './slug';
 import { join } from 'path';
 
 const publicDir = join(process.cwd(), 'public');

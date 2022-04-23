@@ -39,5 +39,9 @@ export function getPost(rawslug: string, filter: Array<any> = []) {
 export function getAllPosts(filter: Array<any> = []) {
     const files = fs.readdirSync(postsDirectory);
 
-    return files.map(file => { return getPost(file, filter) });
+    return files
+            .filter(c => !c.match(/^\./))
+            .map(file => { 
+            return getPost(file, filter) 
+    });
 }

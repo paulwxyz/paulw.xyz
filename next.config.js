@@ -8,21 +8,26 @@ module.exports = {
 
         config.module.rules.push(
             {
+                test: /\.ya?ml$/,
+                use: 'js-yaml-loader',
+                  
+            },
+            {
                 test: /\.svg$/,
-                use: [{ loader: "@svgr/webpack" }]
+                use: [{ loader: "@svgr/webpack" }],
             },
             {
                 test: /\.md$/,
-                type: 'asset/source'
+                type: 'asset/source',
             },
             {
                 test: /\.otf$/,
-                type: 'asset/resource'
+                type: 'asset/resource',
             },
             {
                 resourceQuery: /raw/,
                 type: 'asset/source',
-            }
+            },
         );
 
         return config

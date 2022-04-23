@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
 import Layout from '../../components/layout';
-import { getAllPosts } from '../../lib/slug';
 import Pages from '../../public/pages.json';
 import cachePostLinkData from '../../util/post-cache';
 

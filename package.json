@@ -9,6 +9,7 @@
   "@types/react": "^17.0.37",
   "dotenv": "^10.0.0",
   "gray-matter": "^4.0.3",
+  "js-yaml-loader": "^1.2.2",
   "next": "^11.1.4",
   "normalize.css": "^8.0.1",
   "react": "^17.0.2",

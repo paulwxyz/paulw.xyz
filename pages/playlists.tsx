@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import Layout from '../components/layout';
+import pl from '../public/playlists.yaml';
 
 type listItem = {
     children?: listItem[];
@@ -7,27 +8,7 @@ type listItem = {
     title: string;
 };
 
-const list: listItem[] = [{
-    title: 'Classical by Composer',
-    children: [
-        {
-            title: '[Youtube] Antonio Lucio Vivaldi',
-            url: 'https://youtube.com/playlist?list=PLSU6wJEYct5HslkoJWHQFCttB-lhSwVr2'
-        },
-        {
-            title: '[Youtube] Johann Sebastian Bach',
-            url: 'https://youtube.com/playlist?list=PLSU6wJEYct5HftuY6UunC6zE_QMXOGmhm'
-        },
-        {
-            title: '[Youtube] Ludwig van Beethoven',
-            url: 'https://youtube.com/playlist?list=PLSU6wJEYct5Etx0WAXUQ7YXe84Fp5E142'
-        },
-        {
-            title: '[Youtube] Wolfgang Amadeus Mozart',
-            url: 'https://youtube.com/playlist?list=PLSU6wJEYct5EJsE-9Zh-jWckBuZAmIt8Q'
-        }
-    ]
-}];
+const list: listItem[] = pl;
 
 function mapChild(obj: listItem, level: number) {
     if (obj.url)
