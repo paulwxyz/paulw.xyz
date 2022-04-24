@@ -9,7 +9,10 @@ function Post({post} : any) { // eh
     return (
         <Layout name={post.title} title={post.title} ancestors={[{name:'Posts', path: 'posts'}]}>
             <section className='block'>
-                {post.cover ? <Image width={640} height={360} layout="intrinsic" src={`/assets/images/${post.cover}`} alt={`${post.title} Cover Image`} /> : ''}
+                <div className="block" style={{position: 'relative', height: '360px', width: '640px'}}>
+                {post.cover ? <Image width={640} height={360} layout="fill" src={`/assets/images/${post.cover}`} alt={`${post.title} Cover Image`} /> : ''}
+
+                </div>
                 <ReactMarkdown>{post.content}</ReactMarkdown>
             </section>
         </Layout>

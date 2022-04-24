@@ -8,7 +8,26 @@ type listItem = {
     title: string;
 };
 
-const list: listItem[] = pl;
+function toListItem(record: Record<string, any>): listItem | null {
+    if (!record.title)
+        return null;
+
+    let children: listItem[]= [];
+    if (record.children)
+        for (const child of record.children) {
+            const lChild = toListItem(child);
+            if (lChild)
+                children.push(lChild);
+        }
+
+    return {
+        title: record.title,
+        url: record.url,
+        children: children.length? children : undefined,
+    };
+}
+
+const list: listItem[] = [];
 
 function mapChild(obj: listItem, level: number) {
     if (obj.url)
@@ -38,7 +57,13 @@ function Playlists() {
         <Layout name='Playlists'>
             <section className='block'>
                 <h2>Music</h2>
-                {list.map(l => mapChild(l, 0))}
+                {
+                    pl.map((item: Record<string, any>) => {
+                        const lItem = toListItem(item)
+                        if (lItem)
+                            return mapChild(lItem, 0)
+                    })
+                }
             </section>
         </Layout>
     );

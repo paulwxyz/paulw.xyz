@@ -140,6 +140,11 @@ section {
     margin: 0.5rem;
 }
 
+img {
+    border: 1px solid #FFFFFF;
+    border-radius: 1rem;
+}
+
 .lambda-logo {
     width: 256px;
     height: 256px;
@@ -150,9 +155,9 @@ section {
 }
 
 .block {
-    margin: 0 2rem;
+    max-width: 1018px;
+    margin: 0 auto;
     padding: 2rem;
-    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
     border: 1px solid #ffffff;
     border-bottom: none;
 }
