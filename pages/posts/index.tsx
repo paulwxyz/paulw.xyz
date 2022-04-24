@@ -5,7 +5,7 @@ import Posts from '../../public/posts.json';
 import prettyDatePrint from '../../util/pretty-date';
 
 function HomePage({posts}: any) {
-    Posts.sort((x, y) => { return x.title.localeCompare(y.title) });
+    Posts.sort((x, y) => { return (x as any).title.localeCompare((x as any).title) });
     // todo: create a table-like interface
     return (
         <Layout name='Posts'>

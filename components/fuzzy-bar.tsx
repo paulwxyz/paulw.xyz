@@ -17,7 +17,9 @@ function FuzzyBar(): JSX.Element {
     let entries = [...pages];
 
     for (const [k,v] of posts.entries()) {
-        entries.push({title: v.title, link: `posts/${v.slug}`});
+        const item = v as any;
+        if (item.title && item.slug)
+            entries.push({title: item.title, link: `posts/${item.slug}`});
     }
 
     try {

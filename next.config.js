@@ -11,7 +11,7 @@ module.exports = {
         config.plugins.push(
             {
                 apply: (compiler) => {
-                    compiler.hooks.initialize.tap('cachePostLinkDataInit', _ => {
+                    compiler.hooks.beforeCompile.tap('cachePostLinkDataInit', _ => {
                         cachePostLinkData();
                     });
                 }
