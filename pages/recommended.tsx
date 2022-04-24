@@ -1,6 +1,6 @@
 import Layout from '../components/layout';
 import rec from '../public/recommended.yaml';
-import {toListItem, mapChild} from '../util/resrec';
+import { toListItem, mapChild } from '../util/resrec';
 
 function Recommended() {
     return (

@@ -1,0 +1,16 @@
+.imageBlock {
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-size: cover;
+    min-height: 100%;
+    background-attachment: fixed;
+}
+
+.block {
+    background-color: rgba(13, 17, 23, 0.9);
+}
+
+.spacer {
+    height: 5rem;
+}

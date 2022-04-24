@@ -12,7 +12,7 @@ function toListItem(record: Record<string, any>): listItem | null {
     if (!record.title)
         return null;
 
-    let children: listItem[]= [];
+    let children: listItem[] = [];
     if (record.children)
         for (const child of record.children) {
             const lChild = toListItem(child);
@@ -23,7 +23,7 @@ function toListItem(record: Record<string, any>): listItem | null {
     return {
         title: record.title,
         url: record.url,
-        children: children.length? children : undefined,
+        children: children.length ? children : undefined,
     };
 }
 
@@ -38,7 +38,7 @@ function mapChild(obj: listItem, level: number) {
 
     let title: ReactElement;
     if (level >= 0 && level <= 3)
-        title = React.createElement(`h${level+3}`, {}, obj.title);
+        title = React.createElement(`h${level + 3}`, {}, obj.title);
     else
         title = React.createElement('strong', {}, obj.title);
 

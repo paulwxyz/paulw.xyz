@@ -6,11 +6,23 @@ module.exports = {
     webpack: (config, options) => {
         config.experiments = { asset: true };
 
+        const { cachePostLinkData } = require('./util/post-cache');
+
+        config.plugins.push(
+            {
+                apply: (compiler) => {
+                    compiler.hooks.initialize.tap('cachePostLinkDataInit', _ => {
+                        cachePostLinkData();
+                    });
+                }
+            }
+        )
+
         config.module.rules.push(
             {
                 test: /\.ya?ml$/,
                 use: 'js-yaml-loader',
-                  
+
             },
             {
                 test: /\.svg$/,

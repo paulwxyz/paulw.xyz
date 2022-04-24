@@ -11,6 +11,8 @@
 .search {
     display: block;
     width: 100%;
+    max-width: 1018px;
+    margin: 0 auto;
     font-size: 2rem;
     background: linear-gradient(to bottom right, #406b39, #225546) no-repeat center center fixed;
     box-shadow: inset 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -26,8 +28,9 @@
 }
 
 .results {
+    max-width: 1018px;
     padding: 1rem;
-    margin: 2rem;
+    margin: 2rem auto;
 }
 
 .hyperlink {

@@ -1,0 +1,22 @@
+.button {
+    padding: 0.2rem 1rem;
+    margin: 0.3rem 0.3rem;
+    background:#1a3a15;
+    color: rgba(255, 255, 255);
+    display: inline-block;
+    text-decoration: none;
+    transition: 100ms ease-in-out all;
+    border: 1px solid #ffffff;
+    border-radius: 0.5rem;
+}
+
+.button:hover {
+    text-decoration: none;
+    background:#099945;
+}
+
+.button:active {
+    text-decoration: none;
+    box-shadow: none;
+    transform: translate(1px, 1px);
+}

@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "importHelpers": true
   },
-  "include": ["next-env.d.ts", "shims.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "util/post-cache.js", "util/slug.js"],
   "exclude": ["node_modules"]
 }

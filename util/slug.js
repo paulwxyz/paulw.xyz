@@ -1,10 +1,10 @@
-import fs from 'fs'
-import matter from 'gray-matter';
-import { join } from 'path';
+const fs = require('fs');
+const matter = require('gray-matter');
+const { join } = require('path');
 
 const postsDirectory = join(process.cwd(), 'posts');
 
-export function getPost(rawslug: string, filter: Array<any> = []) {
+function getPost(rawslug, filter = []) {
     const slug = rawslug.replace(/\.md$/, '');
     const path = join(postsDirectory, `${slug}.md`);
     const file = fs.readFileSync(path, 'utf-8');
@@ -16,7 +16,7 @@ export function getPost(rawslug: string, filter: Array<any> = []) {
     if (filter.length === 0)
         return { ...data, content, slug, rawslug };
 
-    let post: { slug?: string, rawslug?: string, content?: string, title?: string } | any = {};
+    let post = {};
     for (const [_, entry] of filter.entries()) {
         if (entry === 'slug')
             post[entry] = slug;
@@ -27,8 +27,6 @@ export function getPost(rawslug: string, filter: Array<any> = []) {
         if (entry === 'content')
             post[entry] = content;
 
-
-            
         if (typeof data[entry] !== 'undefined') {
             post[entry] = data[entry]
         }
@@ -36,12 +34,14 @@ export function getPost(rawslug: string, filter: Array<any> = []) {
     return post;
 }
 
-export function getAllPosts(filter: Array<any> = []) {
+function getAllPosts(filter = []) {
     const files = fs.readdirSync(postsDirectory);
 
     return files
-            .filter(c => !c.match(/^\./))
-            .map(file => { 
-            return getPost(file, filter) 
-    });
+        .filter(c => !c.match(/^\./))
+        .map(file => {
+            return getPost(file, filter)
+        });
 }
+
+module.exports = { getAllPosts, getPost };

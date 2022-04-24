@@ -17,7 +17,7 @@ function AboutPage() {
                 Got any questions, concerns, or issues? Feel free to contact me via my email: <code>lambdapaul [at] pm [dot] me</code>.
             </section>
             <section className='block'>
-                <ReactMarkdown>{ReadmeMd.replace(/#{1,5} /g, (s: string) => {return `#${s}`})}</ReactMarkdown>
+                <ReactMarkdown>{ReadmeMd.replace(/#{1,5} /g, (s: string) => { return `#${s}` })}</ReactMarkdown>
             </section>
         </Layout>
     )

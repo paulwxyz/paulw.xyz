@@ -31,16 +31,16 @@ export function toListItem(record: Record<string, any>): listItem | null {
             children = schildren;
         }
         else {
-            children = [...lchildren, ... schildren.map((s: string): listItem => {
+            children = [...lchildren, ...schildren.map((s: string): listItem => {
                 return { title: s };
-            }) ];
+            })];
         }
     }
 
     return {
         title: record.title,
         url: record.url,
-        children: children.length? children : undefined,
+        children: children.length ? children : undefined,
         description: record.description,
     };
 }

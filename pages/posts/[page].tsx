@@ -3,34 +3,36 @@ import { useRouter } from 'next/router';
 import { getAllPosts, getPost } from '../../util/slug';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
+import style from '../../styles/post.module.css';
 
-function Post({post} : any) { // eh
+function Post({ post }: any) { // eh
     const router = useRouter();
-    return (
-        <Layout name={post.title} title={post.title} ancestors={[{name:'Posts', path: 'posts'}]}>
-            <section className='block'>
-                <div className="block" style={{position: 'relative', height: '360px', width: '640px'}}>
-                {post.cover ? <Image width={640} height={360} layout="fill" src={`/assets/images/${post.cover}`} alt={`${post.title} Cover Image`} /> : ''}
-
-                </div>
-                <ReactMarkdown>{post.content}</ReactMarkdown>
-            </section>
+    return (<>
+        <Layout name={post.title} title={post.title} ancestors={[{ name: 'Posts', path: 'posts' }]}>
+            <div className={style.imageBlock} style={{ backgroundImage: post.cover ? `url(/assets/images/${post.cover})` : '' }}>
+                <div className={style.spacer}></div>
+                <section className={`${style.block} block`}>
+                    <ReactMarkdown>{post.content}</ReactMarkdown>
+                </section>
+                <div className={style.spacer}></div>
+            </div>
         </Layout>
+    </>
     );
 }
 
-export async function getStaticProps({params}: any) {
+export async function getStaticProps({ params }: any) {
     const post = getPost(params.page);
 
     return {
-        props: {post}
+        props: { post }
     };
 }
 
 export async function getStaticPaths() {
     const posts = getAllPosts();
     return {
-        paths: posts.map(post => {
+        paths: posts.map((post: any) => {
             return {
                 params: {
                     page: post.slug
