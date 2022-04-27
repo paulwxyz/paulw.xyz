@@ -1,19 +1,19 @@
 import Link from 'next/link';
 import React from 'react';
 import Layout from '../../components/layout';
-import Posts from '../../public/posts.json';
 import prettyDatePrint from '../../util/pretty-date';
+import { getPostsMeta, PostMeta } from '../../util/slug';
 
-function HomePage({posts}: any) {
-    Posts.sort((x, y) => { return (x as any).title.localeCompare((x as any).title) });
-    // todo: create a table-like interface
+function HomePage(props: {postsMeta: PostMeta[]}) {
+    props.postsMeta.sort((x: any, y: any) => { return (x as any).title.localeCompare((y as any).title) });
+    // todo: create a table-like user interface
     return (
         <Layout name='Posts'>
             <>
             <section className='h4 block'>
             Post Name <span style={{float: 'right', margin: 'auto 1rem'}}> Created on </span> <span style={{float: 'right', margin: 'auto 1rem'}}>Last Updated </span> 
             </section>
-            {Posts.map((post: any) => {
+            {props.postsMeta.map((post: any) => {
                 return <section key='' className='h5 block'>
                     <Link href={`posts/${post.slug}`}>
                         {post.title}
@@ -25,6 +25,12 @@ function HomePage({posts}: any) {
             </>
         </Layout>
     )
+}
+
+export async function getServerSideProps() {
+    return {
+        props: { postsMeta: getPostsMeta() }
+    };
 }
 
 export default HomePage;

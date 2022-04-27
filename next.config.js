@@ -6,13 +6,13 @@ module.exports = {
     webpack: (config, options) => {
         config.experiments = { asset: true };
 
-        const { cachePostLinkData } = require('./util/post-cache');
+        const { cachePostsMeta } = require('./util/slug');
 
         config.plugins.push(
             {
                 apply: (compiler) => {
-                    compiler.hooks.beforeCompile.tap('cachePostLinkDataInit', _ => {
-                        cachePostLinkData();
+                    compiler.hooks.initialize.tap('cachePostDataBC', _ => {
+                        cachePostsMeta();
                     });
                 }
             }
@@ -26,7 +26,7 @@ module.exports = {
             },
             {
                 test: /\.svg$/,
-                use: [{ loader: "@svgr/webpack" }],
+                use: [{ loader: '@svgr/webpack' }],
             },
             {
                 test: /\.md$/,

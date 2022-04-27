@@ -1,12 +1,9 @@
 import Layout from '../../components/layout';
-import { useRouter } from 'next/router';
 import { getAllPosts, getPost } from '../../util/slug';
 import ReactMarkdown from 'react-markdown';
-import Image from 'next/image';
 import style from '../../styles/post.module.css';
 
 function Post({ post }: any) { // eh
-    const router = useRouter();
     return (<>
         <Layout name={post.title} title={post.title} ancestors={[{ name: 'Posts', path: 'posts' }]}>
             <div className={style.imageBlock} style={{ backgroundImage: post.cover ? `url(/assets/images/${post.cover})` : '' }}>

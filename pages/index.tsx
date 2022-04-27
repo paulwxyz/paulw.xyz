@@ -2,12 +2,12 @@ import Link from 'next/link';
 import React from 'react';
 import Layout from '../components/layout';
 import Pages from '../public/pages.json';
-import Posts from '../public/posts.json';
 import style from '../styles/home.module.css';
 import prettyDatePrint from '../util/pretty-date';
+import { getPostsMeta, PostMeta } from '../util/slug';
 
-function HomePage({ posts }: any) {
-    Pages.sort((x, y) => { return (x.title).localeCompare(y.title) });
+function HomePage(props: {postsMeta: PostMeta[]}) {
+    props.postsMeta.sort((x, y) => { return (x.title).localeCompare(y.title) });
     return (
         <Layout name='' title='PaulW.XYZ'>
             <section className='block'>
@@ -25,7 +25,7 @@ function HomePage({ posts }: any) {
             <section className='block'>
                 <table style={{ width: '100%' }}>
                     <th className='h2'>Posts</th> <th>Posted</th>
-                    {Posts?.map((post: any) => {
+                    {props.postsMeta?.map((post: any) => {
                         return <tr key={post.slug}>
                             <td className='h5'>
                                 <Link href={`posts/${post.slug}`}>
@@ -40,6 +40,12 @@ function HomePage({ posts }: any) {
             </section>
         </Layout>
     )
+}
+
+export async function getServerSideProps() {
+    return {
+        props: { postsMeta: getPostsMeta() }
+    };
 }
 
 export default HomePage;

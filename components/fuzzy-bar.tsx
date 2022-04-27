@@ -1,8 +1,8 @@
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import Fuzzy from './_fuzzy';
 import pages from '../public/pages.json';
-import posts from '../public/posts.json';
 import style from '../styles/fuzzy.module.css';
+import posts from '../public/posts.json'
 
 function FuzzyBar(): JSX.Element {
     const searchField = useRef<any>(null);

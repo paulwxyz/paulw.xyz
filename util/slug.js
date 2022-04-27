@@ -2,11 +2,13 @@ const fs = require('fs');
 const matter = require('gray-matter');
 const { join } = require('path');
 
-const postsDirectory = join(process.cwd(), 'posts');
+const postsDir = join(process.cwd(), 'posts');
+const cacheDir = join(process.cwd(), '.next', 'cache');
+const publicDir = join(process.cwd(), 'public');
 
 function getPost(rawslug, filter = []) {
     const slug = rawslug.replace(/\.md$/, '');
-    const path = join(postsDirectory, `${slug}.md`);
+    const path = join(postsDir, `${slug}.md`);
     const file = fs.readFileSync(path, 'utf-8');
     const { data, content } = matter(file);
 
@@ -35,7 +37,7 @@ function getPost(rawslug, filter = []) {
 }
 
 function getAllPosts(filter = []) {
-    const files = fs.readdirSync(postsDirectory);
+    const files = fs.readdirSync(postsDir);
 
     return files
         .filter(c => !c.match(/^\./))
@@ -44,4 +46,24 @@ function getAllPosts(filter = []) {
         });
 }
 
-module.exports = { getAllPosts, getPost };
+
+function cachePostsMeta() { // public access cache
+    const posts = getAllPosts(['title', 'slug', 'created_at', 'last_updated']);
+    fs.writeFile(join(publicDir, 'posts.json'), JSON.stringify(posts), (e) => {
+        if (e)
+            console.error(e);
+    });
+    return posts;
+}
+
+function getPostsMeta() {
+    const file = fs.readFileSync(join(publicDir, 'posts.json'), 'utf-8');
+
+    if (!file) {
+        return cachePostsMeta();
+    }
+
+    return JSON.parse(file);
+}
+
+module.exports = { getAllPosts, getPost, getPostsMeta, cachePostsMeta };
