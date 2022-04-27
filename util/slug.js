@@ -3,8 +3,6 @@ const matter = require('gray-matter');
 const { join } = require('path');
 
 const postsDir = join(process.cwd(), 'posts');
-const cacheDir = join(process.cwd(), '.next', 'cache');
-const publicDir = join(process.cwd(), 'public');
 
 function getPost(rawslug, filter = []) {
     const slug = rawslug.replace(/\.md$/, '');
@@ -40,7 +38,7 @@ function getAllPosts(filter = []) {
     const files = fs.readdirSync(postsDir);
 
     return files
-        .filter(c => !c.match(/^\./))
+        .filter(c => (!c.match(/^\.]/) && c.match(/\.md$/)))
         .map(file => {
             return getPost(file, filter)
         });
@@ -49,7 +47,7 @@ function getAllPosts(filter = []) {
 
 function cachePostsMeta() { // public access cache
     const posts = getAllPosts(['title', 'slug', 'created_at', 'last_updated']);
-    fs.writeFile(join(publicDir, 'posts.json'), JSON.stringify(posts), (e) => {
+    fs.writeFile(join(postsDir, 'meta.json'), JSON.stringify(posts), (e) => {
         if (e)
             console.error(e);
     });
@@ -57,7 +55,7 @@ function cachePostsMeta() { // public access cache
 }
 
 function getPostsMeta() {
-    const file = fs.readFileSync(join(publicDir, 'posts.json'), 'utf-8');
+    const file = fs.readFileSync(join(postsDir, 'meta.json'), 'utf-8');
 
     if (!file) {
         return cachePostsMeta();

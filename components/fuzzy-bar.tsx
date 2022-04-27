@@ -3,7 +3,7 @@ import Fuzzy from './_fuzzy';
 import pages from '../public/pages.json';
 import style from '../styles/fuzzy.module.css';
 // @ts-ignore
-import posts from '../public/posts.json' // I do not like this
+import posts from '../posts/meta.json' // I do not like this
 
 function FuzzyBar(): JSX.Element {
     const searchField = useRef<any>(null);
