@@ -15,7 +15,9 @@ function Layout(props: layoutProps) {
             <Meta name={props.name} ancestors={props.ancestors} />
             <Title title={props.title} name={props.name} ancestors={props.ancestors} />
             <FuzzyBar />
-            {props.children}
+            <div className='container'>
+                {props.children}
+            </div>
         </>
     );
 }

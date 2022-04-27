@@ -1,14 +1,15 @@
 .container {
     text-align: center;
-    margin: auto 1rem;
+    margin: auto;
+    max-width: 95%;
     border-bottom: 1px solid #FFFFFF;
 }
 
 .nav {
     white-space: pre-wrap;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.75rem;
     font-size: 1.5rem;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     position: fixed;
     bottom: 0;
     z-index: 1000;

@@ -6,7 +6,7 @@ import style from '../styles/home.module.css';
 import prettyDatePrint from '../util/pretty-date';
 import { getPostsMeta, PostMeta } from '../util/slug';
 
-function HomePage(props: {postsMeta: PostMeta[]}) {
+function HomePage(props: { postsMeta: PostMeta[] }) {
     props.postsMeta.sort((x, y) => { return (x.title).localeCompare(y.title) });
     return (
         <Layout name='' title='PaulW.XYZ'>
@@ -16,7 +16,11 @@ function HomePage(props: {postsMeta: PostMeta[]}) {
                     Pages.map(obj => {
                         return <span key={obj.link}>
                             <Link href={obj.link}>
-                                <a className={style.button}>{obj.title}</a>
+                                {
+                                    obj.link.match(/^http/)
+                                        ? <a className={`button blue ${style.button} ${style.blueButton}`}>{obj.title}</a>
+                                        : <a className={`${style.button} button`}>{obj.title}</a>
+                                }
                             </Link>
                         </span>
                     })

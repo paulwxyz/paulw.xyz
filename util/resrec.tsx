@@ -69,12 +69,12 @@ export function mapChild(obj: listItem | string, level: number) {
         title = React.createElement('strong', {}, obj.title);
 
     return (
-        <>
+        <section className={level < 5 ? 'block' : ''}>
             {title}
             {obj.description ? <p>{obj.description}</p> : <></>}
             <div>
                 {obj.children.map(l => mapChild(l, level + 1))}
             </div>
-        </>
+        </section>
     );
 }

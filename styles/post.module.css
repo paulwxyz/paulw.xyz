@@ -1,8 +1,10 @@
 .imageBlock {
-    position: absolute;
+    position: fixed;
+    z-index: -1;
     right: 0;
     left: 0;
     background-size: cover;
+    background-position: center;
     min-height: 100%;
     background-attachment: fixed;
 }
