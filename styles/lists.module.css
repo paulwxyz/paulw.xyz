@@ -1,3 +1,7 @@
+.desc {
+    font-size: 0.95rem;
+}
+
 .listItem {
     padding: 0.25rem;
     display: block;
@@ -7,3 +11,11 @@
     content: '■';
     padding: 0 0.5rem;
 }
+
+.listItemDesc {
+    display: inline-block;
+    padding: 0.25rem;
+    margin-left: 2.5rem;
+    font-size: 0.95rem;
+}
+

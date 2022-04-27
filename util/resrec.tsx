@@ -55,11 +55,22 @@ export function mapChild(obj: listItem | string, level: number) {
     if (obj.title === '')
         return <></>
 
+    const desc = obj.description
+        ? <span className={style.listItemDesc}>{obj.description}</span>
+        : <></>;
     if (obj.url)
-        return <span className={style.listItem}><a href={obj.url}>{obj.title}</a></span>
+        return (
+            <>
+                <span className={style.listItem}><a href={obj.url}>{obj.title}</a></span>
+                {desc}
+            </>);
 
     if (!obj.children)
-        return <span className={style.listItem}>{obj.title}</span>
+        return (
+            <>
+                <span className={style.listItem}>{obj.title}</span>
+                {desc}
+            </>);
 
     let title: ReactElement;
 
@@ -69,9 +80,9 @@ export function mapChild(obj: listItem | string, level: number) {
         title = React.createElement('strong', {}, obj.title);
 
     return (
-        <section className={level < 5 ? 'block' : ''}>
+        <section className={level < 4 ? 'block' : ''}>
             {title}
-            {obj.description ? <p>{obj.description}</p> : <></>}
+            {obj.description ? <p className={style.desc}>{obj.description}</p> : <></>}
             <div>
                 {obj.children.map(l => mapChild(l, level + 1))}
             </div>
