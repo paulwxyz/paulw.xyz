@@ -2,7 +2,8 @@ import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import Fuzzy from './_fuzzy';
 import pages from '../public/pages.json';
 import style from '../styles/fuzzy.module.css';
-import posts from '../public/posts.json'
+// @ts-ignore
+import posts from '../public/posts.json' // I do not like this
 
 function FuzzyBar(): JSX.Element {
     const searchField = useRef<any>(null);
