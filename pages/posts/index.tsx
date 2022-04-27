@@ -27,7 +27,7 @@ function HomePage(props: {postsMeta: PostMeta[]}) {
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     return {
         props: { postsMeta: getPostsMeta() }
     };
