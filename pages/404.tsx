@@ -1,15 +1,22 @@
-import Layout from "../components/layout";
+import Link from 'next/link';
+import Layout from '../components/layout';
 
 function NotFoundPage() {
-
     return (
-        <Layout name="... ??? / 404: Not Found">
-            <section className="block">
-                <h1>Error 404: Not Found</h1>
+        <Layout title='Page Not Found' name='... ??? / 404: Not Found'>
+            <section className='block text center'>
+                <h1>Error 404</h1>
                 <p>
                     <strong>Uh oh! The page you are looking for does not exist...</strong><br />
-                    <strong><a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">[Wikipedia] Learn more about HTTP status codes.</a></strong>
                 </p>
+                <Link href='/'>
+                    <a className='button green back link'>
+                        Go Home
+                    </a>
+                </Link>
+                <a className='button blue link extern' href='https://en.wikipedia.org/wiki/List_of_HTTP_status_codes'>
+                    More on HTTP status codes
+                </a>
             </section>
         </Layout>
     );
