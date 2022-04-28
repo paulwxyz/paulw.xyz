@@ -1,22 +1,24 @@
-import FuzzyBar from './fuzzy-bar';
 import Meta from './meta';
 import Title from './title';
+// import FuzzyBar from './fuzzy-bar';
 
-type layoutProps = {
+type ChildrenType = JSX.Element | Array<ChildrenType>;
+
+type LayoutProps = {
     name: string,
     title?: string,
-    children?: JSX.Element | JSX.Element[],
     ancestors?: Array<{ name: string, path: string }>
+    children?: ChildrenType,
 };
 
-function Layout(props: layoutProps) {
+function Layout({ name, title, children, ancestors }: LayoutProps) {
     return (
         <>
-            <Meta name={props.name} ancestors={props.ancestors} />
-            <Title title={props.title} name={props.name} ancestors={props.ancestors} />
-            <FuzzyBar />
+            <Meta name={name} ancestors={ancestors} />
+            <Title title={title} name={name} ancestors={ancestors} />
+            {/* <FuzzyBar /> */}
             <div className='container'>
-                {props.children}
+                {children}
             </div>
         </>
     );

@@ -8,4 +8,21 @@
     url: https://youtube.com/playlist?list=PLSU6wJEYct5Etx0WAXUQ7YXe84Fp5E142
   - title: "[Youtube] Wolfgang Amadeus Mozart"
     url: https://youtube.com/playlist?list=PLSU6wJEYct5EJsE-9Zh-jWckBuZAmIt8Q
+  - Große Fuge Op. 133
+  - KV 387
+  - KV 448
+  - KV 626
+  - Piano Sonata No. 2 Mvmt. 3 (Chopin)
+  - BWV 1048
+  - Prelude in G Minor (Op. 23 No. 5)
+  - String Quartet, Op. 20 No. 2 (Haydn)
+  - Arabesque No. 1 (Debussy)
+- title: Other    
+  children:
+    - title: Rock
+      children:
+        - American Pie by Don McLean
+    - title: Multimedia OST
+      children:
+        - L'Ultima Diligenza by Ennio Morricone
     

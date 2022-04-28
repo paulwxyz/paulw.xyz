@@ -6,13 +6,13 @@ module.exports = {
     webpack: (config, options) => {
         config.experiments = { asset: true };
 
-        const { cachePostsMeta } = require('./util/slug');
+        const { cache } = require('./util/slug');
 
         config.plugins.push(
             {
                 apply: (compiler) => {
-                    compiler.hooks.initialize.tap('cachePostDataBC', _ => {
-                        cachePostsMeta();
+                    compiler.hooks.beforeCompile.tap('cachePostDataBC', _ => {
+                        cache();
                     });
                 }
             }

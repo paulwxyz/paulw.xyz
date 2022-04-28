@@ -13,11 +13,13 @@ const months = [
     'December'
 ];
 
-const suffixes = ['','st','nd','rd','th'];
+const ordSfx = ['','st','nd','rd','th'];
 
-export default function prettyDatePrint(date: Date) {
+function prettyPrint(date: Date | string): string { 
+    const oDate = (typeof date === 'string')? new Date(date): date;
+
     const now = new Date();
-    const diff = now.getTime() - date.getTime();
+    const diff = now.getTime() - oDate.getTime();
 
     let tdiff = Math.floor(diff/1000);
     
@@ -38,13 +40,27 @@ export default function prettyDatePrint(date: Date) {
         return `Yesterday`;
     }
 
-    const year = date.getFullYear();
-    const month = months[date.getMonth()];
-    const day = date.getDate();
+    const year = oDate.getFullYear();
+    const month = months[oDate.getMonth()];
+    const day = oDate.getDate();
+    
     let sfx;
     if (day >= 1 && day <= 3)
-        sfx = suffixes[day];
+        sfx = ordSfx[day];
     else
-        sfx = suffixes[4];
-    return `${day}${sfx} ${month} ${year}`;
+        sfx = ordSfx[4];
+    if (year != now.getFullYear())
+        return `${day}${sfx} ${month} ${year}`;
+    return `${day}${sfx} ${month}`;
 }
+
+function isValid(date: any) {
+    return (new Date(date)).toString() === 'Invalid Date';
+}
+
+const d = {
+    prettyPrint, 
+    isValid
+};
+
+export default d;

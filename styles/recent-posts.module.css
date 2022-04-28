@@ -1,0 +1,34 @@
+.container {
+    border-bottom-left-radius: 1rem;
+    border-bottom:  1px dashed var(--main-border-color);
+    border-left:  1px dashed var(--main-border-color);
+    padding-top: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.block {
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.5rem 0.25rem 0;
+    border-top:  1px dashed var(--main-border-color);
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.postTitle {
+    flex-grow: 8;
+    padding: 0.1rem 0.2rem;
+}
+
+.postDate {
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.more {
+    text-align: right;
+}
+
+.more a {
+    text-decoration: none;
+}

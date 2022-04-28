@@ -1,6 +1,6 @@
 import Layout from '../components/layout';
 import res from '../public/resources.yaml';
-import { toListItem, mapChild } from '../util/resrec';
+import { toListItem, mapChild } from '../components/lists';
 
 function Resources() {
     return (

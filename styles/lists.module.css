@@ -19,3 +19,20 @@
     font-size: 0.95rem;
 }
 
+.block .block {
+    margin: 0 ;
+    border-radius: 0;
+    border-right: none;
+    border-bottom: none;
+    border-top: 1px dashed var(--main-border-color);
+    border-left: 1px dashed var(--main-border-color);
+}
+
+.block .block:first-of-type {
+    border-top: none;
+}
+
+.block .block:last-of-type {
+    border-bottom-left-radius: 1rem;
+    border-bottom:  1px dashed var(--main-border-color);
+}

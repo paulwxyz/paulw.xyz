@@ -1,16 +1,17 @@
 import Head from 'next/head';
 
-export default function Meta(props: { name: string, ancestors?: Array<{ name: string, path: string }> }) {
+function Meta({name, ancestors}
+    : {name: string, ancestors?: Array<{ name: string, path: string }> }) {
     const path = () => {
-        if (!props.ancestors)
-            return props.name;
+        if (!ancestors)
+            return name;
 
         let path = '';
-        props.ancestors.map((obj) => {
+        ancestors.map((obj) => {
             path = `${path}${obj.name} /`;
         });
 
-        return `${path} ${props.name}`;
+        return `${path} ${name}`;
     };
 
     return (
@@ -19,3 +20,5 @@ export default function Meta(props: { name: string, ancestors?: Array<{ name: st
         </Head>
     );
 }
+
+export default Meta;

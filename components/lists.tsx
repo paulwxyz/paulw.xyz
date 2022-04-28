@@ -80,7 +80,7 @@ export function mapChild(obj: listItem | string, level: number) {
         title = React.createElement('strong', {}, obj.title);
 
     return (
-        <section className={level < 4 ? 'block' : ''}>
+        <section className={level < 4 && `block ${style.block}` || ''}>
             {title}
             {obj.description ? <p className={style.desc}>{obj.description}</p> : <></>}
             <div>

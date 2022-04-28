@@ -7,42 +7,33 @@ type propsObj = {
     ancestors?: Array<{ name: string, path: string }>
 };
 
-function Title(props: propsObj) {
-
-    const path = () => {
-        if (!props.ancestors)
-            return (<></>);
-
-        let currentPath = '';
-        return (<>
-            {
-                props.ancestors.map(ancestor => {
-                    currentPath += `/${ancestor.path}`
-                    return (
-                        <>
-                            <Link href={currentPath} key=''>
-                                <a>{ancestor.name}</a>
-                            </Link>
-                            <> / </>
-                        </>
-                    );
-                })
-            }
-        </>
+function createPathElements(ancestors: Array<{ name: string, path: string }>) {
+    let currentPath = '';
+    return ancestors.map((ancestor) => {
+        currentPath += `/${ancestor.path}`
+        return (
+            <>
+                <Link href={currentPath}>
+                    <a>{ancestor.name}</a>
+                </Link>
+                <> / </>
+            </>
         );
-    };
+    });
+};
+
+function Title({ name, title, ancestors }: propsObj) {
+    const pathElements = ancestors && createPathElements(ancestors) || <></>;
 
     return (
         <>
             <h1 className={style.container}>
-                {props.title || props.name}
+                {title || name}
             </h1>
-            <div className={style.nav + ' h1'}>
-                {
-                    props.name === ''
-                        ? <>PaulW.XYZ / {props.name}</>
-                        : <><Link href='/'><a>PaulW.XYZ</a></Link> / {path()}{props.name}</>
-                }
+            <div className={`${style.nav} h1`}>
+                {name
+                    ? <><Link href='/'><a>PaulW.XYZ</a></Link> / {pathElements}{name}</>
+                    : <>PaulW.XYZ /</>}
             </div>
         </>
     );
