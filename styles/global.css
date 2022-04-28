@@ -193,32 +193,44 @@ code {
 .button {
     padding: 0.2rem 1rem;
     margin: 0.3rem 0.3rem;
-    background:#1a3a15;
-    color: rgba(255, 255, 255);
+    color: #ffffff;
+    background:#099945;
     display: inline-block;
     text-decoration: none;
     transition: 100ms ease-in-out all;
-    border: 1px solid #ffffff;
     border-radius: 0.5rem;
+    box-shadow: none;
 }
 
 .button:hover {
     text-decoration: none;
-    background:#099945;
-    border-color: #099945;
+    background:#1a3a15;
+    box-shadow: 0 0 0 1px #1a3a15;
+}
+
+.button:focus {
+    box-shadow: 0 0 0 2px #ffffff;
 }
 
 .button:active {
     text-decoration: none;
     box-shadow: none;
-    transform: translate(1px, 1px);
+    color: #cccccc;
+    background:#0f200c;
+    box-shadow: none;
 }
 
 .button.blue {
-    background: #05455f;
+    background: #0a82b1;
 }
 
 .button.blue:hover {
-    background:rgb(10, 130, 177);
-    border-color: rgb(10, 130, 177);
+    background:#05455f;
+    box-shadow: 0 0 0 1px #05455f;
 }
+
+.button.blue:active {
+    background:#05232f;
+}
+
+
