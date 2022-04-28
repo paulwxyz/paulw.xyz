@@ -1,5 +1,13 @@
 :root {
+    --main-background-color: #0d1117;
     --main-border-color: #555555;
+    --link-color: #009dff;
+    --primary-green: #099945;
+    --secondary-green: #1a3a15;
+    --tertiary-green: #0f200c;
+    --primary-blue: #0a82b1;
+    --secondary-blue: #05455f;
+    --tertiary-blue: #05232f;
 }
 
 @font-face {
@@ -64,10 +72,10 @@ body {
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
-    color: #fff;
+    color: #ffffff;
     text-align: left;
     height: 100%;
-    background-color: #0d1117;
+    background-color: var(--main-background-color);
     background-size: cover;
     padding-bottom: 2.5rem;
 }
@@ -128,20 +136,55 @@ p {
 }
 
 a {
-    color: #009dff;
+    color: var(--link-color);
     text-decoration: underline;
     background-color: transparent;
     outline: none;
 }
+
 a:hover {
     text-decoration: underline;
 }
+
 a:focus {
     text-decoration: underline dotted;
 }
 
 section {
     margin: 0.5rem;
+}
+
+pre {
+    width: 100%;
+}
+
+table {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--main-border-color);
+    border-radius: 1rem;
+}
+
+table thead {
+    background: var(--secondary-green);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+table thead tr,
+table tbody tr {
+    display: flex;
+}
+
+table tbody tr+tr {
+    border-top: 1px solid var(--main-border-color);
+}
+
+table thead tr th,
+table tbody tr td {
+    display: flex;
+    flex: 1;
+    padding: .5em;
 }
 
 .lambda-logo {
@@ -193,32 +236,87 @@ code {
 .button {
     padding: 0.2rem 1rem;
     margin: 0.3rem 0.3rem;
-    background:#1a3a15;
-    color: rgba(255, 255, 255);
+    color: #ffffff;
+    background: var(--primary-green);
     display: inline-block;
     text-decoration: none;
     transition: 100ms ease-in-out all;
-    border: 1px solid #ffffff;
     border-radius: 0.5rem;
+    box-shadow: none;
 }
 
 .button:hover {
     text-decoration: none;
-    background:#099945;
-    border-color: #099945;
+    background: var(--secondary-green);
+    box-shadow: 0 0 0 1px var(--secondary-green);
+}
+
+.button:focus {
+    box-shadow: 0 0 0 2px #ffffff;
 }
 
 .button:active {
     text-decoration: none;
     box-shadow: none;
-    transform: translate(1px, 1px);
+    color: #cccccc;
+    background: var(--tertiary-green);
+    box-shadow: none;
 }
 
 .button.blue {
-    background: #05455f;
+    background: var(--primary-blue);
 }
 
 .button.blue:hover {
-    background:rgb(10, 130, 177);
-    border-color: rgb(10, 130, 177);
+    background: var(--secondary-blue);
+    box-shadow: 0 0 0 1px var(--secondary-blue);
+}
+
+.button.blue:active {
+    background: var(--tertiary-blue);
+    box-shadow: none;
+}
+
+.text.center {
+    text-align: center;
+}
+
+.no-display {
+    display: none;
+}
+
+.button.link::after {
+    content: ' \2192';
+    display: inline-block;
+    transition: 100ms ease-in-out all;
+    margin-left: 0.3rem;
+}
+
+.button.link:hover {
+    display: inline-block;
+    transition: 100ms ease-in-out all;
+}
+
+.button.link:hover::after {
+    transform: translateX(0.2rem) scale(1.3);
+}
+
+.button.link.extern:hover::after {
+    transform: rotateZ(-45deg) scale(1.5);
+}
+
+.button.link.back::before {
+    content: ' \2190';
+    display: inline-block;
+    transition: 100ms ease-in-out all;
+    margin-right: 0.3rem;
+}
+
+.button.link:hover::before {
+    transform: translateX(-0.2rem) scale(1.3);
+}
+
+.button.link.back::after {
+    content: '';
+    display: none;
 }
