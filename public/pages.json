@@ -9,5 +9,6 @@
     {"title":"Matrix", "link": "https://matrix.to/#/@lambdapaul:matrix.org"},
     {"title":"Keybase", "link": "https://keybase.io/lambdapaul"},
     {"title":"Playlists", "link": "/playlists"},
-    {"title":"Posts", "link": "/posts"}
+    {"title":"Posts", "link": "/posts"},
+    {"title":"Notes", "link": "/notes"}
 ]

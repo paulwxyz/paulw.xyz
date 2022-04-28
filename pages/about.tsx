@@ -6,7 +6,7 @@ import Layout from '../components/layout';
 
 function AboutPage() {
     return (
-        <Layout name='About' title='About this website'>
+        <Layout name='About' title='About PaulW.XYZ'>
             <section className='block'>
                 This is a personal website written by <a href='https://github.com/LambdaPaul'>@LambdaPaul</a>.<br /><br />
                 Why did I write this?
@@ -17,7 +17,9 @@ function AboutPage() {
                 Got any questions, concerns, or issues? Feel free to contact me via my email: <code>lambdapaul [at] pm [dot] me</code>.
             </section>
             <section className='block'>
-                <ReactMarkdown>{ReadmeMd.replace(/#{1,5} /g, (s: string) => { return `#${s}` })}</ReactMarkdown>
+                <ReactMarkdown>
+                    {ReadmeMd.replace(/^#{1,5} /g, (s: string) => { return `#${s}` })}
+                </ReactMarkdown>
             </section>
         </Layout>
     )

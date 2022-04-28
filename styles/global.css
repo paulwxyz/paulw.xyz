@@ -154,6 +154,39 @@ section {
     margin: 0.5rem;
 }
 
+pre {
+    width: 100%;
+}
+
+table {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--main-border-color);
+    border-radius: 1rem;
+}
+
+table thead {
+    background: var(--secondary-green);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+table thead tr,
+table tbody tr {
+    display: flex;
+}
+
+table tbody tr+tr {
+    border-top: 1px solid var(--main-border-color);
+}
+
+table thead tr th,
+table tbody tr td {
+    display: flex;
+    flex: 1;
+    padding: .5em;
+}
+
 .lambda-logo {
     width: 256px;
     height: 256px;

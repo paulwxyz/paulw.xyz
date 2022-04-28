@@ -3,7 +3,7 @@ import Layout from '../../components/layout';
 import date from '../../util/date';
 import { getPostsMeta, PostMeta } from '../../util/slug';
 
-function HomePage({ postsMeta }: { postsMeta: PostMeta[] }) {
+function PostsPage({ postsMeta }: { postsMeta: PostMeta[] }) {
     // todo: create a table-like user interface
     return ( // wow this is horrible
         <Layout name='Posts'>
@@ -35,4 +35,4 @@ export async function getStaticProps() {
     };
 }
 
-export default HomePage;
+export default PostsPage;
