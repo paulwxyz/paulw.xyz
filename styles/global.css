@@ -1,5 +1,13 @@
 :root {
+    --main-background-color: #0d1117;
     --main-border-color: #555555;
+    --link-color: #009dff;
+    --primary-green: #099945;
+    --secondary-green: #1a3a15;
+    --tertiary-green: #0f200c;
+    --primary-blue: #0a82b1;
+    --secondary-blue: #05455f;
+    --tertiary-blue: #05232f;
 }
 
 @font-face {
@@ -64,10 +72,10 @@ body {
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
-    color: #fff;
+    color: #ffffff;
     text-align: left;
     height: 100%;
-    background-color: #0d1117;
+    background-color: var(--main-background-color);
     background-size: cover;
     padding-bottom: 2.5rem;
 }
@@ -128,14 +136,16 @@ p {
 }
 
 a {
-    color: #009dff;
+    color: var(--link-color);
     text-decoration: underline;
     background-color: transparent;
     outline: none;
 }
+
 a:hover {
     text-decoration: underline;
 }
+
 a:focus {
     text-decoration: underline dotted;
 }
@@ -194,7 +204,7 @@ code {
     padding: 0.2rem 1rem;
     margin: 0.3rem 0.3rem;
     color: #ffffff;
-    background:#099945;
+    background: var(--primary-green);
     display: inline-block;
     text-decoration: none;
     transition: 100ms ease-in-out all;
@@ -204,8 +214,8 @@ code {
 
 .button:hover {
     text-decoration: none;
-    background:#1a3a15;
-    box-shadow: 0 0 0 1px #1a3a15;
+    background: var(--secondary-green);
+    box-shadow: 0 0 0 1px var(--secondary-green);
 }
 
 .button:focus {
@@ -216,21 +226,21 @@ code {
     text-decoration: none;
     box-shadow: none;
     color: #cccccc;
-    background:#0f200c;
+    background: var(--tertiary-green);
     box-shadow: none;
 }
 
 .button.blue {
-    background: #0a82b1;
+    background: var(--primary-blue);
 }
 
 .button.blue:hover {
-    background:#05455f;
-    box-shadow: 0 0 0 1px #05455f;
+    background: var(--secondary-blue);
+    box-shadow: 0 0 0 1px var(--secondary-blue);
 }
 
 .button.blue:active {
-    background:#05232f;
+    background: var(--tertiary-blue);
     box-shadow: none;
 }
 
@@ -277,4 +287,3 @@ code {
     content: '';
     display: none;
 }
-
