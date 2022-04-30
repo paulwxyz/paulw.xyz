@@ -1,8 +1,13 @@
 .container {
     text-align: center;
     margin: auto;
-    max-width: 95%;
+    background-color: var(--main-background-color);
+}
+
+.container .title {
     border-bottom: 1px solid #FFFFFF;
+    max-width: 95%;
+    margin: auto;
 }
 
 .nav {

@@ -27,9 +27,12 @@ function Title({ name, title, ancestors }: propsObj) {
 
     return (
         <>
-            <h1 className={style.container}>
-                {title || name}
-            </h1>
+            <div className={style.container}>
+                <h1 className={style.title}>
+                    {title || name}
+                </h1>
+            </div>
+
             <div className={`${style.nav} h1`}>
                 {name
                     ? <><Link href='/'><a>PaulW.XYZ</a></Link> / {pathElements}{name}</>

@@ -1,8 +1,8 @@
 import Layout from '../../components/layout';
 import { getAllNotes, getNote } from '../../util/slug';
 import ReactMarkdown from 'react-markdown';
-import { Prism } from 'react-syntax-highlighter';
-import dark from 'react-syntax-highlighter/dist/cjs/styles/prism/material-oceanic';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { monokaiSublime } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import remarkGfm from 'remark-gfm';
 
 function Note({ note }: any) {
@@ -10,20 +10,26 @@ function Note({ note }: any) {
         <Layout name={note.title} title={note.title} ancestors={[{ name: 'Notes', path: 'notes' }]}>
             <section className='block'>
                 <ReactMarkdown
-                    remarkPlugins={[remarkGfm]} 
+                    remarkPlugins={[remarkGfm]}
                     components={{
                         code({ node, inline, className, children, ...props }) {
                             const match = /language-(\w+)/.exec(className || '')
-                            return !inline && match ? (
-                                <Prism 
-                                    language={match[1]}
-                                    style={dark}
-                                    PreTag='div'
-                                    {...props}
-                                >{String(children).replace(/\n$/, '')}</Prism>
-                            ) : <code className={className} {...props}>
-                                {children}
-                            </code>
+                            return !inline && match
+                                ? (
+                                    <SyntaxHighlighter
+                                        showLineNumbers={true}
+                                        language={match[1]}
+                                        style={monokaiSublime}
+                                        wrapLongLines={true}
+                                        PreTag='div'
+                                        codeTagProps={{style: {display: 'block'}}}
+                                        customStyle={{padding:'0', borderRadius: '1rem', maxHeight: '400px'}}
+                                        {...props}
+                                    >{children}</SyntaxHighlighter>
+                                )
+                                : <code className={className} {...props}>
+                                    {children}
+                                </code>
                         }
                     }}
                 >{note.content}</ReactMarkdown>
