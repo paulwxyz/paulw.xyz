@@ -161,14 +161,15 @@ pre {
 table {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--main-border-color);
     border-radius: 1rem;
+    margin: 1rem 0;
+    overflow: hidden;
 }
 
 table thead {
     background: var(--secondary-green);
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+    z-index: -1;
+    border-bottom: 1px solid #999999;
 }
 
 table thead tr,
@@ -177,7 +178,7 @@ table tbody tr {
 }
 
 table tbody tr+tr {
-    border-top: 1px solid var(--main-border-color);
+    border-top: 1px solid #999999;
 }
 
 table thead tr th,
@@ -185,6 +186,11 @@ table tbody tr td {
     display: flex;
     flex: 1;
     padding: .5em;
+}
+
+table th+th,
+table td+td {
+    border-left: 1px solid #999999;
 }
 
 .lambda-logo {
@@ -203,24 +209,11 @@ table tbody tr td {
 }
 
 .block {
+    display: block;
     padding: 1.5rem;
     max-width: 100%;
-    margin: 0 0.25rem;
-    border: 1px solid var(--main-border-color);
-    border-bottom: none;
-}
-
-.block:first-of-type {
-    border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;
-    margin-top: 2rem;
-}
-
-.block:last-of-type {
-    border-bottom: 1px solid var(--main-border-color);
-    border-bottom-right-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-    margin-bottom: 2rem;
+    margin: 1rem 0.25rem;
+    border-radius: 1rem;
 }
 
 code {

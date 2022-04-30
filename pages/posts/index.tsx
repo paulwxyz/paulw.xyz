@@ -4,27 +4,38 @@ import date from '../../util/date';
 import { getPostsMeta, PostMeta } from '../../util/slug';
 
 function PostsPage({ postsMeta }: { postsMeta: PostMeta[] }) {
-    // todo: create a table-like user interface
-    return ( // wow this is horrible
+    return ( 
         <Layout name='Posts'>
-            <section className='h4 block'>
-                Post Name
-                <span style={{ float: 'right', margin: 'auto 1rem' }}> Created on </span>
-                <span style={{ float: 'right', margin: 'auto 1rem' }}>Last Updated </span>
-            </section>
-            {postsMeta.map((post: PostMeta, i) => {
-                return <section key={i} className='h5 block'>
-                    <Link href={`/posts/${post.slug}`}>
-                        {post.title}
-                    </Link>
-                    <span className='h6' style={{ float: 'right', margin: 'auto 1rem' }}>
-                        {date.prettyPrint(new Date(post.created_at))}
-                    </span>
-                    {post.last_updated && <span className='h6' style={{ float: 'right', margin: 'auto 1rem' }}>
-                        {date.prettyPrint(new Date(post.last_updated))}
-                    </span>}
-                </section>
-            })}
+            <table  className='h5'>
+                <thead>
+                    <tr>
+                        <th style={{flex: '1 0 30%'}}>Name</th>
+                        <th>Created on</th>
+                        <th>Last Updated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {postsMeta.map((post: PostMeta, i) => {
+                        return <tr key={i}>
+                            <td style={{flex: '1 0 30%'}}>
+                                <Link href={`/posts/${post.slug}`}>
+                                    {post.title}
+                                </Link>
+                            </td>
+                            <td>
+                                {date.prettyPrint(new Date(post.created_at))}
+                            </td>
+                            <td>
+                                {
+                                    post.last_updated
+                                    ? date.prettyPrint(new Date(post.last_updated))
+                                    : '-'
+                                }
+                            </td>
+                        </tr>
+                    })}
+                </tbody>
+            </table>
         </Layout>
     )
 }
