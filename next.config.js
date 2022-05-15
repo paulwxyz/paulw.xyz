@@ -37,6 +37,10 @@ module.exports = {
                 type: 'asset/resource',
             },
             {
+                test: /\.txt$/,
+                type: 'asset/source',
+            },
+            {
                 resourceQuery: /raw/,
                 type: 'asset/source',
             },

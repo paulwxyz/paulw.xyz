@@ -9,11 +9,11 @@ type propsObj = {
 
 function createPathElements(ancestors: Array<{ name: string, path: string }>) {
     let currentPath = '';
-    return ancestors.map((ancestor) => {
+    return ancestors.map((ancestor, id) => {
         currentPath += `/${ancestor.path}`
         return (
             <>
-                <Link href={currentPath}>
+                <Link key={id + 1} href={currentPath}>
                     <a>{ancestor.name}</a>
                 </Link>
                 <> / </>

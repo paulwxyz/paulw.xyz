@@ -6,13 +6,18 @@
     top: 0;
     bottom: 0;
     background-size: cover;
-    background-position: center;
+    background-position: top left;
     min-height: 100%;
     background-attachment: fixed;
 }
 
 .block {
-    background-color: rgba(13, 17, 23, 0.9);
+    font-family: 'EB Garamond', 'Garamond', 'Times New Roman', Times, serif;
+    background-color: rgba(13, 17, 23, 0.95);
+    margin: 0 auto;
+    border-radius: 0;
+    font-size: 1.25rem;
+    line-height: 2rem;
 }
 
 .spacer {

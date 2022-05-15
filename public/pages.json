@@ -1,14 +1,14 @@
-[
-    {"title":"About", "link": "/about"},
-    {"title":"Resources", "link": "/resources"},
-    {"title":"Recommended", "link": "/recommended"},
-    {"title":"GitHub", "link": "https://github.com/lambdapaul"},
-    {"title":"GitLab", "link": "https://gitlab.com/lambdapaul"},
-    {"title":"Twitter", "link": "https://twitter.com/lambda_paul"},
-    {"title":"Mastodon", "link": "https://mastodon.social/@lambdapaul"},
-    {"title":"Matrix", "link": "https://matrix.to/#/@lambdapaul:matrix.org"},
-    {"title":"Keybase", "link": "https://keybase.io/lambdapaul"},
-    {"title":"Playlists", "link": "/playlists"},
-    {"title":"Posts", "link": "/posts"},
-    {"title":"Notes", "link": "/notes"}
-]
+{
+    "About": "/about",
+    "Resources": "/resources",
+    "Recommended": "/recommended",
+    "GitHub": "https://github.com/lambdapaul",
+    "GitLab": "https://gitlab.com/lambdapaul",
+    "Twitter": "https://twitter.com/lambda_paul",
+    "Mastodon": "https://mastodon.social/@lambdapaul",
+    "Matrix": "https://matrix.to/#/@lambdapaul:matrix.org",
+    "Keybase": "https://keybase.io/lambdapaul",
+    "Playlists": "/playlists",
+    "Posts": "/posts",
+    "Notes": "/notes"
+}

@@ -22,8 +22,8 @@ function Note({ note }: any) {
                                         style={monokaiSublime}
                                         wrapLongLines={true}
                                         PreTag='div'
-                                        codeTagProps={{style: {display: 'block'}}}
-                                        customStyle={{padding:'0', borderRadius: '1rem', maxHeight: '400px'}}
+                                        codeTagProps={{ style: { display: 'block' } }}
+                                        customStyle={{ padding: '0', borderRadius: '1rem' }}
                                         {...props}
                                     >{children}</SyntaxHighlighter>
                                 )

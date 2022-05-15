@@ -1,6 +1,5 @@
 import Meta from './meta';
 import Title from './title';
-// import FuzzyBar from './fuzzy-bar';
 
 type ChildrenType = JSX.Element | Array<ChildrenType>;
 
@@ -16,7 +15,6 @@ function Layout({ name, title, children, ancestors }: LayoutProps) {
         <>
             <Meta name={name} ancestors={ancestors} />
             <Title title={title} name={name} ancestors={ancestors} />
-            {/* <FuzzyBar /> */}
             <div className='container'>
                 {children}
             </div>

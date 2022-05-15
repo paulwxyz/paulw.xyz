@@ -7,7 +7,7 @@ function Meta({name, ancestors}
             return name;
 
         let path = '';
-        ancestors.map((obj) => {
+        ancestors.forEach((obj) => {
             path = `${path}${obj.name} /`;
         });
 

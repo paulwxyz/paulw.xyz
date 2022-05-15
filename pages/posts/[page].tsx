@@ -6,13 +6,13 @@ import style from '../../styles/post.module.css';
 function Post({ post }: any) { // eh
     return (<>
         <Layout name={post.title} title={post.title} ancestors={[{ name: 'Posts', path: 'posts' }]}>
-        <div className={style.imageBlock} style={{ backgroundImage: post.cover ? `url(/assets/images/${post.cover})` : '' }}></div>
-
-                <div className={style.spacer}></div>
-                <section className={`${style.block} block`}>
-                    <ReactMarkdown>{post.content}</ReactMarkdown>
-                </section>
-                <div className={style.spacer}></div>
+            {post.cover
+                && <div className={style.imageBlock} style={{ backgroundImage: `url(/assets/images/${post.cover})` }}></div>}
+            <div className={style.spacer}></div>
+            <section className={`${style.block} block`}>
+                <ReactMarkdown>{post.content}</ReactMarkdown>
+            </section>
+            <div className={style.spacer}></div>
         </Layout>
 
     </>
