@@ -66,6 +66,34 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Hack';
+    src: url('/assets/fonts/Hack/hack-regular-subset.woff2?sha=3114f1256') format('woff2'), url('/assets/fonts/Hack/hack-regular-subset.woff?sha=3114f1256') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hack';
+    src: url('/assets/fonts/Hack/hack-bold-subset.woff2?sha=3114f1256') format('woff2'), url('/assets/fonts/Hack/hack-bold-subset.woff?sha=3114f1256') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hack';
+    src: url('/assets/fonts/Hack/hack-italic-subset.woff2?sha=3114f1256') format('woff2'), url('/assets/fonts/Hack/hack-italic-webfont.woff?sha=3114f1256') format('woff');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Hack';
+    src: url('/assets/fonts/Hack/hack-bolditalic-subset.woff2?sha=3114f1256') format('woff2'), url('/assets/fonts/Hack/hack-bolditalic-subset.woff?sha=3114f1256') format('woff');
+    font-weight: 700;
+    font-style: italic;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -176,6 +204,15 @@ section {
 
 pre {
     width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+pre,
+kbd,
+code {
+    font-family: 'Hack', 'Source Code Pro', Consolas, monospace;
+    font-size: 0.9rem;
 }
 
 table {
@@ -230,11 +267,10 @@ table tbody tr td {
 }
 
 code {
-    overflow-x: scroll;
+    overflow-x: auto;
     max-width: 100%;
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.1);
-    font-size: 1rem;
     padding: 0.1rem 0.5rem;
     vertical-align: bottom;
 }

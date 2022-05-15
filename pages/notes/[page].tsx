@@ -20,7 +20,6 @@ function Note({ note }: any) {
                                         showLineNumbers={true}
                                         language={match[1]}
                                         style={monokaiSublime}
-                                        wrapLongLines={true}
                                         PreTag='div'
                                         codeTagProps={{ style: { display: 'block' } }}
                                         customStyle={{ padding: '0', borderRadius: '1rem' }}
