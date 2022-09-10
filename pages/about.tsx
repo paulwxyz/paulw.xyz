@@ -3,7 +3,13 @@ import ReadmeMd from '../README.md';
 import License from '../LICENSE.txt';
 import Layout from '../components/layout';
 
-function AboutPage() {
+function AboutPage({usr}: any) {
+    const styUsr = {
+        fontFamily: 'monospace',
+        backgroundColor: '#333333',
+        fontSize: '.8rem',
+        padding: '.1rem .5rem',
+    };
     return (
         <Layout name='About' title='About PaulW.XYZ'>
             <section className='block'>
@@ -29,8 +35,42 @@ function AboutPage() {
                 <h2>LICENSE</h2>
                 <pre>{License}</pre>
             </section>
+        {/* make this a pretty component with more info */}
+            <section className='block'>
+                <table>
+                    <th><td>Github Profile</td></th>
+                    <tr>
+                        <td>Name</td>
+                        <td style={styUsr}>{usr.login}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Link</td>
+                        <td style={styUsr}>{usr.html_url}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Location</td>
+                        <td style={styUsr}>{usr.location}</td>
+                    </tr>
+
+                    <tr>
+                        <td>About</td>
+                        <td style={styUsr}>{usr.bio}</td>
+                    </tr>
+                </table>
+            </section>
         </Layout>
     );
+}
+
+export async function getStaticProps() {
+    const res = await fetch('https://api.github.com/users/lambdapaul');
+    const usr = await res.json();
+
+    return {
+        props: { usr }
+    };
 }
 
 export default AboutPage;
