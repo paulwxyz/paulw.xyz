@@ -1,12 +1,6 @@
 {
     "About": "/about",
-    "Resources": "/resources",
-    "Recommended": "/recommended",
     "GitHub": "https://github.com/lambdapaul",
     "Twitter": "https://twitter.com/lambda_paul",
-    "Mastodon": "https://mastodon.social/@lambdapaul",
-    "Matrix": "https://matrix.to/#/@lambdapaul:matrix.org",
-    "Playlists": "/playlists",
-    "Posts": "/posts",
     "Notes": "/notes"
 }

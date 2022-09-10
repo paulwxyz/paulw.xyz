@@ -4,6 +4,8 @@ import { PostMeta } from "../util/slug";
 import style from '../styles/recent-posts.module.css';
 
 function RecentPosts({ postsMeta }: { postsMeta: PostMeta[] }) {
+    if (!postsMeta.length)
+        return <></>;
     return (
         <div className='block'>
             <div className='h2'>Recent Posts</div>
