@@ -19,12 +19,13 @@ function Note({ note }: any) {
                                     <SyntaxHighlighter
                                         showLineNumbers={true}
                                         language={match[1]}
+                                        //@ts-ignore
                                         style={monokaiSublime}
                                         PreTag='div'
                                         codeTagProps={{ style: { display: 'block' } }}
                                         customStyle={{ padding: '0', borderRadius: '1rem' }}
                                         {...props}
-                                    >{children}</SyntaxHighlighter>
+                                    >{String(children).replace(/\n$/, '')}</SyntaxHighlighter>
                                 )
                                 : <code className={className} {...props}>
                                     {children}

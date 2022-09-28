@@ -6,24 +6,25 @@
   "lint": "next lint"
  },
  "dependencies": {
-  "@types/react": "^17.0.37",
-  "dotenv": "^10.0.0",
+  "dotenv": "^16.0.2",
   "gray-matter": "^4.0.3",
   "js-yaml-loader": "^1.2.2",
-  "next": "^11.1.4",
+  "next": "^12.3.1",
   "normalize.css": "^8.0.1",
-  "react": "^17.0.2",
-  "react-dom": "^17.0.2",
-  "react-markdown": "^7.1.2",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "react-markdown": "^8.0.3",
   "react-syntax-highlighter": "^15.5.0",
   "remark-gfm": "^3.0.1"
  },
  "devDependencies": {
-  "@svgr/webpack": "^5.5.0",
-  "@types/react-dom": "^17.0.11",
-  "@types/react-syntax-highlighter": "^13.5.2",
-  "eslint": "^7.32.0",
-  "eslint-config-next": "^11.1.4",
-  "typescript": "^4.5.5"
+  "@svgr/webpack": "^6.3.1",
+  "@types/node": "^18.7.23",
+  "@types/react": "^18.0.21",
+  "@types/react-dom": "^18.0.6",
+  "@types/react-syntax-highlighter": "^15.5.5",
+  "eslint": "^8.24.0",
+  "eslint-config-next": "^12.3.1",
+  "typescript": "^4.8.4"
  }
 }

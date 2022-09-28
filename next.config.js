@@ -4,8 +4,6 @@ module.exports = {
         defaultLocale: 'en-US'
     },
     webpack: (config, _options) => {
-        config.experiments = { asset: true };
-
         const { cache } = require('./util/slug');
 
         config.plugins.push(

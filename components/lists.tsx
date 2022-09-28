@@ -81,7 +81,6 @@ export function mapChild(
     if (!obj.children) {
         let cb;
         if (obj.type && typeMap) {
-            console.error(typeMap[obj.type])
             cb = typeMap[obj.type]
         }
 
