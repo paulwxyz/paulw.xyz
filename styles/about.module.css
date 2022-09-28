@@ -1,0 +1,45 @@
+.license {
+    background-color: #222222;
+    padding: 1rem;
+}
+
+.githubCard {
+    display: flex;
+}
+
+.githubAvatarContainer {
+    flex: 0 0;
+    padding: 0.5rem;
+}
+
+.githubCardTable {
+    flex: 1 1;
+    padding: 0.5rem;
+}
+
+.githubCardRow {
+    display: flex;
+}
+
+
+.githubCardLabel {
+    flex: .2 1;
+    font-size: 1rem;
+    padding: .5rem;
+}
+
+.githubCardLabel:after {
+    content: ':';
+}
+
+.githubCardValue {
+    flex: 1 1;
+    background-color: #222222;
+    font-size: 1rem;
+    border-top: 1px solid;
+    padding: .5rem;
+}
+
+.githubCardRow:first-of-type .githubCardValue {
+    border-top: none;
+}

@@ -3,7 +3,7 @@ module.exports = {
         locales: ['en-US'],
         defaultLocale: 'en-US'
     },
-    webpack: (config, options) => {
+    webpack: (config, _options) => {
         config.experiments = { asset: true };
 
         const { cache } = require('./util/slug');
@@ -47,5 +47,8 @@ module.exports = {
         );
 
         return config
+    },
+    images: {
+        domains: ['avatars.githubusercontent.com']
     },
 }

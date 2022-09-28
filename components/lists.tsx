@@ -1,9 +1,11 @@
 import style from '../styles/lists.module.css';
 import React, { ReactElement } from 'react';
 
-interface listItem {
+export interface listItem {
+    [x: string]: any;
     children?: listItem[] | string[];
     url?: string;
+    type?: string;
     title: string;
     description?: string;
 };
@@ -37,15 +39,25 @@ export function toListItem(record: Record<string, any>): listItem | null {
         }
     }
 
-    return {
+    return Object.assign(record, {
         title: record.title,
         url: record.url,
         children: children.length ? children : undefined,
+        type: record.type?.length ? record.type : undefined,
         description: record.description,
-    };
+    });
 }
 
-export function mapChild(obj: listItem | string, level: number) {
+const s = {
+    "af": 123,
+    "asdf" : 123
+}
+
+export function mapChild(
+    obj: listItem | string, 
+    level: number, 
+    typeMap? : Record<string, (o: listItem) => JSX.Element> 
+    ) {
     if (typeof obj === 'string') {
         if (obj === '')
             return <></>
@@ -58,6 +70,7 @@ export function mapChild(obj: listItem | string, level: number) {
     const desc = obj.description
         ? <span className={style.listItemDesc}>{obj.description}</span>
         : <></>;
+
     if (obj.url)
         return (
             <>
@@ -65,12 +78,17 @@ export function mapChild(obj: listItem | string, level: number) {
                 {desc}
             </>);
 
-    if (!obj.children)
-        return (
-            <>
-                <span className={style.listItem}>{obj.title}</span>
-                {desc}
-            </>);
+    if (!obj.children) {
+        let cb;
+        if (obj.type && typeMap) {
+            console.error(typeMap[obj.type])
+            cb = typeMap[obj.type]
+        }
+
+        return cb 
+            ? cb(obj) 
+            : (<><span className={style.listItem}>{obj.title}</span>{desc}</>);
+    }
 
     let title: ReactElement;
 
@@ -84,7 +102,7 @@ export function mapChild(obj: listItem | string, level: number) {
             {title}
             {obj.description ? <p className={style.desc}>{obj.description}</p> : <></>}
             <div>
-                {obj.children.map(l => mapChild(l, level + 1))}
+                {obj.children.map(l => mapChild(l, level + 1, typeMap))}
             </div>
         </section>
     );
