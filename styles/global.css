@@ -366,3 +366,8 @@ code {
 .monospace {
     font-family: 'Hack', 'Source Code Pro', Consolas, monospace;
 }
+
+.license {
+    background-color: #222222;
+    padding: 1rem;
+}
