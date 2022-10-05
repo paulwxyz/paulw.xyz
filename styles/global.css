@@ -8,6 +8,8 @@
     --primary-blue: #0a82b1;
     --secondary-blue: #05455f;
     --tertiary-blue: #05232f;
+    --table-odd-color: rgba(255, 255, 255, 0.05);
+    --table-even-color: rgba(255, 255, 255, 0.025); 
 }
 
 @font-face {
@@ -98,10 +100,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Cantarell', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-}
-
 article,
 aside,
 figcaption,
@@ -116,7 +114,8 @@ section {
 }
 
 body {
-    margin: 0 0 4rem;
+    font-family: 'Cantarell', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+    margin: 0 0 44px;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
@@ -125,7 +124,6 @@ body {
     height: 100%;
     background-color: var(--main-background-color);
     background-size: cover;
-    padding-bottom: 2.5rem;
 }
 
 [tabindex="-1"]:focus {
@@ -208,6 +206,15 @@ pre {
     overflow-x: auto;
 }
 
+code {
+    overflow-x: auto;
+    max-width: 100%;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.1rem 0.5rem;
+    vertical-align: bottom;
+}
+
 pre,
 kbd,
 code {
@@ -220,6 +227,11 @@ table {
     flex-direction: column;
     margin: 1rem 0;
     overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+table thead+tbody tr {
+    border-radius: 0;
 }
 
 table thead {
@@ -227,13 +239,24 @@ table thead {
     z-index: -1;
 }
 
+table tbody,
+table tr:last-of-type
+{
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
 table thead tr,
 table tbody tr {
     display: flex;
 }
 
-table tbody tr+tr {
-    border-top: 1px solid #999999;
+table tbody tr:nth-of-type(2n) {
+    background-color: var(--table-even-color);
+}
+
+table tbody tr:nth-of-type(2n+1) {
+    background-color: var(--table-odd-color);
 }
 
 table thead tr th,
@@ -241,6 +264,10 @@ table tbody tr td {
     display: flex;
     flex: 1;
     padding: .25rem 0.75rem;
+}
+
+li {
+    list-style-type: square;
 }
 
 .lambda-logo {
@@ -253,26 +280,24 @@ table tbody tr td {
 }
 
 .container {
-    max-width: 1018px;
-    margin: 0 auto;
+    margin: 0 0.5rem;
     position: relative;
+}
+
+@media screen and (min-width: 1018px) {
+    .container {
+        max-width: 1018px;
+        margin: 0 auto;
+        position: relative;
+    }
 }
 
 .block {
     display: block;
-    padding: 1.5rem;
+    padding: 0.5rem;
     max-width: 100%;
     margin: 1rem 0.25rem;
     border-radius: 1rem;
-}
-
-code {
-    overflow-x: auto;
-    max-width: 100%;
-    display: inline-block;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 0.1rem 0.5rem;
-    vertical-align: bottom;
 }
 
 .button {
@@ -323,7 +348,7 @@ code {
     text-align: center;
 }
 
-.no-display {
+.none.display {
     display: none;
 }
 
@@ -361,6 +386,14 @@ code {
 .button.link.back::after {
     content: '';
     display: none;
+}
+
+.sans.serif {
+    font-family: 'Cantarell', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+}
+
+.serif {
+    font-family: 'EB Garamond', 'Garamond', 'Times New Roman', Times, serif;
 }
 
 .monospace {

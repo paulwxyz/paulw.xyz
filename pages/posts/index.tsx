@@ -1,39 +1,39 @@
 import Link from 'next/link';
 import Layout from '../../components/layout';
-import date from '../../util/date';
-import { getPostsMeta, PostMeta } from '../../util/slug';
+import date from '../../lib/date';
+import { getPostsMeta, IPostMeta } from '../../lib/slug';
 
-function PostsPage({ postsMeta }: { postsMeta: PostMeta[] }) {
+function PostsPage({ postsMeta }: { postsMeta: IPostMeta[] }) {
     return ( 
         <Layout name='Posts'>
-            <table  className='h5'>
-                <thead>
-                    <tr>
-                        <th style={{flex: '1 0 30%'}}>Name</th>
-                        <th>Created on</th>
-                        <th>Last Updated</th>
-                    </tr>
-                </thead>
+            <table>
                 <tbody>
-                    {postsMeta.map((post: PostMeta, i) => {
-                        return <tr key={i}>
-                            <td style={{flex: '1 0 30%'}}>
-                                <Link href={`/posts/${post.slug}`}>
-                                    {post.title}
+                {
+                    postsMeta.length &&
+                    postsMeta.map((post: IPostMeta, i) => {
+                        return <tr key={i} style={{alignItems: 'center'}}>
+                            <td style={{display: 'inline-block', textAlign: 'right', fontSize: '0.9rem'}}>
+                                <div style={{fontStyle: 'italics', fontSize: '.8rem'}}>{
+                                    post.last_updated && `updated ${date.toRelativeDate(new Date(post.last_updated))}`
+                                }</div>
+                                <div>{ date.toRelativeDate(new Date(post.created_at)) }</div>
+                            </td>
+                            <td style={{
+                                flex: '1 1 60%', 
+                                alignItems: 'center',
+                                fontFamily: `'EB Garamond', 'Garamond', 'Times New Roman', Times, serif`}}>
+                                <Link href={`/posts/${post.slug}`} >
+                                    <a style={{textDecoration: 'none'}}>{post.title}</a>
                                 </Link>
                             </td>
-                            <td>
-                                {date.prettyPrint(new Date(post.created_at))}
-                            </td>
-                            <td>
-                                {
-                                    post.last_updated
-                                    ? date.prettyPrint(new Date(post.last_updated))
-                                    : '-'
-                                }
-                            </td>
                         </tr>
-                    })}
+                    }) || 
+                    <div className='text center'>
+                        <div>**crickets**</div>
+                        <div>No posts found...</div>
+                        <div><Link href='/'><a className='link button green back'>Go Home</a></Link></div>
+                    </div>
+                }
                 </tbody>
             </table>
         </Layout>

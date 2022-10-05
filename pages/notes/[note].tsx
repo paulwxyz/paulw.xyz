@@ -1,9 +1,10 @@
 import Layout from '../../components/layout';
-import { getAllNotes, getNote } from '../../util/slug';
+import { getAllNotes, getNote } from '../../lib/slug';
 import ReactMarkdown from 'react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { monokaiSublime } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+import { monokaiSublime as hlTheme } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 function Note({ note }: any) {
     return (<>
@@ -11,6 +12,7 @@ function Note({ note }: any) {
             <section className='block'>
                 <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
                     components={{
                         code({ node, inline, className, children, ...props }) {
                             const match = /language-(\w+)/.exec(className || '')
@@ -20,7 +22,7 @@ function Note({ note }: any) {
                                         showLineNumbers={true}
                                         language={match[1]}
                                         //@ts-ignore
-                                        style={monokaiSublime}
+                                        style={hlTheme}
                                         PreTag='div'
                                         codeTagProps={{ style: { display: 'block' } }}
                                         customStyle={{ padding: '0', borderRadius: '1rem' }}
@@ -40,7 +42,7 @@ function Note({ note }: any) {
 }
 
 export async function getStaticProps({ params }: any) {
-    const note = getNote(params.page);
+    const note = getNote(params.note);
 
     return {
         props: { note }
@@ -53,7 +55,7 @@ export async function getStaticPaths() {
         paths: notes.map((note: any) => {
             return {
                 params: {
-                    page: note.slug
+                    note: note.slug
                 }
             }
         }),

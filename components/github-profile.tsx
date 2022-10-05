@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { parse as URIparse } from 'uri-js';
-import date from '../util/date';
+import date from '../lib/date';
 import style from '../styles/github-profile.module.css';
 
 function CardRow({label, children}: {label: string, children: JSX.Element | string}) {
@@ -11,6 +11,7 @@ function CardRow({label, children}: {label: string, children: JSX.Element | stri
         </div>
     );
 }
+
 function GitHubProfile({user}: any) {
 return (<>
     <div className={style.card}>
@@ -32,8 +33,8 @@ return (<>
             </CardRow>}
             <CardRow label='Location'>{user.location}</CardRow>
             <CardRow label='About'>{user.bio}</CardRow>
-            <CardRow label='Created'>{user.created_at ? date.prettyPrint(user.created_at) : ''}</CardRow>
-            {user.updated_at && <CardRow label='Last Updated'>{user.updated_at ? date.prettyPrint(user.updated_at) : ''}</CardRow>}
+            <CardRow label='Created'>{user.created_at ? date.toRelativeDate(user.created_at) : ''}</CardRow>
+            {user.updated_at && <CardRow label='Last Updated'>{user.updated_at ? date.toRelativeDate(user.updated_at) : ''}</CardRow>}
             {user.twitter_username && <CardRow label='Twitter'>                
                 <a className='link extern blue button' 
                     href={`https://twitter.com/${user.twitter_username}`}>

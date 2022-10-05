@@ -1,19 +1,28 @@
 import Link from 'next/link';
 import Layout from '../../components/layout';
-import { getNotesMeta, NoteMeta } from '../../util/slug';
+import date from '../../lib/date';
+import { getNotesMeta, INoteMeta } from '../../lib/slug';
 
-function NotesPage({ notesMeta }: { notesMeta: NoteMeta[] }) {
+function NotesPage({ notesMeta }: { notesMeta: INoteMeta[] }) {
     return (
         <Layout name='Notes'>
-            <div className='text center block'>
-                {notesMeta && notesMeta.map((note: NoteMeta, i) => {
-                    return <div key={i} className='h5'>
-                        <Link href={`/notes/${note.slug}`}>
-                            {note.title}
-                        </Link>
-                    </div>
-                })}
-            </div>
+            <table>
+                <tbody>
+                {notesMeta && notesMeta.map((note: INoteMeta, i) => {
+                    return (
+                    <tr key={i}>
+                        <td style={{flex: '1 0 50%'}}>
+                            <Link href={`/notes/${note.slug}`}>
+                                {note.title}
+                            </Link>
+                        </td>
+                        <td style={{fontStyle: 'italic'}}>
+                            {note.last_updated && date.toRelativeDate(new Date(note.last_updated))}
+                        </td>
+                    </tr>
+                )})}
+                </tbody>
+            </table>
         </Layout>
     )
 }

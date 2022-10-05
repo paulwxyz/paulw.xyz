@@ -17,7 +17,7 @@ function AboutPage({usr}: any) {
                 <p>Got any questions, concerns, or issues? Contact me via email: <code>lambdapaul [at] pm [dot] me</code>.</p>
             </section>
             <section className='block'>
-                <GitHubProfile user={usr} />
+                {usr && <GitHubProfile user={usr} />}
             </section>
             <hr />
             <section className='block'>
@@ -39,12 +39,15 @@ function AboutPage({usr}: any) {
 }
 
 export async function getStaticProps() {
-    const res = await fetch('https://api.github.com/users/lambdapaul');
-    const usr = await res.json();
-
-    return {
-        props: { usr }
-    };
+    try {
+        const res = await fetch('https://api.github.com/users/lambdapaul');
+        const usr = await res.json();
+        return {
+            props: { usr }
+        };
+    } catch (e) {
+        return {props: {}}
+    }
 }
 
 export default AboutPage;

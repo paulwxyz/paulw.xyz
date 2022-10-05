@@ -4,7 +4,7 @@ module.exports = {
         defaultLocale: 'en-US'
     },
     webpack: (config, _options) => {
-        const { cache } = require('./util/slug');
+        const { cache } = require('./lib/slug');
 
         config.plugins.push(
             {

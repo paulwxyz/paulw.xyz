@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 function Meta({name, ancestors}
     : {name: string, ancestors?: Array<{ name: string, path: string }> }) {
-    const path = () => {
+    function path(): string {
         if (!ancestors)
             return name;
 
@@ -11,12 +11,12 @@ function Meta({name, ancestors}
             path = `${path}${obj.name} /`;
         });
 
-        return `${path} ${name}`;
-    };
+        return `PaulW.XYZ / ${path} ${name}`;
+    }
 
     return (
         <Head>
-            <title>PaulW.XYZ / {path()}</title>
+            <title>{path()}</title>
         </Head>
     );
 }

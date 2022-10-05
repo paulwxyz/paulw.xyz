@@ -1,5 +1,6 @@
-import style from '../styles/title.module.css';
 import Link from 'next/link';
+
+import style from '../styles/title.module.css';
 
 type propsObj = {
     name: string,
@@ -32,7 +33,6 @@ function Title({ name, title, ancestors }: propsObj) {
                     {title || name}
                 </h1>
             </div>
-
             <div className={`${style.nav} h1`}>
                 {name
                     ? <><Link href='/'><a>PaulW.XYZ</a></Link> / {pathElements}{name}</>

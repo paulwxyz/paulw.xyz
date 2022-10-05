@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "util/slug.js"
+    "lib/slug.js"
   ],
   "exclude": [
     "node_modules"

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { NoteMeta } from "../util/slug";
+import { INoteMeta } from "../lib/slug";
 
-function RecentNotes({ notesMeta }: { notesMeta: NoteMeta[] }) {
+function RecentNotes({ notesMeta }: { notesMeta: INoteMeta[] }) {
     return (
         <div className='block'>
             <div className='h2'>Recent Notes</div>
@@ -14,7 +14,7 @@ function RecentNotes({ notesMeta }: { notesMeta: NoteMeta[] }) {
             }
             {
                 notesMeta.length > 10 &&
-                <div className={''}>
+                <div>
                     <Link href='/notes'>
                         <a className='h5'>More...</a>
                     </Link>
