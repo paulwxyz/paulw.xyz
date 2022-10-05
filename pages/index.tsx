@@ -11,8 +11,8 @@ function Nav() {
     return (
         <div className='block' style={{textAlign: 'center'}}>
             {
-                Object.entries(nav).map(([k, v]) => {
-                    return <Link href={v}> 
+                Object.entries(nav).map(([k, v], i) => {
+                    return <Link key={i} href={v}> 
                         <a className='button green'>{k}</a>
                     </Link>       
                 })
