@@ -27,9 +27,7 @@ function RecentPosts({ postsMeta }: { postsMeta: IPostMeta[] }) {
             {
                 postsMeta.length > 10 &&
                 <div className={style.more}>
-                    <Link href='/posts'>
-                        <a className='h5'>More...</a>
-                    </Link>
+                    <Link href='/posts' className='h5'>More...</Link>
                 </div>
             }
         </div>

@@ -9,9 +9,7 @@ function QuickLinks() {
                 Object.entries(Pages).map(([title, link], i) => {
                     const extern = link.match(/^http/) && `blue extern` || '';
                     return (
-                        <Link key={i} href={link}>
-                            <a className={`${extern} link button`}>{title}</a>
-                        </Link>
+                        <Link key={i} href={link} className={`${extern} link button`}>{title}</Link>
                     );
                 })
             }

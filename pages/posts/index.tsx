@@ -22,16 +22,14 @@ function PostsPage({ postsMeta }: { postsMeta: IPostMeta[] }) {
                                 flex: '1 1 60%', 
                                 alignItems: 'center',
                                 fontFamily: `'EB Garamond', 'Garamond', 'Times New Roman', Times, serif`}}>
-                                <Link href={`/posts/${post.slug}`} >
-                                    <a style={{textDecoration: 'none'}}>{post.title}</a>
-                                </Link>
+                                <Link href={`/posts/${post.slug}`}  style={{textDecoration: 'none'}}>{post.title}</Link>
                             </td>
                         </tr>
                     }) || 
                     <div className='text center'>
                         <div>**crickets**</div>
                         <div>No posts found...</div>
-                        <div><Link href='/'><a className='link button green back'>Go Home</a></Link></div>
+                        <div><Link href='/' className='link button green back'>Go Home</Link></div>
                     </div>
                 }
                 </tbody>

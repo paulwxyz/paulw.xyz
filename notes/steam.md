@@ -1,5 +1,5 @@
 ---
-title: Steam Store
+title: Steam Client 
 last_updated: '2022-09-29T03:15:58.777Z'
 ---
 
@@ -11,8 +11,11 @@ last_updated: '2022-09-29T03:15:58.777Z'
 	- `steam://nav/console`
  	- `steam://open/console`
  		- will not work if the Steam client is running in the background
-- The `-console` flag can be used with the client executable.
-- Alternatively, [SteamCMD.zip](https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip), a command-line only version of the Steam client, can be used.
+- The `-console` flag can be used with the client executable
+- Alternatively, SteamCMD, a command-line only version of the Steam client, can be used
+    - [Windows Binary](https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip)
+    - [Linux Binary](https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz)
+    - [macOS Binary](https://steamcdn-a.akamaihd.net/client/installer/steamcmd_osx.tar.gz)
 
 ## Downloading Older Depots
 
@@ -44,3 +47,6 @@ download_depot <appid> <depotid> [<target manifestid>] [<delta manifestid>] [<de
 	- somewhat broken although it is being migrated and modernized, see [New ITAD](https://new.isthereanydeal.com)
 - [gg.deals](https://gg.deals)
 	- newer than and similar to IsThereAnyDeal with modern UI
+- [SteamGridDB](https://steamgriddb.com/)
+    - custom video game assets for games available and not available on steam
+

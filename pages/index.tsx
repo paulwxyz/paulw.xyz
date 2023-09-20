@@ -7,14 +7,12 @@ import RecentPosts from '../components/recent-posts';
 import { getNotesMeta, getPostsMeta, INoteMeta, IPostMeta } from '../lib/slug';
 
 function Nav() {
-    const nav = {'Posts': '/posts', 'Notes': '/notes', 'About': '/about', };
+    const nav = { 'Posts': '/posts', 'Notes': '/notes', 'About': '/about', };
     return (
-        <div className='block' style={{textAlign: 'center'}}>
+        <div className='block' style={{ textAlign: 'center' }}>
             {
                 Object.entries(nav).map(([k, v], i) => {
-                    return <Link key={i} href={v}> 
-                        <a className='button green'>{k}</a>
-                    </Link>       
+                    return <Link key={i} href={v} className='button green'>{k}</Link>
                 })
             }
         </div>

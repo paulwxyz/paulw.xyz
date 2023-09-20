@@ -6,35 +6,39 @@ import { monokaiSublime as hlTheme } from 'react-syntax-highlighter/dist/cjs/sty
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
+function Markdown({content}: any) {
+    return <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
+        components={{
+            code({ node, inline, className, children, ...props }) {
+                const match = /language-(\w+)/.exec(className || '')
+                return !inline && match
+                    ? (
+                        <SyntaxHighlighter
+                            showLineNumbers={true}
+                            language={match[1]}
+                            //@ts-ignore
+                            style={hlTheme}
+                            PreTag='div'
+                            codeTagProps={{ style: { display: 'block' } }}
+                            customStyle={{ padding: '0', borderRadius: '1rem' }}
+                            {...props}
+                        >{String(children).replace(/\n$/, '')}</SyntaxHighlighter>
+                    )
+                    : <code className={className} {...props}>
+                        {children}
+                    </code>
+            }
+        }}
+    >{content}</ReactMarkdown>
+}
+
 function Note({ note }: any) {
     return (<>
         <Layout name={note.title} title={note.title} ancestors={[{ name: 'Notes', path: 'notes' }]}>
             <section className='block'>
-                <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                    components={{
-                        code({ node, inline, className, children, ...props }) {
-                            const match = /language-(\w+)/.exec(className || '')
-                            return !inline && match
-                                ? (
-                                    <SyntaxHighlighter
-                                        showLineNumbers={true}
-                                        language={match[1]}
-                                        //@ts-ignore
-                                        style={hlTheme}
-                                        PreTag='div'
-                                        codeTagProps={{ style: { display: 'block' } }}
-                                        customStyle={{ padding: '0', borderRadius: '1rem' }}
-                                        {...props}
-                                    >{String(children).replace(/\n$/, '')}</SyntaxHighlighter>
-                                )
-                                : <code className={className} {...props}>
-                                    {children}
-                                </code>
-                        }
-                    }}
-                >{note.content}</ReactMarkdown>
+                <Markdown content={note.content} />
             </section>
         </Layout>
     </>

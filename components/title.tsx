@@ -14,9 +14,7 @@ function createPathElements(ancestors: Array<{ name: string, path: string }>) {
         currentPath += `/${ancestor.path}`
         return (
             <>
-                <Link key={id + 1} href={currentPath}>
-                    <a>{ancestor.name}</a>
-                </Link>
+                <Link key={id + 1} href={currentPath}>{ancestor.name}</Link>
                 <> / </>
             </>
         );
@@ -35,7 +33,7 @@ function Title({ name, title, ancestors }: propsObj) {
             </div>
             <div className={`${style.nav} h1`}>
                 {name
-                    ? <><Link href='/'><a>PaulW.XYZ</a></Link> / {pathElements}{name}</>
+                    ? <><Link href='/'>PaulW.XYZ</Link> / {pathElements}{name}</>
                     : <>PaulW.XYZ /</>}
             </div>
         </>
