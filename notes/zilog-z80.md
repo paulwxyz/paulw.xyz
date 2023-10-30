@@ -1,8 +1,4 @@
----
-title: Zilog Z80 Microprocessor
-last_updated: '2022-09-29T02:41:18.085Z'
----
-
+# Zilog Z80 Microprocessor
 <table>
 	<tr>
 		<td>Name</td>

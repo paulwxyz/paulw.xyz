@@ -75,6 +75,6 @@ function isValid(date: any) {
 const DateTool = {
     toRelativeDate, 
     isValid
-};;
+};
 
 export default DateTool;

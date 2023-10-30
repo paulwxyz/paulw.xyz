@@ -1,7 +1,4 @@
----
-title: Steam Deck
-last_updated: '2022-09-29T03:55:40.476Z'
----
+# Steam Deck
 
 <a href='https://www.steamdeck.com/' class='link button extern blue'>Official Website</a>
 

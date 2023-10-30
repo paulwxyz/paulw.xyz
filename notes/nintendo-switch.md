@@ -1,7 +1,4 @@
----
-title: Nintendo Switch
-last_updated: '2022-10-02T23:01:34.000Z'
----
+# Nintendo Switch
 
 <a href='https://www.nintendo.com/switch' class='link button extern blue'>Official Website</a>
 <a href='https://developer.nintendo.com/' class='link button extern blue'>Developer Portal</a>

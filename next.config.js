@@ -4,18 +4,6 @@ module.exports = {
         defaultLocale: 'en-US'
     },
     webpack: (config, _options) => {
-        const { cache } = require('./lib/slug');
-
-        config.plugins.push(
-            {
-                apply: (compiler) => {
-                    compiler.hooks.beforeCompile.tap('cachePostDataBC', _ => {
-                        cache();
-                    });
-                }
-            }
-        )
-
         config.module.rules.push(
             {
                 test: /\.ya?ml$/,

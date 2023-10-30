@@ -3,21 +3,17 @@ import ReactMarkdown from 'react-markdown';
 import ReadmeMd from '../README.md';
 import License from '../LICENSE.txt';
 import Layout from '../components/layout';
-import GitHubProfile from '../components/github-profile';
 
-function AboutPage({usr}: any) {
+function AboutPage() {
     return (
-        <Layout name='About' title='About PaulW.XYZ'>
+        <Layout >
             <section className='block'>
                 <p>This is a personal website written by <a href='https://github.com/LambdaPaul'>@LambdaPaul</a>.</p>
                 <p>Why did I write this?
-                I do not really know, at least the content I put here.
-                I wanted a place on the web where I wanted to put everything I think is worth looking at some point in the future.
-                It seems wise to have things up here even though they may not be worthwhile, as many things ultimately are not.</p>
+                    I do not really know, at least the content I put here.
+                    I wanted a place on the web where I wanted to put everything I think is worth looking at some point in the future.
+                    It seems wise to have things up here even though they may not be worthwhile, as many things ultimately are not.</p>
                 <p>Got any questions, concerns, or issues? Contact me via email: <code>lambdapaul [at] pm [dot] me</code>.</p>
-            </section>
-            <section className='block'>
-                {usr && <GitHubProfile user={usr} />}
             </section>
             <hr />
             <section className='block'>
@@ -36,18 +32,6 @@ function AboutPage({usr}: any) {
             </section>
         </Layout>
     );
-}
-
-export async function getStaticProps() {
-    try {
-        const res = await fetch('https://api.github.com/users/lambdapaul');
-        const usr = await res.json();
-        return {
-            props: { usr }
-        };
-    } catch (e) {
-        return {props: {}}
-    }
 }
 
 export default AboutPage;

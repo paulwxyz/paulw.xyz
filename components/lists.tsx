@@ -48,11 +48,6 @@ export function toListItem(record: Record<string, any>): listItem | null {
     });
 }
 
-const s = {
-    "af": 123,
-    "asdf" : 123
-}
-
 export function mapChild(
     obj: listItem | string, 
     level: number, 

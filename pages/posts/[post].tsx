@@ -1,16 +1,28 @@
 import Layout from '../../components/layout';
-import { getAllPosts, getPost } from '../../lib/slug';
 import ReactMarkdown from 'react-markdown';
 import style from '../../styles/post.module.css';
+import PostsInfo from '../../public/posts.json';
+import readMarkdown from '../../lib/read-markdown';
 
-function Post({ post }: any) { // eh
+interface Post {
+    title: string;
+    mtime: string;
+    otime?: string;
+}
+
+interface Posts {
+    [slug: string]: Post
+}
+
+function Post({ post }: { post: Post & { content: string, cover?: string } }) {
     return (<>
-        <Layout removeContainer={true} name={post.title} title={post.title} ancestors={[{ name: 'Posts', path: 'posts' }]}>
-            {<div className={style.imageBlock} 
-                style={{ backgroundImage: 
-                    post.cover ? 
-                        `url(/assets/images/${post.cover})` : 
-                        'linear-gradient(to bottom right, #565a0f, #08432c 15%, rgb(5, 39, 10) 40%, rgb(0, 22, 46) 80%)'
+        <Layout removeContainer={true}  >
+            {<div className={style.imageBlock}
+                style={{
+                    backgroundImage:
+                        post.cover ?
+                            `url(/assets/images/${post.cover})` :
+                            'linear-gradient(to bottom right, #565a0f, #08432c 15%, rgb(5, 39, 10) 40%, rgb(0, 22, 46) 80%)'
                 }}></div>}
             <div className={style.spacer}></div>
             <section className={`${style.block} block`}>
@@ -25,20 +37,24 @@ function Post({ post }: any) { // eh
 }
 
 export async function getStaticProps({ params }: any) {
-    const post = getPost(params.post);
-
+    const postsInfo: Posts = PostsInfo;
+    const post: Post = postsInfo[params.post];
     return {
-        props: { post }
-    };
+        props: {
+            post: {
+                ...post,
+                content: await readMarkdown('posts', params.post, true)
+            }
+        }
+    }
 }
 
 export async function getStaticPaths() {
-    const posts = getAllPosts();
     return {
-        paths: posts.map((post: any) => {
+        paths: Object.keys(PostsInfo).map((post: string) => {
             return {
                 params: {
-                    post: post.slug
+                    post
                 }
             }
         }),

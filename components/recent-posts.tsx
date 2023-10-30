@@ -1,23 +1,24 @@
 import Link from "next/link";
 import date from "../lib/date";
-import { IPostMeta } from "../lib/slug";
 import style from '../styles/recent-posts.module.css';
+import PostsInfo from '../public/posts.json';
 
-function RecentPosts({ postsMeta }: { postsMeta: IPostMeta[] }) {
-    if (!postsMeta.length)
+function RecentPosts() {
+    const posts = Object.entries(PostsInfo);
+    if (!posts.length)
         return <></>;
     return (
         <div className='block'>
             <div className='h2'>Recent Posts</div>
             <div className={style.container}>
-                {postsMeta?.slice(0, 10)
-                    .map((post: any) => {
+                {posts?.slice(0, 10)
+                    .map(([slug, post]: any) => {
                         return <div className={style.block} key={post.slug}>
                             <span className={style.postDate}>
-                                {date.toRelativeDate(new Date(post.created_at))}
+                                {date.toRelativeDate(new Date(post.otime))}
                             </span>
                             <div className={style.postTitle}>
-                                <Link href={`/posts/${post.slug}`}>
+                                <Link href={`/posts/${slug}`}>
                                     {post.title}
                                 </Link>
                             </div>
@@ -25,7 +26,7 @@ function RecentPosts({ postsMeta }: { postsMeta: IPostMeta[] }) {
                     })}
             </div>
             {
-                postsMeta.length > 10 &&
+                posts.length > 10 &&
                 <div className={style.more}>
                     <Link href='/posts' className='h5'>More...</Link>
                 </div>

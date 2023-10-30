@@ -1,36 +1,40 @@
 import Link from 'next/link';
 import Layout from '../../components/layout';
-import date from '../../lib/date';
-import { getNotesMeta, INoteMeta } from '../../lib/slug';
 
-function NotesPage({ notesMeta }: { notesMeta: INoteMeta[] }) {
+import date from '../../lib/date';
+import NotesInfo from '../../public/notes.json';
+
+function NoteEntry(props: { path: string, note: { title: string, mtime: string } }) {
     return (
-        <Layout name='Notes'>
-            <table>
+        <tr>
+            <td style={{ flex: '1 0 50%' }}>
+                <Link href={props.path}>
+                    {props.note.title}
+                </Link>
+            </td>
+            <td style={{ fontStyle: 'italic' }}>
+                {props.note.mtime && date.toRelativeDate(new Date(props.note.mtime))}
+            </td>
+        </tr>
+
+    );
+}
+
+function NotesPage() {
+    const notes = Object.entries(NotesInfo);
+
+    return (
+        <Layout>
+            {!notes || notes.length === 0 && <>No notes found</> || <table>
                 <tbody>
-                {notesMeta && notesMeta.map((note: INoteMeta, i) => {
-                    return (
-                    <tr key={i}>
-                        <td style={{flex: '1 0 50%'}}>
-                            <Link href={`/notes/${note.slug}`}>
-                                {note.title}
-                            </Link>
-                        </td>
-                        <td style={{fontStyle: 'italic'}}>
-                            {note.last_updated && date.toRelativeDate(new Date(note.last_updated))}
-                        </td>
-                    </tr>
-                )})}
+                    {notes.map(([slug, note]: any, i: number) => {
+                        return <NoteEntry path={`/notes/${slug}`} note={note} key={i} />
+                    })}
                 </tbody>
-            </table>
+            </table>}
         </Layout>
     )
 }
 
-export async function getStaticProps() {
-    return {
-        props: { notesMeta: getNotesMeta() }
-    };
-}
 
 export default NotesPage;

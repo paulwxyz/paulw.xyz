@@ -1,7 +1,4 @@
----
-title: Steam Client 
-last_updated: '2022-09-29T03:15:58.777Z'
----
+# Steam Client
 
 <a href='https://store.steampowered.com' class='link button extern blue'>Steam Store</a>
 <a href='https://developer.valvesoftware.com/wiki/SteamCMD' class='link button extern blue'>SteamCMD</a>

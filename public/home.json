@@ -1,0 +1,14 @@
+ {
+     "posts": {
+         "title": "Posts"
+     },
+     "notes": {
+         "title": "Notes"
+     },
+     "about": {
+         "title": "About"
+     },
+     "sitemap": {
+         "title": "Site Map"
+     }
+ }

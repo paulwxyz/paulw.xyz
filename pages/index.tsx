@@ -4,36 +4,30 @@ import Layout from '../components/layout';
 import QuickLinks from '../components/quick-links';
 import RecentNotes from '../components/recent-notes';
 import RecentPosts from '../components/recent-posts';
-import { getNotesMeta, getPostsMeta, INoteMeta, IPostMeta } from '../lib/slug';
+import RootInfo from '../public/home.json';
 
 function Nav() {
-    const nav = { 'Posts': '/posts', 'Notes': '/notes', 'About': '/about', };
+    const nav = RootInfo;
     return (
         <div className='block' style={{ textAlign: 'center' }}>
             {
-                Object.entries(nav).map(([k, v], i) => {
-                    return <Link key={i} href={v} className='button green'>{k}</Link>
+                Object.entries(nav).map(([slug, info], i) => {
+                    return <Link key={i} href={slug} className='button green'>{info.title}</Link>
                 })
             }
         </div>
     )
 }
 
-function HomePage({ postsMeta, notesMeta }: { postsMeta: IPostMeta[], notesMeta: INoteMeta[] }) {
+function HomePage() {
     return (
-        <Layout name='' title='PaulW.XYZ'>
+        <Layout>
             <Nav />
             <QuickLinks />
-            <RecentNotes notesMeta={notesMeta} />
-            <RecentPosts postsMeta={postsMeta} />
+            <RecentNotes />
+            <RecentPosts />
         </Layout>
     )
-}
-
-export async function getStaticProps() {
-    return {
-        props: { postsMeta: getPostsMeta(), notesMeta: getNotesMeta() }
-    };
 }
 
 export default HomePage;
