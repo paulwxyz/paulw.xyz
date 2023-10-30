@@ -4,8 +4,8 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { monokaiSublime as hlTheme } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import readMarkdown from '../../lib/read-markdown';
 
+import readMarkdown from '../../lib/read-markdown';
 import NotesInfo from '../../public/notes.json';
 
 interface Note {
@@ -22,9 +22,9 @@ function Markdown({ content }: any) {
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
-            code({ node, inline, className, children, ...props }) {
+            code({ node, className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || '')
-                return !inline && match
+                return match
                     ? (
                         <SyntaxHighlighter
                             showLineNumbers={true}

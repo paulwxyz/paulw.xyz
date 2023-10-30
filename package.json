@@ -12,10 +12,10 @@
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-markdown": "^8.0.7",
+    "react-markdown": "^9.0.0",
     "react-syntax-highlighter": "^15.5.0",
-    "rehype-raw": "^6.1.1",
-    "remark-gfm": "^3.0.1",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.0",
     "uri-js": "^4.4.1"
   },
   "devDependencies": {
