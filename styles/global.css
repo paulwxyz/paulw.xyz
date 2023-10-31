@@ -307,7 +307,7 @@ li {
     background: var(--primary-green);
     display: inline-block;
     text-decoration: none;
-    transition: 100ms ease-in-out all;
+    transition: 50ms ease-in-out all;
     border-radius: 0.5rem;
     box-shadow: none;
 }
@@ -324,10 +324,10 @@ li {
 
 .button:active {
     text-decoration: none;
-    box-shadow: none;
+    box-shadow: 0 0 0 1px var(--tertiary-green);
+    transform: scale(0.98);
     color: #cccccc;
     background: var(--tertiary-green);
-    box-shadow: none;
 }
 
 .button.blue {
@@ -355,17 +355,17 @@ li {
 .button.link::after {
     content: ' \2192';
     display: inline-block;
-    transition: 100ms ease-in-out all;
+    transition: 50ms ease-in-out all;
     margin-left: 0.3rem;
 }
 
 .button.link:hover {
     display: inline-block;
-    transition: 100ms ease-in-out all;
+    transition: 50ms ease-in-out all;
 }
 
 .button.link:hover::after {
-    transform: translateX(0.2rem) scale(1.3);
+    transform: translateX(0.25rem) scale(1.3);
 }
 
 .button.link.extern:hover::after {
