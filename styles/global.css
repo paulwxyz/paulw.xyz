@@ -318,16 +318,16 @@ li {
     box-shadow: 0 0 0 1px var(--secondary-green);
 }
 
-.button:focus {
-    box-shadow: 0 0 0 2px #ffffff;
-}
-
 .button:active {
     text-decoration: none;
     box-shadow: 0 0 0 1px var(--tertiary-green);
     transform: scale(0.98);
     color: #cccccc;
     background: var(--tertiary-green);
+}
+
+.button:focus {
+    box-shadow: 0 0 0 2px #ffffff;
 }
 
 .button.blue {
@@ -341,7 +341,11 @@ li {
 
 .button.blue:active {
     background: var(--tertiary-blue);
-    box-shadow: none;
+    box-shadow: 0 0 0 1px var(--tertiary-green);
+}
+
+.button.blue:focus {
+    box-shadow: 0 0 0 2px #ffffff;
 }
 
 .text.center {

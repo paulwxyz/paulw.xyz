@@ -1,5 +1,5 @@
 const fs = require('fs/promises');
-const { createReadStream, write } = require('fs');
+const { createReadStream } = require('fs');
 const path = require('path');
 const readline = require('readline/promises');
 const { info } = require('console');
