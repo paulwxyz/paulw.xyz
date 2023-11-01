@@ -31,7 +31,7 @@ Icon=com.youtube.tv
 * Without the user agent change, the above URL is inaccessible
 * Adblockers like uBlock Origin, AdBlock Plus (both tested) do not remove ads unlike on the desktop site
 * Choosing the Xbox user agent is recommended as button prompts match the Steam Deck's `ABXY` button layout
-* The Electron framework can be used to build a wrapper for the URL. This is the preferrable method as it supports exiting from within the application, while browsers only support manual termination from the Steam menu. E.g. (assuming you can build native linux binaries on a device)
+* The Electron framework can be used to build a wrapper for the URL. This is the preferable method as it supports exiting from within the application, while browsers only support manual termination from the Steam menu. E.g. (assuming you can build native linux binaries on a device)
 
 ```javascript
 const { app, BrowserWindow } = require('electron');
