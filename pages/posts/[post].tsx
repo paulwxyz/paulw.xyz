@@ -22,14 +22,15 @@ function Post({ post }: { post: Post & { content: string, cover?: string } }) {
                     backgroundImage:
                         post.cover ?
                             `url(/assets/images/${post.cover})` :
-                            'linear-gradient(to bottom right, #565a0f, #08432c 15%, rgb(5, 39, 10) 40%, rgb(0, 22, 46) 80%)'
+                            'linear-gradient(to bottom right, rgb(5, 51, 11), rgb(5, 45, 13) 15%, rgb(5, 39,15) 40%, rgb(0, 30, 16) 80%)'
                 }}></div>}
-            <div className={style.spacer}></div>
+            <div className={`${style.spacer} ${post.cover ? style.background : ''}`}></div>
             <section className={`${style.block} block`}>
                 <div className='container'>
                     <ReactMarkdown>{post.content}</ReactMarkdown>
                 </div>
             </section>
+            <div className={style.spacer}></div>
         </Layout>
 
     </>

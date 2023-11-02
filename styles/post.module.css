@@ -16,7 +16,7 @@
 
 .block {
     font-family: 'EB Garamond', 'Garamond', 'Times New Roman', Times, serif;
-    background-color: rgba(13, 17, 23, 0.99);
+    background-color: rgba(13, 17, 23, 0.97);
     margin: 0 auto;
     border-radius: 0;
     font-size: 1.25rem;
@@ -25,5 +25,9 @@
 }
 
 .spacer {
+    height: 6.25rem;
+}
+
+.background.spacer {
     height: 25rem;
 }
