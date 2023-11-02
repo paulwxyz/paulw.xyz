@@ -17,6 +17,7 @@
     src: url('/assets/fonts/Cantarell/Cantarell-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -24,6 +25,7 @@
     src: url('/assets/fonts/Cantarell/Cantarell-Thin.otf') format('opentype');
     font-weight: 100;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -31,6 +33,7 @@
     src: url('/assets/fonts/Cantarell/Cantarell-Light.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -38,6 +41,7 @@
     src: url('/assets/fonts/Cantarell/Cantarell-Bold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -45,6 +49,7 @@
     src: url('/assets/fonts/Cantarell/Cantarell-ExtraBold.otf') format('opentype');
     font-weight: 800;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -52,6 +57,7 @@
     src: url('/assets/fonts/EB_Garamond/static/EBGaramond-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -59,6 +65,7 @@
     src: url('/assets/fonts/EB_Garamond/static/EBGaramond-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -66,34 +73,39 @@
     src: url('/assets/fonts/EB_Garamond/static/EBGaramond-ExtraBold.ttf') format('truetype');
     font-weight: 800;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Hack';
-    src: url('/assets/fonts/Hack/hack-regular-subset.woff2?sha=3114f1256') format('woff2'), url('/assets/fonts/Hack/hack-regular-subset.woff?sha=3114f1256') format('woff');
+    src: url('/assets/fonts/Hack/hack-regular-subset.woff2') format('woff2'), url('/assets/fonts/Hack/hack-regular-subset.woff') format('woff');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Hack';
-    src: url('/assets/fonts/Hack/hack-bold-subset.woff2?sha=3114f1256') format('woff2'), url('/assets/fonts/Hack/hack-bold-subset.woff?sha=3114f1256') format('woff');
+    src: url('/assets/fonts/Hack/hack-bold-subset.woff2') format('woff2'), url('/assets/fonts/Hack/hack-bold-subset.woff') format('woff');
     font-weight: 700;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Hack';
-    src: url('/assets/fonts/Hack/hack-italic-subset.woff2?sha=3114f1256') format('woff2'), url('/assets/fonts/Hack/hack-italic-webfont.woff?sha=3114f1256') format('woff');
+    src: url('/assets/fonts/Hack/hack-italic-subset.woff2') format('woff2'), url('/assets/fonts/Hack/hack-italic-webfont.woff') format('woff');
     font-weight: 400;
     font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Hack';
-    src: url('/assets/fonts/Hack/hack-bolditalic-subset.woff2?sha=3114f1256') format('woff2'), url('/assets/fonts/Hack/hack-bolditalic-subset.woff?sha=3114f1256') format('woff');
+    src: url('/assets/fonts/Hack/hack-bolditalic-subset.woff2') format('woff2'), url('/assets/fonts/Hack/hack-bolditalic-subset.woff') format('woff');
     font-weight: 700;
     font-style: italic;
+    font-display: swap;
 }
 
 * {
