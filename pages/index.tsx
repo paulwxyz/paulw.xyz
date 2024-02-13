@@ -9,7 +9,8 @@ import RootInfo from '../public/home.json';
 function Nav() {
     const nav = RootInfo;
     return (
-        <div className='block' style={{ textAlign: 'center' }}>
+        <div className='block'>
+            <h2>Navigation</h2>
             {
                 Object.entries(nav).map(([slug, info], i) => {
                     return <Link key={i} href={slug} className='button green'>{info.title}</Link>
@@ -22,10 +23,10 @@ function Nav() {
 function HomePage() {
     return (
         <Layout>
-            <Nav />
             <QuickLinks />
-            <RecentNotes />
             <RecentPosts />
+            <RecentNotes />
+            <Nav />
         </Layout>
     )
 }

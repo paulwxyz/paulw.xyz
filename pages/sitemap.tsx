@@ -9,11 +9,13 @@ function traverseMap(head: Site, cwd = '', depth = 0) {
     let elements = [];
     for (const [slug, info] of Object.entries(head.subpages)) {
         const path = `${cwd}/${slug}`;
-        const children = (<><ul> {traverseMap(info, path, depth + 1)}</ul></>);
+        const children = (<><dl style={{marginLeft: '3rem'}}> {traverseMap(info, path, depth + 1)}</dl></>);
         elements.push(<>
-            <li>
-                <Link className='button' href={path}>{info.title}</Link> {children}
-            </li>
+            <>
+                <dt>{info.title}</dt>
+                <dd><Link href={path}>{path}</Link></dd>
+                 {children}
+            </>
         </>);
     }
     return elements;
@@ -23,7 +25,7 @@ function SiteMapPage() {
 
 
     return <Layout>
-        <ul>{traverseMap(SiteMap)}</ul>
+        <dl>{traverseMap(SiteMap)}</dl>
     </Layout>;
 }
 

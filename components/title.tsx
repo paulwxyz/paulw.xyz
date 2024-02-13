@@ -17,7 +17,7 @@ function createPathElements(ancestors: Array<{ name: string, path: string }>) {
             </>
         );
     });
-};
+}
 
 function Title() {
 
@@ -31,10 +31,12 @@ function Title() {
         const subPaths = pagePath.split('/');
         for (const p of subPaths.slice(1, subPaths.length)) {
             splitPath.push({ name: currRoot[p].title, path: p });
+
             if (currRoot === undefined
                 || currRoot[p] === undefined
-                || currRoot[p].subpages !== undefined)
-                currRoot = currRoot[p].subpages!;
+                || currRoot[p].subpages === undefined)
+                break;
+            currRoot = currRoot[p].subpages!;
         }
         if (splitPath !== undefined && splitPath.length > 0)
             title = splitPath.pop()!.name;
@@ -53,9 +55,11 @@ function Title() {
                 </h1>
             </div>
             <div className={`${style.nav} h1`}>
-                {title
-                    ? <><Link href='/'>PaulW.XYZ</Link> / {pathElements}{title}</>
-                    : <>PaulW.XYZ /</>}
+                {
+                    title
+                        ? <><Link href='/'>PaulW.XYZ</Link> / {pathElements}{title}</>
+                        : <>PaulW.XYZ /</>
+                }
             </div>
         </>
     );

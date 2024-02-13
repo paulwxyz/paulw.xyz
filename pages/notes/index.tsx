@@ -1,37 +1,55 @@
 import Link from 'next/link';
-import Layout from '../../components/layout';
 
-import date from '../../lib/date';
+import Layout from '../../components/layout';
+import { toRelativeDate } from '../../lib/date';
+
 import NotesInfo from '../../public/notes.json';
 
-function NoteEntry(props: { path: string, note: { title: string, mtime: string } }) {
+function NoteEntry({ note }: { note: { title: string, mtime: string, slug: string } }) {
     return (
         <tr>
             <td style={{ flex: '1 0 50%' }}>
-                <Link href={props.path}>
-                    {props.note.title}
+                <Link href={`/notes/${note.slug}`}>
+                    {note.title}
                 </Link>
             </td>
             <td style={{ fontStyle: 'italic' }}>
-                {props.note.mtime && date.toRelativeDate(new Date(props.note.mtime))}
+                {note.mtime && toRelativeDate(note.mtime)}
             </td>
         </tr>
-
     );
 }
 
 function NotesPage() {
-    const notes = Object.entries(NotesInfo);
+    const notes = Object.entries(NotesInfo)
+        .map(([slug, note]) => {
+            return {
+                slug,
+                title: note.title,
+                mtime: new Date(note.mtime)
+            }
+        })
+        .sort(
+            (a, b) => {
+                return b.mtime.getTime() - a.mtime.getTime();
+            }
+        );
 
     return (
         <Layout>
-            {!notes || notes.length === 0 && <>No notes found</> || <table>
-                <tbody>
-                    {notes.map(([slug, note]: any, i: number) => {
-                        return <NoteEntry path={`/notes/${slug}`} note={note} key={i} />
-                    })}
-                </tbody>
-            </table>}
+            {
+                !notes || notes.length === 0
+                && <>No notes found</>
+                || <table>
+                    <tbody>
+                        {notes.map(
+                            (note: any, i: number) => {
+                                return (<NoteEntry note={note} key={i} />);
+                            }
+                        )}
+                    </tbody>
+                </table>
+            }
         </Layout>
     )
 }

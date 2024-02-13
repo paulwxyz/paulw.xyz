@@ -17,7 +17,7 @@ function AboutPage() {
             </section>
             <hr />
             <section className='block'>
-                <p>Source for this site is available at <a className='button link extern blue' href='https://github.com/LambdaPaul/www'>GitHub / LambdaPaul / www</a></p>
+                <p>Source for this site is available at <a className='link' href='https://github.com/LambdaPaul/www'>GitHub / LambdaPaul / www</a></p>
                 <p>Relevant information regarding the source is available on the repo and is also provided below.</p>
             </section>
             <section className='block'>

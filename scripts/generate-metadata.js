@@ -2,12 +2,12 @@ const fs = require('fs/promises');
 const { createReadStream } = require('fs');
 const path = require('path');
 const readline = require('readline/promises');
-const { info } = require('console');
+// const { info } = require('console');
 
 async function readFirstLines(filePath, lineCount = 1) {
     return new Promise((resolve, reject) => {
         try {
-            const stream = createReadStream(filePath, 'utf-8');
+            const stream = createReadStream(filePath, { encoding: 'utf-8' });
             const rl = readline.createInterface({ input: stream });
             let counter = 0;
             const lines = [];

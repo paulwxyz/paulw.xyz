@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import style from '../../styles/post.module.css';
 import PostsInfo from '../../public/posts.json';
 import readMarkdown from '../../lib/read-markdown';
+import DateTool from '../../lib/date';
 
 interface Post {
     title: string;
@@ -14,7 +15,43 @@ interface Posts {
     [slug: string]: Post
 }
 
-function Post({ post }: { post: Post & { content: string, cover?: string } }) {
+
+function TimeBlock({ mtime, otime }: { mtime: string, otime: string }) {
+    const ampm = (h: number) => { if (h >= 12) return 'p.m.'; return 'a.m.'; };
+
+    const mdate = new Date(mtime);
+    const odate = new Date(otime);
+
+    const format = (date: Date) => {
+        const day = date.getDay();
+        const ord = <sup>{DateTool.getOrdinalDaySuffix(date.getDay())}</sup>;
+        const month = DateTool.getFullMonth(date.getMonth());
+        const year = date.getFullYear();
+        const hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+        const minPrefix = date.getMinutes() < 10 ? '0' : '';
+        const minutes = date.getMinutes();
+        const twelveSfx = ampm(date.getHours());
+        return <>{day}{ord} {month} {year} at {hours}:{minPrefix}{minutes} {twelveSfx}</>
+    };
+
+    return (
+        <div style={{ textAlign: 'right', fontSize: '16px', fontFamily: 'Cantarell', fontStyle: 'italic' }}>
+            {
+                mtime ?
+                    <div className='mtime' data-text={mdate.toISOString()}>
+                        Last updated: {format(mdate)}
+                    </div>
+                    :
+                    <></>
+            }
+            <div className='otime'>
+                {format(odate)}
+            </div>
+        </div>
+    );
+}
+
+function Post({ post }: { post: Post & { content: string, cover?: string, otime: string, mtime?: string } }) {
     return (<>
         <Layout removeContainer={true}  >
             {<div className={style.imageBlock}
@@ -27,6 +64,7 @@ function Post({ post }: { post: Post & { content: string, cover?: string } }) {
             <div className={`${style.spacer} ${post.cover ? style.background : ''}`}></div>
             <section className={`${style.block} block`}>
                 <div className='container'>
+                    <TimeBlock mtime={post.mtime} otime={post.otime} />
                     <ReactMarkdown>{post.content}</ReactMarkdown>
                 </div>
             </section>

@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
     i18n: {
         locales: ['en-US'],
         defaultLocale: 'en-US'
@@ -32,9 +32,15 @@ module.exports = {
             },
         );
 
-        return config
+        return config;
     },
-    images: {
-        domains: ['avatars.githubusercontent.com']
-    },
+};
+
+if (process.env.ANALYZE) {
+    const bundleAnalyzer = require('@next/bundle-analyzer')({
+        enabled: true
+    });
+    module.exports = bundleAnalyzer(config);
+} else {
+    module.exports = config;
 }

@@ -1,34 +1,46 @@
 import Link from "next/link";
-import date from "../lib/date";
+import { toRelativeDate } from "../lib/date";
 import style from '../styles/recent-posts.module.css';
 import PostsInfo from '../public/posts.json';
 
+function PostBlock({ slug, otime, title }: { slug: string, otime: string, title: string }) {
+    return (
+        <div className={style.block}>
+            <span className={style.postDate}>
+                {toRelativeDate(new Date(otime))}
+            </span>
+            <div className={style.postTitle}>
+                <Link href={`/posts/${slug}`}>
+                    {title}
+                </Link>
+            </div>
+        </div>
+    );
+}
+
 function RecentPosts() {
-    const posts = Object.entries(PostsInfo);
+    const posts = Object.entries(PostsInfo).reverse();
     if (!posts.length)
         return <></>;
     return (
         <div className='block'>
-            <div className='h2'>Recent Posts</div>
+            <h2>Recent Posts</h2>
             <div className={style.container}>
                 {posts?.slice(0, 10)
-                    .map(([slug, post]: any) => {
-                        return <div className={style.block} key={post.slug}>
-                            <span className={style.postDate}>
-                                {date.toRelativeDate(new Date(post.otime))}
-                            </span>
-                            <div className={style.postTitle}>
-                                <Link href={`/posts/${slug}`}>
-                                    {post.title}
-                                </Link>
-                            </div>
-                        </div>
+                    .map(([slug, post]: any, i: number) => {
+                        return (
+                            <PostBlock
+                                key={i}
+                                slug={slug}
+                                title={post.title}
+                                otime={post.otime} />
+                        );
                     })}
             </div>
             {
                 posts.length > 10 &&
                 <div className={style.more}>
-                    <Link href='/posts' className='h5'>More...</Link>
+                    <Link href='/posts' >More...</Link>
                 </div>
             }
         </div>
