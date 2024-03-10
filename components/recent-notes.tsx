@@ -4,8 +4,9 @@ import NotesInfo from '../public/notes.json';
 function RecentNotes() {
     const notes = Object.entries(NotesInfo).reverse();
     return (
-        <ul className='block'>
+    <div className='block'>
             <h2>Recent Notes</h2>
+        <ul>
             {notes?.slice(0, 5)
                 .map(([slug, note]: any, i: number) => {
                     return (
@@ -25,6 +26,7 @@ function RecentNotes() {
                     <Link href='/notes'>More...</Link>
             }
         </ul>
+    </div>
     );
 }
 
