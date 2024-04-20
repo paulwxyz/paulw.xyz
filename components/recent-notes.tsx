@@ -2,20 +2,28 @@ import Link from "next/link";
 import NotesInfo from '../public/notes.json';
 
 function RecentNotes() {
-    const notes = Object.entries(NotesInfo).reverse();
+    const notes = Object.entries(NotesInfo)
+        .map(([slug, note]) => {
+            return {
+                slug,
+                title: note.title,
+                mtime: new Date(note.mtime)
+            }
+        })
+        .sort(
+            (a, b) => {
+                return b.mtime.getTime() - a.mtime.getTime();
+            }
+        );
     return (
-        <ul className='block'>
+    <div className='block'>
             <h2>Recent Notes</h2>
+        <ul>
             {notes?.slice(0, 5)
-                .map(([slug, note]: any, i: number) => {
+                .map(({slug, title, mtime}) => {
                     return (
-                        <li 
-                            key={i}
-                        >
-                            <Link
-                            href={`/notes/${slug}`}>
-                            {note.title}
-                        </Link>
+                        <li key={mtime.getTime()} >
+                            <Link href={`/notes/${slug}`}>{title}</Link>
                         </li>
                     );
                 })
@@ -25,6 +33,7 @@ function RecentNotes() {
                     <Link href='/notes'>More...</Link>
             }
         </ul>
+    </div>
     );
 }
 

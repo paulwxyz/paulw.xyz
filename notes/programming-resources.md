@@ -46,3 +46,7 @@ refer to someone or within something.
 -  The Aggregate Magic Algorithms
 
     http://aggregate.org/MAGIC/
+
+- Memory Allocation Strategies
+    
+    https://www.gingerbill.org/series/memory-allocation-strategies/
