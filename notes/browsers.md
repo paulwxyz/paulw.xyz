@@ -21,7 +21,7 @@ Product/Service-specific Extensions:
 - [Firefox Source Docs](https://firefox-source-docs.mozilla.org/)
 
 ### Reducing UI element padding
-- Go to [about:config](about:config)
+- Go to the browser's [about\:config](#) page
 - Set `browser.uidensity` equal to `1`
 
 ## Safari

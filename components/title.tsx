@@ -28,7 +28,7 @@ function Title() {
     let currRoot: SiteSubPages = SiteMap.subpages;
     let title: string | null = null;
     if (pagePath !== '/') {
-        const subPaths = pagePath.split('/');
+        const subPaths = pagePath.split('?')[0].split('#')[0].split('/');
         for (const p of subPaths.slice(1, subPaths.length)) {
             splitPath.push({ name: currRoot[p].title, path: p });
 

@@ -1,10 +1,12 @@
-import Layout from '../../components/layout';
 import ReactMarkdown from 'react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { monokaiSublime as hlTheme } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import remarkDirective from 'remark-directive';
+import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-directives';
 
+import Layout from '../../components/layout';
 import readMarkdown from '../../lib/read-markdown';
 import NotesInfo from '../../public/notes.json';
 
@@ -19,7 +21,7 @@ interface Notes {
 
 function Markdown({ content }: any) {
     return <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGithubAdmonitionsToDirectives, remarkDirective]}
         rehypePlugins={[rehypeRaw]}
         components={{
             code({ node, className, children, ...props }) {

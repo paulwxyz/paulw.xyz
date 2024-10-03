@@ -8,14 +8,14 @@ function traverseMap(head: Site, cwd = '', depth = 0) {
         return [];
     let elements = [];
     for (const [slug, info] of Object.entries(head.subpages)) {
+        if (slug === 'sitemap')
+            continue;
         const path = `${cwd}/${slug}`;
         const children = (<><dl style={{marginLeft: '3rem'}}> {traverseMap(info, path, depth + 1)}</dl></>);
         elements.push(<>
-            <>
                 <dt>{info.title}</dt>
-                <dd><Link href={path}>{path}</Link></dd>
+                <dd><Link href={path}>paulw.xyz{path}</Link></dd>
                  {children}
-            </>
         </>);
     }
     return elements;
