@@ -39,6 +39,10 @@ values.
 
 - [SteamDB](https://steamdb.info/)
   - tracks depot changes, price history, everything steam
+- [gg.deals](https://gg.deals)
+    - tracks game deals for steam, steam key stores and other platforms
+- [IsThereAnyDeal](https://isthereanydeal.com)
+    - similar to gg.deals except it does not support key seller tracking
 - [SteamGifts](https://steamgifts.com/)
   - giveaway Steam keys or take part in giveaways
 - [SteamTradeMatcher](https://steamtradematcher.com/)
@@ -46,11 +50,5 @@ values.
 - [ArchiSteamFarm](https://asf.justarchi.net)
   - useful bot written in C# to farm trading cards for owned games that can be
     sold
-- [IsThereAnyDeal](https://isthereanydeal.com)
-  - tracks game deals for steam, steam key stores and other platforms
-  - somewhat broken although it is being migrated and modernized, see [New
-    ITAD](https://new.isthereanydeal.com)
-- [gg.deals](https://gg.deals)
-  - newer than and similar to IsThereAnyDeal with modern UI
 - [SteamGridDB](https://steamgriddb.com/)
   - custom video game assets for games available and not available on steam
