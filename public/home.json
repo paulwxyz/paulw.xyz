@@ -10,5 +10,11 @@
      },
      "sitemap": {
          "title": "Site Map"
+     },
+     "https://git.paulw.xyz": {
+         "title": "Git.PaulW.XYZ"
+     },
+     "https://social.paulw.xyz": {
+         "title": "Social.PaulW.XYZ"
      }
  }

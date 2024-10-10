@@ -30,6 +30,8 @@ function Title() {
     if (pagePath !== '/') {
         const subPaths = pagePath.split('?')[0].split('#')[0].split('/');
         for (const p of subPaths.slice(1, subPaths.length)) {
+            if (!p)
+                continue;
             splitPath.push({ name: currRoot[p].title, path: p });
 
             if (currRoot === undefined

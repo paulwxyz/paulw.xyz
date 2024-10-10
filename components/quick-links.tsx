@@ -4,7 +4,6 @@ import Pages from '../public/external.json';
 function QuickLinks() {
     return (
         <div className='block'>
-            <h2>Quick Links</h2>
             {
                 Object.entries(Pages).map(([title, link], i) => {
                     const extern = link.match(/^http/) && `blue extern` || '';

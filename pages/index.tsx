@@ -7,12 +7,12 @@ import RecentPosts from '../components/recent-posts';
 import RootInfo from '../public/home.json';
 
 function Nav() {
-    const nav = RootInfo;
+    const nav = Object.entries(RootInfo);
     return (
         <div className='block'>
             <h2>Navigation</h2>
             {
-                Object.entries(nav).map(([slug, info], i) => {
+                nav.map(([slug, info], i) => {
                     return <Link key={i} href={slug} className='button green'>{info.title}</Link>
                 })
             }

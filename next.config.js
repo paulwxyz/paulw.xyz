@@ -8,7 +8,6 @@ const config = {
             {
                 test: /\.ya?ml$/,
                 use: 'js-yaml-loader',
-
             },
             {
                 test: /\.svg$/,
