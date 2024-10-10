@@ -45,7 +45,7 @@ MimeType=text/plain; # $XDG_PATH contains the paths used to fetch icons, extensi
       menu. 
     - Sample code for the electron app (assuming you can build linux binaries
       for the target platform):
-      ```javascript
+    ```javascript
       // sample code to get started
       const { app, BrowserWindow } = require('electron');
       app

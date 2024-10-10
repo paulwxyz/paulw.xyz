@@ -8,7 +8,10 @@ import remarkGithubAdmonitionsToDirectives from 'remark-github-admonitions-to-di
 
 import Layout from '../../components/layout';
 import readMarkdown from '../../lib/read-markdown';
+import { toLocaleString } from '../../lib/date';
 import NotesInfo from '../../public/notes.json';
+
+import style from '../../styles/note.module.css';
 
 interface Note {
     title: string,
@@ -50,6 +53,9 @@ function Markdown({ content }: any) {
 function Note({ note }: any) {
     return (<>
         <Layout >
+            <span className={style['last-updated']}>
+                Last updated: {toLocaleString(note.mtime)}
+            </span>
             <section className='block'>
                 <Markdown content={note.content} />
             </section>

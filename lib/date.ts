@@ -14,6 +14,16 @@ const months = [
     'December'
 ];
 
+function get12HourTime(pdate: Date | string): string {
+    const date = (typeof pdate === 'string') ? new Date(pdate) : pdate;
+    if (date.getHours() > 12)
+        return `${date.getHours() - 12}:${date.getMinutes()} PM`;
+    else if (date.getHours() === 0) 
+        return `12:${date.getMinutes()} AM`;
+    return `${date.getHours()}:${date.getMinutes()} AM`;
+
+}
+
 function toHumanReadableDate(date: Date | string, disable?: { year?: boolean, month?: boolean, day?: boolean }) {
     const oDate = (typeof date === 'string') ? new Date(date) : date;
 
@@ -29,7 +39,7 @@ function toHumanReadableDate(date: Date | string, disable?: { year?: boolean, mo
 }
 
 
-export function getOrdinalDaySuffix(day: number) {
+export function getOrdinalDaySuffix(day: number): string {
     switch (day) {
         case 1:
         case 21:
@@ -44,6 +54,11 @@ export function getOrdinalDaySuffix(day: number) {
         default:
             return 'th';
     }
+}
+
+export function toLocaleString(pdate: Date | string): string {
+    const date = (typeof pDate === 'string') ? new Date(pdate) : pdate;
+    return `${toHumanReadableDate(date)}, ${get12HourTime(date)}`;
 }
 
 export function toRelativeDate(date: Date | string): string {
@@ -100,6 +115,7 @@ const DateTool = {
     getFullMonth,
     isValid,
     getOrdinalDaySuffix,
+    toLocaleString,
 };
 
 export default DateTool;
