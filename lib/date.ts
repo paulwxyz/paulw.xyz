@@ -16,11 +16,21 @@ const months = [
 
 function get12HourTime(pdate: Date | string): string {
     const date = (typeof pdate === 'string') ? new Date(pdate) : pdate;
-    if (date.getHours() > 12)
-        return `${date.getHours() - 12}:${date.getMinutes()} PM`;
-    else if (date.getHours() === 0) 
-        return `12:${date.getMinutes()} AM`;
-    return `${date.getHours()}:${date.getMinutes()} AM`;
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    let meridiem = 'A.M.';
+
+    let strhours = ''
+    
+    if (hours > 12) {
+        hours -= 12;
+        meridiem = 'P.M.';
+    }
+
+    if (hours === 0)
+        hours = 12;
+    
+    return `${hours}:${minutes < 10 ? '0' : ''}${minutes} ${meridiem}`;
 
 }
 
@@ -30,10 +40,11 @@ function toHumanReadableDate(date: Date | string, disable?: { year?: boolean, mo
     const year = oDate.getFullYear();
     const month = months[oDate.getMonth()];
     const day = oDate.getDate();
-
-    let out = !disable?.day ? `${day}${getOrdinalDaySuffix(day)}` : '';
-    out = !disable?.month ? `${out} ${month}` : out;
-    out = !disable?.year ? `${out} ${year}` : out;
+    const suffix = getOrdinalDaySuffix(day)
+    let out = '';
+    out = !disable?.month ? `${month}` : '';
+    out = !disable?.day ? `${out} ${day}${suffix}` : out;
+    out = !disable?.year ? `${out}, ${year}` : out;
 
     return out;
 }
@@ -57,8 +68,8 @@ export function getOrdinalDaySuffix(day: number): string {
 }
 
 export function toLocaleString(pdate: Date | string): string {
-    const date = (typeof pDate === 'string') ? new Date(pdate) : pdate;
-    return `${toHumanReadableDate(date)}, ${get12HourTime(date)}`;
+    const date = (typeof pdate === 'string') ? new Date(pdate) : pdate;
+    return `${toHumanReadableDate(date)} at ${get12HourTime(date)}`;
 }
 
 export function toRelativeDate(date: Date | string): string {

@@ -16,6 +16,7 @@ import style from '../../styles/note.module.css';
 interface Note {
     title: string,
     mtime: string,
+    content?: string,
 }
 
 interface Notes {
@@ -50,7 +51,7 @@ function Markdown({ content }: any) {
     >{content}</ReactMarkdown>
 }
 
-function Note({ note }: any) {
+function Note({ note }: { note: Note } ) {
     return (<>
         <Layout >
             <span className={style['last-updated']}>
@@ -64,7 +65,7 @@ function Note({ note }: any) {
     );
 }
 
-export async function getStaticProps({ params }: any) {
+export async function getStaticProps({ params }: { params: { note: string } }) {
     const note: string = params.note;
     const notesInfo: Notes = NotesInfo;
     const noteInfo: Note = notesInfo[note];

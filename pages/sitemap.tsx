@@ -10,13 +10,27 @@ function traverseMap(head: Site, cwd = '', depth = 0) {
     for (const [slug, info] of Object.entries(head.subpages)) {
         if (slug === 'sitemap')
             continue;
-        const path = `${cwd}/${slug}`;
-        const children = (<><dl style={{marginLeft: '3rem'}}> {traverseMap(info, path, depth + 1)}</dl></>);
-        elements.push(<>
+        if (slug.startsWith('http://')) {
+            elements.push(<>
                 <dt>{info.title}</dt>
-                <dd><Link href={path}>paulw.xyz{path}</Link></dd>
-                 {children}
-        </>);
+                <dd><Link href={slug}>{slug.substring(7)}</Link></dd>
+            </>);
+        }
+        else if (slug.startsWith('https://')) {
+            elements.push(<>
+                <dt>{info.title}</dt>
+                <dd><Link href={slug}>{slug.substring(8)}</Link></dd>
+            </>);
+        }
+        else {
+            const path = `${cwd}/${slug}`;
+            const children = (<><dl style={{marginLeft: '3rem'}}> {traverseMap(info, path, depth + 1)}</dl></>);
+            elements.push(<>
+                    <dt>{info.title}</dt>
+                    <dd><Link href={path}>paulw.xyz{path}</Link></dd>
+                     {children}
+            </>);
+        }
     }
     return elements;
 }
