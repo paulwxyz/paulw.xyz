@@ -21,7 +21,7 @@ interface Notes {
 
 function Markdown({ content }: any) {
     return <ReactMarkdown
-        remarkPlugins={[remarkGithubAdmonitionsToDirectives, remarkDirective]}
+        remarkPlugins={[remarkGithubAdmonitionsToDirectives, remarkDirective, remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
             code({ node, className, children, ...props }) {
