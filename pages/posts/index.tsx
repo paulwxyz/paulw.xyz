@@ -26,8 +26,8 @@ function Posts() {
             <table>
                 <tbody>
                     {
-                        posts.map(([slug, post]: any, i: number) => {
-                            return <tr key={i} style={{ alignItems: 'center' }}>
+                        posts.map(([slug, post]: [string, any]) => {
+                            return <tr key={slug} style={{ alignItems: 'center' }}>
                                 <td style={{ display: 'inline-block', textAlign: 'right', fontSize: '0.9rem' }}>
                                     <div style={{ fontStyle: 'italics', fontSize: '.8rem' }}>{
                                         post.mtime && (post.mtime != post.otime) && `Updated ${date.toRelativeDate(new Date(post.mtime))}`

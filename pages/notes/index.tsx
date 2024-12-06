@@ -43,8 +43,8 @@ function NotesPage() {
                 || <table>
                     <tbody>
                         {notes.map(
-                            (note: any, i: number) => {
-                                return (<NoteEntry note={note} key={i} />);
+                            (note: any) => {
+                                return (<NoteEntry note={note} key={note.slug} />);
                             }
                         )}
                     </tbody>

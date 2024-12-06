@@ -22,7 +22,7 @@ function RecentNotes() {
             {notes?.slice(0, 5)
                 .map(({slug, title, mtime}) => {
                     return (
-                        <li key={mtime.getTime()} >
+                        <li key={slug} >
                             <Link href={`/notes/${slug}`}>{title}</Link>
                         </li>
                     );

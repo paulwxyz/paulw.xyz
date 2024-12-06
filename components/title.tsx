@@ -12,7 +12,7 @@ function createPathElements(ancestors: Array<{ name: string, path: string }>) {
         currentPath += `/${ancestor.path}`
         return (
             <>
-                <Link key={id + 1} href={currentPath}>{ancestor.name}</Link>
+                <Link key={currentPath} href={currentPath}>{ancestor.name}</Link>
                 <> / </>
             </>
         );

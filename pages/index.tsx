@@ -7,28 +7,28 @@ import RecentPosts from '../components/recent-posts';
 import RootInfo from '../public/home.json';
 
 function Nav() {
-    const nav = Object.entries(RootInfo);
-    return (
-        <div className='block'>
-            <h2>Navigation</h2>
-            {
-                nav.map(([slug, info], i) => {
-                    return <Link key={i} href={slug} className='button green'>{info.title}</Link>
-                })
-            }
-        </div>
-    )
+	const nav = Object.entries(RootInfo);
+	return (
+		<div className='block'>
+			<h2>Navigation</h2>
+			{
+				nav.map(([slug, info]) => {
+					return <Link key={slug} href={slug} className='button green'>{info.title}</Link>
+				})
+			}
+		</div>
+	)
 }
 
 function HomePage() {
-    return (
-        <Layout>
-            <QuickLinks />
-            <RecentPosts />
-            <RecentNotes />
-            <Nav />
-        </Layout>
-    )
+	return (
+		<Layout>
+			<QuickLinks />
+			<RecentPosts />
+			<RecentNotes />
+			<Nav />
+		</Layout>
+	)
 }
 
 export default HomePage;
