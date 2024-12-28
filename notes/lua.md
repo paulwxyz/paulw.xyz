@@ -1,15 +1,11 @@
 # Lua Programming Language
-
-## Lua 5.4 C API
-
+<!-- TODO ## Lua 5.4 C API-->
 
 ## Lua 5.4 Bytecode
 
-> [!note]
 > These are **unstable** and may differ in different versions of the language.
 > They are not part of the language specification but an implementation detail, which in this case is the reference implementation.
 
-> [!note]
 > The reference implementation used to have a stack based but now uses a register based VM similar to how modern real computer architectures.
 
 The instructions are 32 bits wide; every instruction has an opcode that takes up 7 bits, which leaves out 25 bits for the addresses and values.

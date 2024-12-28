@@ -1,46 +1,41 @@
 import Link from 'next/link';
 import Layout from '../components/layout';
-import { Site } from '../lib/site';
+import { Sites } from '../lib/site';
 import SiteMap from '../public/sitemap.json';
 
-function traverseMap(head: Site, cwd = '', depth = 0) {
-    if (head.subpages === undefined)
-        return [];
-    let elements = [];
-    for (const [slug, info] of Object.entries(head.subpages)) {
-        if (slug === 'sitemap')
-            continue;
-        if (slug.startsWith('http://')) {
-            elements.push(<>
-                <dt>{info.title}</dt>
-                <dd><Link href={slug}>{slug.substring(7)}</Link></dd>
-            </>);
-        }
-        else if (slug.startsWith('https://')) {
-            elements.push(<>
-                <dt>{info.title}</dt>
-                <dd><Link href={slug}>{slug.substring(8)}</Link></dd>
-            </>);
-        }
-        else {
-            const path = `${cwd}/${slug}`;
-            const children = (<><dl style={{marginLeft: '3rem'}}> {traverseMap(info, path, depth + 1)}</dl></>);
-            elements.push(<>
-                    <dt>{info.title}</dt>
-                    <dd><Link href={path}>paulw.xyz{path}</Link></dd>
-                     {children}
-            </>);
-        }
-    }
-    return elements;
+function Desc(props: any) {
+	return (
+		<dl style={props.style}>
+			<dt>{props.term}</dt>
+			<dd>{props.details}</dd>
+			{props.children}
+		</dl>
+	);
+}
+
+function traverseMap(head?: Sites, cwd = '', depth = 0) {
+	if (!head) return [];
+	let elements = [];
+	for (const [slug, site] of Object.entries(head)) {
+		if (slug === 'sitemap')
+			continue;
+
+		let details;
+		let list;
+
+		const path = `${cwd}/${slug}`;
+		details = <Link href={path}>paulw.xyz{path}</Link>;
+		list = traverseMap(site.pages, path, depth + 1);
+
+		elements.push(<Desc style={{marginLeft: '3rem'}} key={site.title} term={site.title} details={details}>{list}</Desc>)
+	}
+	return elements;
 }
 
 function SiteMapPage() {
-
-
-    return <Layout>
-        <dl>{traverseMap(SiteMap)}</dl>
-    </Layout>;
+	return <Layout>
+		{traverseMap(SiteMap.pages)}
+	</Layout>;
 }
 
 export default SiteMapPage;

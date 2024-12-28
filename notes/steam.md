@@ -14,11 +14,11 @@
 - Alternatively, SteamCMD, a command-line only version of the Steam client, can
   be used
   - [Windows
-    Binary](https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip)
+    Binary (.zip)](https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip)
   - [Linux
-    Binary](https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz)
+    Binary (.zip)](https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz)
   - [macOS
-    Binary](https://steamcdn-a.akamaihd.net/client/installer/steamcmd_osx.tar.gz)
+    Binary (.zip)](https://steamcdn-a.akamaihd.net/client/installer/steamcmd_osx.tar.gz)
 
 ## Downloading Older Depots
 
@@ -51,4 +51,7 @@ values.
   - useful bot written in C# to farm trading cards for owned games that can be
     sold
 - [SteamGridDB](https://steamgriddb.com/)
-  - custom video game assets for games available and not available on steam
+  - custom video game assets for games available and not available on Steam
+- [ProtonDB](https://www.protondb.com/)
+  - community-sourced Linux compatibility tracker
+

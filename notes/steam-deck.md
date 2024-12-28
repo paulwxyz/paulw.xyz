@@ -17,7 +17,7 @@
   following XDG Desktop Configuration, for example, can be used and added as a
   non-Steam game while in Desktop mode for access in gaming mode
 
-```cfg
+```ini
 #!/usr/bin/env xdg-open
 [Desktop]
 Version=1.0
@@ -27,7 +27,8 @@ GenericName=Online Video Platform
 Comment=An online video-sharing, social media platform
 Exec=/usr/bin/flatpak run --branch=master --arch=x86_64 --file-forwarding org.chromium.Chrome @@ %F @@ --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; Xbox; Xbox Series X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36 Edge/20.02' --kiosk 'https://www.youtube.com/tv'
 Terminal=false
-MimeType=text/plain; # $XDG_PATH contains the paths used to fetch icons, extensions for supported formats are optional Icon=com.youtube.tv
+MimeType=text/plain;
+# $XDG_PATH contains the paths used to fetch icons, extensions for supported formats are optional Icon=com.youtube.tv
 ```
 
 - Firefox can also be used however the supported command-line options are

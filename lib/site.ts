@@ -1,11 +1,11 @@
 
 export interface Site {
     title: string;
-    subpages?: SiteSubPages;
+    pages?: Sites;
     mtime?: string;
     otime?: string;
 }
 
-export interface SiteSubPages {
+export interface Sites {
     [slug: string]: Site;
 }

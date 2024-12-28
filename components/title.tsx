@@ -1,20 +1,21 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Fragment } from 'react';
 
 import style from '../styles/title.module.css';
 import SiteMap from '../public/sitemap.json';
 import Head from 'next/head';
-import { SiteSubPages } from '../lib/site';
+import { Sites } from '../lib/site';
 
 function createPathElements(ancestors: Array<{ name: string, path: string }>) {
     let currentPath = '';
     return ancestors.map((ancestor, id) => {
         currentPath += `/${ancestor.path}`
         return (
-            <>
-                <Link key={currentPath} href={currentPath}>{ancestor.name}</Link>
+            <Fragment key={currentPath} >
+                <Link href={currentPath}>{ancestor.name}</Link>
                 <> / </>
-            </>
+            </Fragment>
         );
     });
 }
@@ -25,7 +26,8 @@ function Title() {
     const pagePath = router.asPath;
     const splitPath: Array<{ name: string, path: string }> = [];
 
-    let currRoot: SiteSubPages = SiteMap.subpages;
+	// TODO(Paul): clean this up
+    let currRoot: Sites = SiteMap.pages;
     let title: string | null = null;
     if (pagePath !== '/') {
         const subPaths = pagePath.split('?')[0].split('#')[0].split('/');
@@ -36,9 +38,9 @@ function Title() {
 
             if (currRoot === undefined
                 || currRoot[p] === undefined
-                || currRoot[p].subpages === undefined)
+                || currRoot[p].pages === undefined)
                 break;
-            currRoot = currRoot[p].subpages!;
+            currRoot = currRoot[p].pages!;
         }
         if (splitPath !== undefined && splitPath.length > 0)
             title = splitPath.pop()!.name;

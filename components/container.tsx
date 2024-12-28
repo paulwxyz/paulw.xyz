@@ -1,4 +1,6 @@
-export type ChildrenType = JSX.Element | Array<ChildrenType>;
+import { JSX } from "react";
+
+export type ChildrenType = JSX.Element| Array<ChildrenType>;
 
 function Container(props: { children?: ChildrenType, ignore?: boolean }) {
     if (props.ignore)

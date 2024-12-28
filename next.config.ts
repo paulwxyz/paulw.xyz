@@ -1,14 +1,18 @@
-const config = {
+import type {NextConfig } from 'next';
+import NextBundleAnalyzer from '@next/bundle-analyzer';
+
+let config: NextConfig = {
+    reactStrictMode: true,
     i18n: {
         locales: ['en-US'],
         defaultLocale: 'en-US'
     },
+    // not sure why this breaks prod build in the latest version
+    // aah it's so frustrating to deal with an warning log that
+    // shows up regardless of the config but its presence halts
+    // the entire thing. 
     webpack: (config, _options) => {
         config.module.rules.push(
-            {
-                test: /\.ya?ml$/,
-                use: 'js-yaml-loader',
-            },
             {
                 test: /\.svg$/,
                 use: [{ loader: '@svgr/webpack' }],
@@ -25,10 +29,6 @@ const config = {
                 test: /\.txt$/,
                 type: 'asset/source',
             },
-            {
-                resourceQuery: /raw/,
-                type: 'asset/source',
-            },
         );
 
         return config;
@@ -36,10 +36,9 @@ const config = {
 };
 
 if (process.env.ANALYZE) {
-    const bundleAnalyzer = require('@next/bundle-analyzer')({
+    config = NextBundleAnalyzer({
         enabled: true
-    });
-    module.exports = bundleAnalyzer(config);
-} else {
-    module.exports = config;
+    })(config);
 }
+
+export default config;

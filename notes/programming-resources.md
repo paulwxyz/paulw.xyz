@@ -61,3 +61,8 @@ Semi-paywalled
 ## UTF-8 Everywhere
 
 - http://utf8everywhere.org
+
+## Parsing Gigabytes of JSON per Second
+
+- https://arxiv.org/abs/1902.08318 [[PDF](https://arxiv.org/pdf/1902.08318)]
+

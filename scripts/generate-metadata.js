@@ -122,12 +122,12 @@ async function generateSiteMap() {
 
     const sitemap = {
         title: 'PaulW.XYZ',
-        subpages: await readFilesMetadata('home')
+        pages: await readFilesMetadata('home')
     };
 
     const pages = ['posts', 'notes'];
     for (const page of pages) {
-        sitemap.subpages[page].subpages = await readFilesMetadata(page);
+        sitemap.pages[page].pages = await readFilesMetadata(page);
     }
 
     await writeFilesMetadata(jsonFilePath('sitemap'), sitemap);
