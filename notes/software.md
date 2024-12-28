@@ -1,4 +1,4 @@
-# Operating Systems
+# Software
 ## Windows
 
 ### Package Managers
