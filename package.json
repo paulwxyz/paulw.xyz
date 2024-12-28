@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+	"prebuild": "node ./scripts/generate-metadata.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

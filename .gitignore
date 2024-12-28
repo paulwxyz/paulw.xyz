@@ -6,3 +6,6 @@ dist/
 *.bun
 **/.*.md
 .env
+public/posts.json
+public/notes.json
+public/sitemap.json
