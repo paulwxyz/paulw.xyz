@@ -8,9 +8,15 @@ function AboutPage() {
 	return (
 		<Layout >
 			<section className='block'>
-				<p>Paul&apos;s Personal Website. I go by <a href='https://github.com/LambdaPaul'>@LambdaPaul</a> on GitHub and <a href='https://x.com/lambda_paul'>@lambda_paul</a> on X/Twitter.</p>
-				<p>I also have a Gitea server at <a href='https://git.paulw.xyz'>git.paulw.xyz</a> and a Pleroma (ActivityPub/Mastodon-compatible) server at <a href='https://social.paulw.xyz'>social.paulw.xyz</a> as back-ups for my GitHub and X/Twitter.</p>
-				<p>Why did I create this? Why do I have the back-ups?</p>
+				<p>Paul&apos;s Personal Website. 
+                <p> You can find me on the following:
+                    <ul>
+                        <li>X/Twitter: <a href='https://x.com/paulw_xyz'>paulw_xyz</a></li>
+                        <li>GitHub: <a href='https://github.com/lambdapaul'>lambdapaul</a></li>
+                        <li>BlueSky (unused): <a href='https://bsky.app/profile/@paulw.xyz'>@paulw.xyz</a></li>
+                        <li><a href='https://git.paulw.xyz/xyz'>git.paulw.xyz</a></li>
+                    </ul>
+                </p>
 				<p>
 					The original motivation was to just play with Next.js as it pretty much did the things I wanted web pages to do. But it came at the cost of needless complexity. As I use the JavaScript/ECMAScript/Whatever-you-want-to-call-it-script more and more, I am convinced that it is not a platform worth pursuing because the more complex it gets, the less control I have over what it does and this platform and its users seems to be okay with that sort of loss. I have been instead pivoting toward things that impressed and got me interested in working with computers.</p>
 				<p>Most services/products are keen on going against what Steph Ango calls <a href='https://stephango.com/file-over-app'>File over app</a>, a philosophy in which you prioritize data over software, and anticipate and embrace the eventual death of software. People instead want subscription services that barely support open formats and sometimes do not support exporting data to commonly used formats. The goal here is to avoid storing artifacts under locations that are easily not accessible, not under my control, and does not lock me out of using it with other software. The only reason I have not completely abandoned this is thanks to my decision to rely on Markdown files alone. Had it been reliant on any cloud software, I would have started over.</p>

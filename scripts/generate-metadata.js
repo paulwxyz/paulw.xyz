@@ -2,9 +2,10 @@ const path = require('path')
 const fs = require('fs/promises')
 
 const gitRef = process.env.WWW_GIT_REF ?? 'master'
+const giteaApiRepo = `https://git.paulw.xyz/api/v1/repos/xyz/www/` 
 
 async function readFirstLines(filePath, lineCount = 1) {
-    const gitFileFetch = await fetch(`https://git.paulw.xyz/api/v1/repos/lambdapaul/www/raw/${filePath}?ref=${gitRef}`)
+    const gitFileFetch = await fetch(`${giteaApiRepo}raw/${filePath}?ref=${gitRef}`)
     if (!gitFileFetch.ok) return null
     const file = await gitFileFetch.text()
     const lines = file.split('\n')
@@ -30,7 +31,7 @@ async function getTitle(filePath) {
 }
 
 async function getMarkdownMetadata(dir) {
-    const dirGitInfoFetch = await fetch(`https://git.paulw.xyz/api/v1/repos/lambdapaul/www/contents/${dir}/?ref=${gitRef}`)
+    const dirGitInfoFetch = await fetch(`${giteaApiRepo}contents/${dir}/?ref=${gitRef}`)
     if (!dirGitInfoFetch.ok) return {}
 
     const commits = {}
@@ -47,7 +48,7 @@ async function getMarkdownMetadata(dir) {
 
 
         if (!(file.last_commit_sha in commits)) {
-            const lastCommitSha = await fetch(`https://git.paulw.xyz/api/v1/repos/lambdapaul/www/git/commits/${file.last_commit_sha}`)
+            const lastCommitSha = await fetch(`${giteaApiRepo}/git/commits/${file.last_commit_sha}`)
             if (lastCommitSha.ok) {
                 const commitJson = await lastCommitSha.json()
                 commits[commitJson.sha] = (new Date(commitJson.created))
