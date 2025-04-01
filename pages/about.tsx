@@ -8,7 +8,7 @@ function AboutPage() {
 	return (
 		<Layout >
 			<section className='block'>
-				<p>Paul&apos;s Personal Website. 
+				<p>Paul&apos;s Personal Website.</p>
                 <p> You can find me on the following:
                     <ul>
                         <li>X/Twitter: <a href='https://x.com/paulw_xyz'>paulw_xyz</a></li>
