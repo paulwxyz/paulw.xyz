@@ -3,14 +3,19 @@ import NextBundleAnalyzer from '@next/bundle-analyzer';
 
 let config: NextConfig = {
     reactStrictMode: true,
-    i18n: {
-        locales: ['en-US'],
-        defaultLocale: 'en-US'
+    turbopack: {
+        rules: {
+            '*.txt': {
+                as: '*.js',
+                loaders: ['raw-loader'],
+            },
+            '*.md': {
+                as: '*.js',
+                loaders: ['raw-loader'],
+            }
+        },
+        resolveExtensions: ['.txt', '.md', '.tsx', '.ts', '.js']
     },
-    // not sure why this breaks prod build in the latest version
-    // aah it's so frustrating to deal with an warning log that
-    // shows up regardless of the config but its presence halts
-    // the entire thing. 
     webpack: (config, _options) => {
         config.module.rules.push(
             {

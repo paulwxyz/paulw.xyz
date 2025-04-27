@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import Layout from '../components/layout';
 import { Sites } from '../lib/site';
-import SiteMap from '../public/sitemap.json';
+import SiteMap from '../../../public/sitemap.json';
 
 function Desc(props: any) {
 	return (
@@ -33,9 +32,9 @@ function traverseMap(head?: Sites, cwd = '', depth = 0) {
 }
 
 function SiteMapPage() {
-	return <Layout>
+	return <>
 		{traverseMap(SiteMap.pages)}
-	</Layout>;
+	</>;
 }
 
 export default SiteMapPage;

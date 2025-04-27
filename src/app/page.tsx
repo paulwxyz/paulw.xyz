@@ -1,10 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import Layout from '../components/layout';
-import QuickLinks from '../components/quick-links';
-import RecentNotes from '../components/recent-notes';
-import RecentPosts from '../components/recent-posts';
-import RootInfo from '../public/home.json';
+import QuickLinks from './components/quick-links';
+import RecentNotes from './components/recent-notes';
+import RecentPosts from './components/recent-posts';
+import RootInfo from '../../public/home.json';
 
 function Nav() {
 	const nav = Object.entries(RootInfo);
@@ -22,12 +21,12 @@ function Nav() {
 
 function HomePage() {
 	return (
-		<Layout>
+		<>
 			<QuickLinks />
 			<RecentPosts />
 			<RecentNotes />
 			<Nav />
-		</Layout>
+		</>
 	)
 }
 

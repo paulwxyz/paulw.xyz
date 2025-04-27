@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { toRelativeDate } from "../lib/date";
-import style from '../styles/recent-posts.module.css';
-import PostsInfo from '../public/posts.json';
+import style from './recent-posts.module.css';
+import PostsInfo from '../../../public/posts.json';
 
 function PostBlock({ slug, otime, title }: { slug: string, otime: string, title: string }) {
 	return (

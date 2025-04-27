@@ -1,13 +1,11 @@
 import Link from 'next/link';
-import Layout from '../../components/layout';
-import date from '../../lib/date';
-import PostsInfo from '../../public/posts.json';
+import date from '../lib/date';
+import PostsInfo from '../../../public/posts.json';
 
 function PostsPage() {
-	return (
-		<Layout>
+	return (<>
 			{Object.keys(PostsInfo).length && <Posts /> || <NoPosts />}
-		</Layout>
+		</>
 	)
 }
 

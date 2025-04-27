@@ -1,10 +1,10 @@
+'use client'
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { Fragment } from 'react';
 
-import style from '../styles/title.module.css';
-import SiteMap from '../public/sitemap.json';
-import Head from 'next/head';
+import style from './title.module.css';
+import SiteMap from '../../../public/sitemap.json';
 import { Sites } from '../lib/site';
 
 function createPathElements(ancestors: Array<{ name: string, path: string }>) {
@@ -20,10 +20,8 @@ function createPathElements(ancestors: Array<{ name: string, path: string }>) {
     });
 }
 
-function Title() {
-
-    const router = useRouter();
-    const pagePath = router.asPath;
+export default function Title() {
+    const pagePath = usePathname();
     const splitPath: Array<{ name: string, path: string }> = [];
 
 	// TODO(Paul): clean this up
@@ -32,7 +30,7 @@ function Title() {
     if (pagePath !== '/') {
         const subPaths = pagePath.split('?')[0].split('#')[0].split('/');
         for (const p of subPaths.slice(1, subPaths.length)) {
-            if (!p)
+            if (!p || !currRoot[p])
                 continue;
             splitPath.push({ name: currRoot[p].title, path: p });
 
@@ -50,9 +48,9 @@ function Title() {
     const pathElements = splitPath && createPathElements(splitPath) || <></>;
     return (
         <>
-            <Head>
+            <head>
                 <title>{title && `${title} | PaulW.XYZ` || 'PaulW.XYZ'}</title>
-            </Head>
+            </head>
             <div className={style.container}>
                 <h1 className={style.title}>
                     {title || 'PaulW.XYZ'}
@@ -68,5 +66,3 @@ function Title() {
         </>
     );
 }
-
-export default Title;
