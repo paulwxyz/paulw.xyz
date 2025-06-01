@@ -7,13 +7,6 @@ refer to someone or within something.
     
 - https://www.gingerbill.org/series/memory-allocation-strategies/
 
-## Untangling Lifetimes: The Arena Allocator
-
-Making performant dynamic manual memory management in C feel almost like 
-garbage collection.
-
-- https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator
-
 ## Immediate-Mode Graphical User Interfaces (2005)
 
 - https://caseymuratori.com/blog_0001

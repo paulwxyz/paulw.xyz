@@ -1,23 +1,21 @@
-import Head from 'next/head';
 import Link from 'next/link';
 
-import style from '../styles/title.module.css';
+import style from '../components/title.module.css';
 
 function NotFoundPage() {
-	// clean this page up
+	// TODO: figure out a way to somehow get next to ignore layout in special cases. tried /not-found/page.tsx but it doesn't work :X
 	return (
 		<>
-			<Head>
+{/*			<head>
 				<title>404: Not Found | PaulW.XYZ</title>
-			</Head>
+			</head>
 			<div className={style.container}>
 				<h1 className={style.title}>
 					Page Not Found
 				</h1>
 			</div>
-			<div className={`${style.nav} h1`}>
-				<Link href='/'>PaulW.XYZ</Link> / ... ??? / 404: Not Found                          </div>
-			<div className='container'>
+			<div className={`${style.nav} h1`}><Link href='/'>PaulW.XYZ</Link> / ... ??? / 404: Not Found</div>
+			<div className='container'>*/}
 				<section className='block text center'>
 					<h1>Error 404</h1>
 					<p>
@@ -28,7 +26,7 @@ function NotFoundPage() {
 						More on HTTP status codes
 					</a>
 				</section>
-			</div>
+			{/*</div>*/}
 		</>
 
 	);

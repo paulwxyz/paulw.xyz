@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NotesInfo from '../public/notes.json';
+import NotesInfo from '../../../public/notes.json';
 
 function RecentNotes() {
     const notes = Object.entries(NotesInfo)

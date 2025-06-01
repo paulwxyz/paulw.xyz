@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Pages from '../public/external.json';
+import Pages from '../../../public/external.json';
 
 function QuickLinks() {
 	return (

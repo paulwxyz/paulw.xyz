@@ -11,12 +11,11 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeHighlightCodeLines, { type HighlightLinesOptions } from 'rehype-highlight-code-lines';
 
-import Layout from '../../components/layout';
 import readMarkdown from '../../lib/read-markdown';
 import { toLocaleString } from '../../lib/date';
-import NotesInfo from '../../public/notes.json';
+import NotesInfo from '../../../../public/notes.json';
 
-import style from '../../styles/note.module.css';
+import style from './note.module.css';
 import 'highlight.js/styles/monokai-sublime.css';
 import 'katex/dist/katex.min.css';
 
@@ -47,46 +46,21 @@ function Markdown({ content }: any) {
 	</ReactMarkdown>
 }
 
-function Note({ note }: { note: Note }) {
+export default async function Note({params}: {params: { note: string}}) {
+	const note = params.note
+	const n = await getNotes(note)
 	return (<>
-		<Layout >
 			<span className={style['last-updated']}>
-				Last updated: {toLocaleString(note.mtime)}
+				Last updated: {toLocaleString(n.mtime)}
 			</span>
 			<section className='block'>
-				<Markdown content={note.content} />
+				<Markdown content={n.content} />
 			</section>
-		</Layout>
 	</>
 	);
 }
 
-export async function getStaticProps({ params }: { params: { note: string } }) {
-	const note: string = params.note;
+async function getNotes(name: string) {
 	const notesInfo: Notes = NotesInfo;
-	const noteInfo: Note = notesInfo[note];
-
-	return {
-		props: {
-			note: {
-				...noteInfo,
-				content: await readMarkdown('notes', note, true)
-			}
-		}
-	}
+	return {...notesInfo[name], content: await readMarkdown('notes', name, true)}
 }
-
-export async function getStaticPaths() {
-	return {
-		paths: Object.keys(NotesInfo).map((note: string) => {
-			return {
-				params: {
-					note
-				}
-			}
-		}),
-		fallback: false
-	};
-}
-
-export default Note;

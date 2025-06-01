@@ -1,7 +1,6 @@
-import Layout from '../../components/layout';
 import ReactMarkdown from 'react-markdown';
 import style from '../../styles/post.module.css';
-import PostsInfo from '../../public/posts.json';
+import PostsInfo from '../../../../public/posts.json';
 import readMarkdown from '../../lib/read-markdown';
 import DateTool, { toLocaleString } from '../../lib/date';
 
@@ -10,11 +9,6 @@ interface IPost {
 	mtime: string;
 	otime?: string;
 }
-
-interface IPosts {
-	[slug: string]: IPost
-}
-
 
 function TimeBlock({ mtime, otime }: { mtime: string, otime: string }) {
 	const ampm = (h: number) => { if (h >= 12) return 'p.m.'; return 'a.m.'; };
@@ -50,14 +44,14 @@ function TimeBlock({ mtime, otime }: { mtime: string, otime: string }) {
 		</div>
 	);
 }
-
-function Post({ post }: { post: IPost & { content: string, cover?: string, otime: string, mtime?: string } }) {
+// post: IPost & { content: string, cover?: string, otime: string, mtime?: string }
+export default async function Post({ params }: { params: {post: string} }) {
+	const post = await getPost((await params).post);
 	if (!post)
 		return <></>;
 	return (<>
-		<Layout removeContainer={true}  >
 			<div className='container'>
-			   { post.otime !== post.mtime &&
+			   { post.otime !== post.mtime && post.mtime &&
 				   <span className={style.time}>
 				   Last updated: {toLocaleString(post.mtime)}
 				   </span>
@@ -80,37 +74,12 @@ function Post({ post }: { post: IPost & { content: string, cover?: string, otime
 				</div>
 			</section>
 			<div className={style.spacer}></div>
-		</Layout>
 
 	</>
 	);
 }
 
-export async function getStaticProps({ params }: any) {
-	const postsInfo: IPosts = PostsInfo;
-	const post: IPost = postsInfo[params.post];
-	return {
-		props: {
-			post: {
-				...post,
-				content: await readMarkdown('posts', params.post, true)
-			}
-		}
-	}
+export async function getPost(n: string) {
+	const postsInfo: Record<string, (IPost & { cover?: string, otime: string, mtime?: string })> = PostsInfo;
+	return {...postsInfo[n], content: await readMarkdown('posts', n, true)};
 }
-
-export async function getStaticPaths() {
-	return {
-		paths: Object.keys(PostsInfo).map((post: string) => {
-			return {
-				params: {
-					post
-				}
-			}
-		}),
-		fallback: false
-	};
-}
-
-
-export default Post;

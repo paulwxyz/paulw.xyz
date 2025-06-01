@@ -1,9 +1,7 @@
 import Link from 'next/link';
 
-import Layout from '../../components/layout';
-import { toRelativeDate } from '../../lib/date';
-
-import NotesInfo from '../../public/notes.json';
+import { toRelativeDate } from '../lib/date';
+import NotesInfo from '../../../public/notes.json';
 
 function NoteEntry({ note }: { note: { title: string, mtime: string, slug: string } }) {
 	return (
@@ -36,7 +34,7 @@ function NotesPage() {
 		);
 
 	return (
-		<Layout>
+		<>
 			{
 				!notes || notes.length === 0
 				&& <>No notes found</>
@@ -50,7 +48,7 @@ function NotesPage() {
 					</tbody>
 				</table>
 			}
-		</Layout>
+		</>
 	)
 }
 
