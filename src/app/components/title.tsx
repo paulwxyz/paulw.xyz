@@ -56,7 +56,7 @@ export default function Title() {
                     {title || 'PaulW.XYZ'}
                 </h1>
             </div>
-            <div className={`${style.nav} h1`}>
+            <div className={style.nav}>
                 {
                     title
                         ? <><Link href='/'>PaulW.XYZ</Link> / {pathElements}{title}</>
