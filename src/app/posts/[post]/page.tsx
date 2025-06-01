@@ -45,7 +45,7 @@ function TimeBlock({ mtime, otime }: { mtime: string, otime: string }) {
 	);
 }
 // post: IPost & { content: string, cover?: string, otime: string, mtime?: string }
-export default async function Post({ params }: { params: {post: string} }) {
+export default async function Post({ params }: {params: Promise<{post: string}>}) {
 	const post = await getPost((await params).post);
 	if (!post)
 		return <></>;
@@ -79,7 +79,7 @@ export default async function Post({ params }: { params: {post: string} }) {
 	);
 }
 
-export async function getPost(n: string) {
+async function getPost(n: string) {
 	const postsInfo: Record<string, (IPost & { cover?: string, otime: string, mtime?: string })> = PostsInfo;
 	return {...postsInfo[n], content: await readMarkdown('posts', n, true)};
 }

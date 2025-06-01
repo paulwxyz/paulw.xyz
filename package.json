@@ -2,8 +2,8 @@
   "private": true,
   "scripts": {
     "prebuild": "node ./scripts/generate-metadata.js",
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

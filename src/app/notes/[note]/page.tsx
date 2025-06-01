@@ -46,8 +46,8 @@ function Markdown({ content }: any) {
 	</ReactMarkdown>
 }
 
-export default async function Note({params}: {params: { note: string}}) {
-	const note = params.note
+export default async function Note({params}: {params: Promise<{note: string}>}) {
+	const note = (await params).note
 	const n = await getNotes(note)
 	return (<>
 			<span className={style['last-updated']}>
